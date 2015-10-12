@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+    \graph[feynman, horizontal=a to d]{
+        a [particle=$\gammaup$] -- [photon, momentum={$\tens p$}] b;
+        b -- [semi-left, fermion, momentum'={$\tens p'$}] c;
+        b -- [semi-right, fermion] c;
+        c -- [photon] d;
+    };
+\end{tikzpicture}
