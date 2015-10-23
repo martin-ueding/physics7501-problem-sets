@@ -2,19 +2,15 @@
 
 \usepackage[bibatend]{../header}
 
-\usepackage{booktabs}
-\usepackage{slashed}
-\usepackage{simplewick}
-
-\usepackage{multicol}
 \usepackage{lastpage}
-
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.10}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{slashed}
 
 \newcommand\timeorder{\mathscr T}
 \newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\myslash[1]{\underline{\slashed{\vec{#1}}}}
 
 \hypersetup{
     pdftitle=
@@ -71,6 +67,81 @@
 
 \section{Higgs correction to $g - 2$}
 \label{homework:1}
+
+\subsection{Gordon identity}
+
+The $\mat\sigma^{\mu\nu}$ are defined by the antisymmetric part of the Dirac
+matrices:
+\[
+    - \iup \mat\sigma^{\mu\nu} := \mat\gamma^{[\mu} \mat\gamma^{\nu]} \,.
+\]
+This uses the idempotent variant of the antisymmetrization brackets. They can
+be expanded using the anticommunitation relation.
+\begin{align*}
+    \iup \mat\sigma^{\mu\nu}
+    &= - \mat\gamma^{[\mu} \mat\gamma^{\nu]} \\
+    &= - \frac12 \sbr{
+        \mat\gamma^{\mu} \mat\gamma^{\nu}
+        - \mat\gamma^{\nu} \mat\gamma^{\mu}
+    }
+    \intertext{%
+        We use the anticommunitation relation and yield
+    }
+    &= \eta^{\mu\nu} \eye - \mat\gamma^{\mu} \mat\gamma^{\nu} \,.
+\end{align*}
+
+We will also need the anticommutation of a slashed vector with a Dirac matrix.
+This works as follows:
+\[
+    - \mat\gamma^\mu \myslash p'
+    = - \mat\gamma^\mu \mat\gamma^\nu p'_\nu
+    = \sbr{\mat\gamma^\nu \mat\gamma^\mu - 2 \eta^{\mu\nu}} p'_\nu
+    = \myslash p' \mat\gamma^\mu - 2 p'^\mu \,.
+\]
+
+Then the Gordon identity can be shown. We start with and right side and insert
+the previously derived expression of $\iup \mat\sigma^{\mu\nu}$:
+\begin{align*}
+    \bar u(\four p') \sbr{\frac{p'^\mu + p^\mu}{2m} + \frac{\iup
+    \mat\sigma^{\mu\nu} q_v}{2m}} u(\four p)
+    &= \bar u(\four p') \sbr{\frac{p'^\mu + p^\mu}{2m} + \frac{
+    \sbr{\eta^{\mu\nu} - \mat\gamma^{\mu} \mat\gamma^{\nu}} q_v}{2m}} u(\four
+    p) \,.
+    \intertext{%
+        We have dropped the $\eye$ here. Then we just factor out the innermost
+        bracket and obtain
+    }
+    &= \bar u(\four p') \sbr{\frac{p'^\mu + p^\mu}{2m} + \frac{ q^\mu -
+    \mat\gamma^{\mu} \slashed{\vec q}}{2m}} u(\four p) \,.
+    \intertext{%
+        The definition of the passed momentum~$\four q$ is $\four p' - \four
+        p$. Expanding those will get us to
+    }
+    &= \bar u(\four p') \frac{1}{2m} \sbr{p'^\mu + p^\mu + p'^\mu - p^\mu -
+    \mat\gamma^\mu \myslash p' + \mat\gamma^\mu \myslash p}
+    u(\four p) \,.
+    \intertext{%
+        Some terms can be cancelled easily.
+    }
+    &= \bar u(\four p') \frac{1}{2m} \sbr{2 p'^\mu -
+    \mat\gamma^\mu \myslash p' + \mat\gamma^\mu \myslash p}
+    u(\four p)
+    \intertext{%
+        Then we apply the anticommunitation of the slashed outgoing momentum.
+    }
+    &= \bar u(\four p') \frac{1}{2m} \sbr{2 p'^\mu + \myslash p' \mat\gamma^\mu
+    - 2 p'^\mu + \mat\gamma^\mu \myslash p} u(\four p) \\
+    &= \bar u(\four p') \frac{1}{2m} \sbr{\myslash p' \mat\gamma^\mu +
+    \mat\gamma^\mu \myslash p} u(\four p)
+    \intertext{%
+        The Dirac equations of motion are $[\myslash p - m] u(\four p) = 0$ and
+        $\bar u(\four p') [\myslash p' + m] = 0$. We can apply those to get rid
+        of the momenta.
+    }
+    &= \bar u(\four p') \frac{1}{2} \sbr{- \mat\gamma^\mu + \mat\gamma^\mu} u(\four p)
+\end{align*}
+If it were not for some sign error somewhere, this would be the right side of
+the given Gordon identity.
 
 \end{document}
 

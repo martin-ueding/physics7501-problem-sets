@@ -13,6 +13,8 @@ template_text = r'''
 \usepackage{../../../header}
 
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
 
 \pagestyle{empty}
 
