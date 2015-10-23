@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+    \graph[feynman, horizontal=v1 to v2]{
+        a
+        -- [fermion, momentum={$\four p$}] h1
+        -- [fermion, momentum'={$\four k$}] v1
+        -- [fermion, momentum'={$\four k' = \four k + \four q$}] h2
+        -- [fermion, momentum={$\four p'$}] b
+        ;
+
+        h1 -- [scalar, semi-left, momentum={$\four p - \four k$}] h2;
+
+        v2 -- [photon, momentum={$\four q$}] v1;
+    };
+\end{tikzpicture}
