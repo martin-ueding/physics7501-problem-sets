@@ -335,6 +335,74 @@ flipped since $\Delta$ is subtracted in the denominator.
 Except for the additional term with the mass of the Higgs-boson, this term
 matches the one given by \textcite[(6.44)]{Peskin/QFT/1995}.
 
+\paragraph{Numerator}
+
+The next step is to massage the numerator into a form which can utilize the
+Gordon identity. The book tells us that the integral now is symmetric in $\four
+l$ (which it really is) and therefore all terms which are odd in $\four l$ can
+be dropped directly. That will make it easier.
+
+It starts off innocent-looking:
+\begin{align*}
+    \bar u(\four p') N u(\four p)
+    &= \bar u(\four p') [\myslash k' + m] \mat\gamma^\mu [\myslash k + m]
+    u(\four p)
+\end{align*}
+Then we will concentrate on the numerator itself keeping in mind that it is
+sandwiched between Dirac spinors.
+\begin{align*}
+    N
+    &= [\myslash k' + m] \mat\gamma^\mu [\myslash k + m]
+    \intertext{%
+        We start by expanding all the terms.
+    }
+    &= \myslash k' \mat\gamma^\mu \myslash k
+    + m \myslash k' \mat\gamma^\mu
+    + m \mat\gamma^\mu \myslash k
+    + m^2 \mat\gamma^\mu
+    \intertext{%
+        Then we can replace $\four k'$ with $\four k + \four q$.
+    }
+    &= [\myslash k + \myslash q] \mat\gamma^\mu \myslash k
+    + m [\myslash k + \myslash q] \mat\gamma^\mu
+    + m \mat\gamma^\mu \myslash k
+    + m^2 \mat\gamma^\mu
+    \intertext{%
+        And to obtain even more terms we replace $\four k$ with
+        $\four l - x \four q + z \four p$.
+    }
+    &= [\myslash l - x \myslash q + z \myslash p + \myslash q] \mat\gamma^\mu [\myslash l - x \myslash q + z \myslash p]
+    + m [\myslash l - x \myslash q + z \myslash p + \myslash q] \mat\gamma^\mu
+    + m \mat\gamma^\mu [\myslash l - x \myslash q + z \myslash p]
+    + m^2 \mat\gamma^\mu
+    \intertext{%
+        From the first product, only the terms with an even number of $\four
+        l$ will contribute, we can drop the other terms. Same with the other
+        terms where $\four l$ only occurs once.
+    }
+    &= \myslash l \mat\gamma^\mu \myslash l + [- x \myslash q + z \myslash p + \myslash q] \mat\gamma^\mu [- x \myslash q + z \myslash p]
+    + m [- x \myslash q + z \myslash p + \myslash q] \mat\gamma^\mu
+    + m \mat\gamma^\mu [- x \myslash q + z \myslash p]
+    + m^2 \mat\gamma^\mu
+    \intertext{%
+        The expression $\myslash l \mat\gamma^\mu \myslash l$ can be simplified
+        using the anticommutation relation.
+        \[
+            \myslash l \mat\gamma^\mu \myslash l
+            = [2 l^\mu - \mat\gamma^\mu \myslash l] \myslash l
+            = 2 l^\mu \myslash l - \mat\gamma^\mu \four l^2
+        \]
+        The first term is odd in $l^\mu$ and we can therefore drop that. All
+        the $\myslash p$ on the right side can be replaced by $m$ from the
+        equations of motions.
+    }
+    &= \mat\gamma^\mu \four l^2 + [- x \myslash q + z \myslash p + \myslash q]
+    \mat\gamma^\mu [- x \myslash q + z m]
+    + m [- x \myslash q + z \myslash p + \myslash q] \mat\gamma^\mu
+    + m \mat\gamma^\mu [- x \myslash q + z m]
+    + m^2 \mat\gamma^\mu
+\end{align*}
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
