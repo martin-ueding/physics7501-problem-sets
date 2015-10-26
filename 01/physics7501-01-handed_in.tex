@@ -135,28 +135,205 @@ the previously derived expression of $\iup \mat\sigma^{\mu\nu}$:
     \mat\gamma^\mu \myslash p} u(\four p)
     \intertext{%
         The Dirac equations of motion are $[\myslash p - m] u(\four p) = 0$ and
-        $\bar u(\four p') [\myslash p' + m] = 0$. We can apply those to get rid
+        $\bar u(\four p') [\myslash p' - m] = 0$. We can apply those to get rid
         of the momenta.
     }
-    &= \bar u(\four p') \frac{1}{2} \sbr{- \mat\gamma^\mu + \mat\gamma^\mu} u(\four p)
+    &= \bar u(\four p') \frac{1}{2} \sbr{\mat\gamma^\mu + \mat\gamma^\mu} u(\four p)
+    \intertext{%
+        Then we just simplify and obtain the desired result.
+    }
+    &= \bar u(\four p') \mat\gamma^\mu u(\four p)
 \end{align*}
-If it were not for some sign error somewhere, this would be the right side of
-the given Gordon identity.
 
 \subsection{Higgs vertex correction}
 
+\paragraph{Drawing}
+
 In first order of $\lambda$ (which we assume to be asked here) the QED vertex
-correction by the scalar Higgs boson looks like the following:
+correction by the scalar Higgs boson looks like shown in
+Figure~\ref{fig:higgs-vertex}.
 
-\begin{center}
+\begin{figure}[htbp]
+    \centering
     \includegraphics{higgs-vertex}
-\end{center}
+    \caption{%
+        Fermion scattering on a photon with first-order vertex correction by a
+        Higgs-boson.
+    }
+    \label{fig:higgs-vertex}
+\end{figure}
 
-Sorry for the unusual looking diagram. We made that with the rather new
-\texttt{tikz-feynman} package and already filed a
-bug\footnote{\url{https://github.com/JP-Ellis/tikz-feynman/issues/3}} for it.
+This is just like the vertex correction by the additional photon. The
+differences are the changed propagator as well as the changed Higgs-fermion
+vertex. Those are given by \textcite[(D.49), (D.61)]{romao/aqt} as:
+\[
+    \frac{\iup}{\four p^2 - m^2 + \iup \epsilon}
+    \qquad\text{and}\qquad
+    - \iup \frac{g}{2} \frac{m_\mathrm f}{m_\mathrm W} \,.
+\]
+From the Lagrangian density we deduce that in our case the Higgs vertex is just
+$- \iup \lambda$.
 
-\parencite[(D.61)]{romao/aqt}
+Our task here is to compute the form factor $F_2(\four q^2)$ from the Feynman
+diagram in Figure~\ref{fig:higgs-vertex}. Then, using the form factor, we shall
+compute the $g - 2$ of the electron.
+
+\paragraph{Assembly}
+
+We start with the components of the
+expression by assembling the terms. Those matrix elements are always assembled
+along the fermion lines. We start from the outgoing fermion, go to the photon
+vertex and to the incoming fermion. As a last step we add the Higgs propagator.
+\begin{align*}
+    \iup \mathcal M
+    &= \int \frac{\dif^4 k}{[2 \piup]^4}
+    \bar u(\four p')
+    [-\iup \lambda]
+    \frac{\iup [\myslash k' + m]}{\four k'^2 - m^2 + \iup \epsilon}
+    \mat\gamma^\mu
+    \frac{\iup [\myslash k + m]}{\four k^2 - m^2 + \iup \epsilon}
+    [-\iup \lambda]
+    u(\four p)
+    \frac{\iup}{\four q^2 - m_\mathrm h^2 + \iup \epsilon}
+    \intertext{%
+        Then we can reorder this expression and move the coupling constants up
+        front.
+    }
+    &= \iup \lambda^2
+    \int \frac{\dif^4 k}{[2 \piup]^4}
+    \bar u(\four p')
+    \frac{\myslash k' + m}{\four k'^2 - m^2 + \iup \epsilon}
+    \mat\gamma^\mu
+    \frac{\myslash k + m}{\four k^2 - m^2 + \iup \epsilon}
+    u(\four p)
+    \frac{1}{\four q^2 - m_\mathrm h^2 + \iup \epsilon}
+\end{align*}
+
+Just as done by \textcite[189--196]{Peskin/QFT/1995} we will start with the
+denominator. There the use of Feynman parameters will make the denominator more
+symmetric.
+
+\paragraph{Denominator}
+
+There are three factors in the denominator, therefore we will have three
+Feynman parameters. The form will be
+\[
+    \int_0^1 \dif x \dif y \dif z \, \delta(x + y + z - 1)
+    \frac{3-1}{D^3}
+\]
+where $D$ is the denominator which has to be built up now.
+\begin{align*}
+    D
+    &= x[\four k'^2 - m^2] + y[\four k^2 - m^2] + z[\four q'^2 - m_\mathrm h^2]
+    + [x + y + z] \iup \epsilon
+    \intertext{%
+        We will expand $\four k' = \four k + \four q$ and $\four q' = \four p -
+        \four k$.
+    }
+    &= x\sbr{[\four k + \four q]^2 - m^2} + y[\four k^2 - m^2] + z\sbr{[\four p
+    - \four k]^2 - m_\mathrm h^2} + [x + y + z] \iup \epsilon \\
+    &= x[\four k^2 + 2 \four k \cdot \four q + \four q^2 - m^2] + y[\four k^2 -
+    m^2] + z[\four p^2 - 2 \four p \cdot \four k + \four k^2 - m_\mathrm h^2] + [x
+    + y + z] \iup \epsilon
+    \intertext{%
+        The terms can be regrouped. Since $x + y + z = 1$, there is just one
+        $\four k^2$ and one $\iup \epsilon$ in total.
+    }
+    &= \four k^2 + 2 \four k \cdot [x \four q - z \four p]
+    - m^2 [x + y]
+    + x\four q^2 + z[\four p^2 - m_\mathrm h^2] + \iup \epsilon
+    \intertext{%
+        This is already in a form where we can complete the square in $\four
+        k$.
+    }
+    &= \sbr{\four k^2 + [x \four q - z \four p]}^2 - [x \four q - z \four p]^2
+    - m^2 [x + y]
+    + x\four q^2 + z\four p^2 - z m_\mathrm h^2 + \iup \epsilon
+    \intertext{%
+        We will introduce $\four l$ with the same definition as in the book:
+        \[
+            \four l := \four k + x \four q - z \four p \,.
+        \]
+        Using this and expanding the second bracket will give us
+    }
+    &= \four l^2 - x^2 \four q^2 + 2 xz \four q \cdot \four p - z^2 \four p^2
+    - m^2 [x + y]
+    + x\four q^2 + z\four p^2 - z m_\mathrm h^2 + \iup \epsilon \,.
+    \intertext{%
+        All the middle terms are put into a term called $\Delta$.
+    }
+    &= \four l^2 - \Delta + \iup \epsilon
+\end{align*}
+
+We can then further simplify that term $\Delta$. Note that all the signs are
+flipped since $\Delta$ is subtracted in the denominator.
+\begin{align*}
+    \Delta
+    &= x^2 \four q^2 - 2 xz \four q \cdot \four p + z^2 \four p^2
+    + m^2 [x + y]
+    - x\four q^2 - z\four p^2 + z m_\mathrm h^2
+    \intertext{%
+        We factor out the squares.
+    }
+    &= \four q^2 [x^2 - x]
+    + \four p^2 [z^2 - z]
+    - 2 xz \four q \cdot \four p
+    + m^2 [x + y]
+    + z m_\mathrm h^2
+    \intertext{%
+        The term $\four q \cdot \four p$ can be simplified like follows:
+        \[
+            \four p + \four q = \four p'
+            \iff
+            \four p^2 + 2 \four p \cdot \four q + \four q^2 = \four p'^2
+            \iff
+            2 \four p \cdot \four q
+            = \four p'^2 - \four p^2 - \four q^2
+            = m^2 - m^2 - \four q^2
+            = - \four q^2
+        \]
+        Therefore we can write the $-2 \four q \cdot \four p$ as $- \four q^2$.
+        We obtain
+    }
+    &= \four q^2 [x^2 - x]
+    + \four p^2 [z^2 - z]
+    + xz \four q^2
+    + m^2 [x + y]
+    + z m_\mathrm h^2 \,, \\
+    \intertext{%
+        which we can further factor out into the first term like so:
+    }
+    &= \four q^2 [x^2 - x + xz]
+    + \four p^2 [z^2 - z]
+    + m^2 [x + y]
+    + z m_\mathrm h^2 \,.
+    \intertext{%
+        Then we still have not used $\four p^2 = m^2$. This will reduce the
+        number of factors even further.
+    }
+    &= x \four q^2 [x - 1 + z]
+    + m^2 [z^2 - z + x + y]
+    + z m_\mathrm h^2
+    \intertext{%
+        There is even more to simplify. In the first bracket we have
+        \[
+            x - 1 + z = x + y + z - 1 - y = - y \,.
+        \]
+        The second bracket contains something similar:
+        \[
+            z^2 + x + y - z = 
+            z^2 + x + y + z - 2z =
+            z^2 + 1 - 2z =
+            [z - 1]^2 \,.
+        \]
+        Inserting this will give us our final result for $\Delta$:
+    }
+    &= - xy \four q^2
+    + m^2 [z - 1]^2
+    + z m_\mathrm h^2 \,.
+\end{align*}
+Except for the additional term with the mass of the Higgs-boson, this term
+matches the one given by \textcite[(6.44)]{Peskin/QFT/1995}.
 
 \end{document}
 
