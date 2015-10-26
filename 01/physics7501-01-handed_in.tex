@@ -470,17 +470,107 @@ sandwiched between Dirac spinors.
     \intertext{%
         The $\myslash q$ has to be disposed still. We will do this by inserting
         $\myslash p' - \myslash p$, anticommuting the first summand to the
-        other side of the Dirac matrix and let it act on $\bar u$. 
+        other side of the Dirac matrix and let it act on $\bar u$. In order to
+        make it shorter, we will show that $\mat\gamma^\mu \myslash q$
+        simplifies a lot in a Dirac spinor sandwich:
+        \[
+            \begin{aligned}
+                \bar u \mat\gamma^\mu \myslash q u
+                &= \bar u \mat\gamma^\mu [\myslash p' - \myslash p] u \\
+                &= \bar u \mat\gamma^\mu \myslash p' u
+                - \bar u \mat\gamma^\mu \myslash p u \\
+                &= \bar u [- p'^\mu + \myslash p'] \mat\gamma^\mu u
+                - \bar u \mat\gamma^\mu \myslash p u \\
+                &= \bar u [- p'^\mu + m] \mat\gamma^\mu u
+                - \bar u \mat\gamma^\mu m u \\
+                &= - \bar u p'^\mu u \,.
+            \end{aligned}
+        \]
+        We will use that now to simplify our numerator.
     }
     &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+        + \sbr{[1 - x] [z + 1] - x} m p'^\mu
     \\&\quad
     - \mat\gamma^\mu
     \cbr{
         \sbr{\frac12 xz - [1 - x] x} \four q^2
-        + \sbr{[1 - x] [z + 1] - x} m [\myslash p' - \myslash p]
         + [z + 1]^2 m^2
     } \\
+    \intertext{%
+        Then we can group those terms by pre-factors.
+    }
+    &=
+    \mat\gamma^\mu
+    \cbr{
+        \four l^2
+        - \sbr{\frac12 xz - [1 - x] x} \four q^2
+        - [z + 1]^2 m^2
+    }
+    + p'^\mu \sbr{[1 - x] [z + 1] - x} m
+    \\&\quad
+    + p^\mu z [z+1] m
+    + q^\mu [1 - x] [z + 1] m
+    + [z+1]m^2
 \end{align*}
+
+This does not nicely fall into the desired form (given in the book) of
+\[
+    \mat\gamma^\mu A + [p'^\mu + p^\mu] B + q^\mu C \,.
+\]
+The constant summand should not be there by this scheme. In principle, the
+symmetric and antisymmetric part in $p'^\mu$ and $p^\mu$ should be decomposable
+from anything.
+In general we can write the symmetric and antisymmetric part as:
+\[
+    [p' + p] B + [p' - p] C
+    = p' [B + C] + p [B - C] \,.
+\]
+So far we have some multiple of $p'$ which we will now call $X$. The multiple
+of $p$ is called $Y$. Then we have:
+\begin{align*}
+    X &= B + C \,, \\
+    Y &= B - C \,.
+\end{align*}
+Those quations can be solved for $B$ and $C$ by $B = [X + Y]/2$ and $C = [X -
+Y]/2$.
+
+In our example we have
+\[
+    X = \sbr{[1 - x] [z + 1] - x} m
+    \quad
+    Y = z [z+1] m \,.
+\]
+We ignore the multiple of $q$ since we will just get more $q$ anyway. The
+solutions of $B$ and $C$ are then:
+\[
+    B = \frac m2 \sbr{\sbr{[1 - x] [z + 1] - x} + z [z+1]}
+    \quad
+    C = \frac m2 \sbr{\sbr{[1 - x] [z + 1] - x} - z [z+1]}
+\]
+$q^\mu C$ is then added to the multiple of $q^\mu$ that we already have. We are
+only interested in $B$ here as that is the part that will give the $g-2$. The
+coefficient of $q^\mu$ has to vanish due to the Ward identity, so we will still
+compute that to see whether we have made a mistake so far.
+\begin{align*}
+    q^\mu \cdot \ldots
+    &= q^\mu m \cbr{
+        [1 - x] [z + 1] + \frac 12 \sbr{\sbr{[1 - x] [z + 1] - x} - z [z+1]}
+    } \\
+    &= q^\mu m \cbr{
+        \frac 32 \sbr{z - xz + 1 - x} - \frac 12 \sbr{z^2 + z}
+    }
+\end{align*}
+That does not seem to vanish, even when $x \leftrightarrow z$ is exchanged.
+Therefore we must have made some mistake along the way.
+
+\paragraph{Gordon identity}
+
+The part which is of interest to us is the $B$. Writing it with the Gordon
+identity term give us
+\[
+    \frac{\iup \mat\sigma^{\mu\nu} q_\nu}{2m}
+    m^2 \sbr{\sbr{[1 - x] [z + 1] - x} + z [z+1]}
+\]
 
 \end{document}
 
