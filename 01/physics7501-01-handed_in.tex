@@ -87,7 +87,7 @@ matrices:
     - \iup \mat\sigma^{\mu\nu} := \mat\gamma^{[\mu} \mat\gamma^{\nu]} \,.
 \]
 This uses the idempotent variant of the antisymmetrization brackets. They can
-be expanded using the anticommunitation relation.
+be expanded using the anticommutation relation.
 \begin{align*}
     \iup \mat\sigma^{\mu\nu}
     &= - \mat\gamma^{[\mu} \mat\gamma^{\nu]} \\
@@ -96,7 +96,7 @@ be expanded using the anticommunitation relation.
         - \mat\gamma^{\nu} \mat\gamma^{\mu}
     }
     \intertext{%
-        We use the anticommunitation relation and yield
+        We use the anticommutation relation and yield
     }
     &= \eta^{\mu\nu} \eye - \mat\gamma^{\mu} \mat\gamma^{\nu} \,.
 \end{align*}
@@ -138,7 +138,7 @@ the previously derived expression of $\iup \mat\sigma^{\mu\nu}$:
     \mat\gamma^\mu \myslash p' + \mat\gamma^\mu \myslash p}
     u(\four p)
     \intertext{%
-        Then we apply the anticommunitation of the slashed outgoing momentum.
+        Then we apply the anticommutation of the slashed outgoing momentum.
     }
     &= \bar u(\four p') \frac{1}{2m} \sbr{2 p'^\mu + \myslash p' \mat\gamma^\mu
     - 2 p'^\mu + \mat\gamma^\mu \myslash p} u(\four p) \\
@@ -439,19 +439,47 @@ sandwiched between Dirac spinors.
         + m [z + 1] m
     }
     \intertext{%
-        This can be simplified, of course.
+        This can be simplified, of course. The slashed squares can be replaced
+        by normal squares. The mixed scalar product is replaced with the
+        identity we previously showed. Then the stray $\myslash p$ is used to
+        yield an $m$.
     }
     &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
     \\&\quad
     - \mat\gamma^\mu
     \cbr{
         - [1 - x] x \four q^2
-        + z [z + 1] m \myslash p
+        + z [z + 1] m^2
         - x m \myslash q
         + [1 - x] [z + 1] m \myslash q
         + \frac12 x z \four q^2
         + [z + 1] m^2
     }
+    \intertext{%
+        We can combine the two $m^2$ terms now. We also combine the terms with
+        $\myslash q$ and $\four q^2$.
+    }
+    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    \\&\quad
+    - \mat\gamma^\mu
+    \cbr{
+        \sbr{\frac12 xz - [1 - x] x} \four q^2
+        + \sbr{[1 - x] [z + 1] - x} m \myslash q
+        + [z + 1]^2 m^2
+    }
+    \intertext{%
+        The $\myslash q$ has to be disposed still. We will do this by inserting
+        $\myslash p' - \myslash p$, anticommuting the first summand to the
+        other side of the Dirac matrix and let it act on $\bar u$. 
+    }
+    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    \\&\quad
+    - \mat\gamma^\mu
+    \cbr{
+        \sbr{\frac12 xz - [1 - x] x} \four q^2
+        + \sbr{[1 - x] [z + 1] - x} m [\myslash p' - \myslash p]
+        + [z + 1]^2 m^2
+    } \\
 \end{align*}
 
 \end{document}
