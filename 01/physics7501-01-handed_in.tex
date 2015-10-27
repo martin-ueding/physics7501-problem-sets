@@ -169,7 +169,8 @@ Figure~\ref{fig:higgs-vertex}.
     \includegraphics{higgs-vertex}
     \caption{%
         Fermion scattering on a photon with first-order vertex correction by a
-        Higgs-boson.
+        Higgs-boson. The momentum sums get the following shorter names: $\four
+        k' = \four k + \four q$ and $\four q' = \four p - \four k$.
     }
     \label{fig:higgs-vertex}
 \end{figure}
@@ -183,7 +184,8 @@ vertex. Those are given by \textcite[(D.49), (D.61)]{romao/aqt} as:
     - \iup \frac{g}{2} \frac{m_\mathrm f}{m_\mathrm W} \,.
 \]
 From the Lagrangian density we deduce that in our case the Higgs vertex is just
-$- \iup \lambda$.
+$- \iup \lambda$. Perhaps then one given by \textcite{romao/aqt} is closely
+related to the result we should attain in this homework problem.
 
 Our task here is to compute the form factor $F_2(\four q^2)$ from the Feynman
 diagram in Figure~\ref{fig:higgs-vertex}. Then, using the form factor, we shall
@@ -220,7 +222,7 @@ vertex and to the incoming fermion. As a last step we add the Higgs propagator.
     \frac{1}{\four q^2 - m_\mathrm h^2 + \iup \epsilon}
 \end{align*}
 
-Just as done by \textcite[189--196]{Peskin/QFT/1995} we will start with the
+Just as done by \textcite[189--196]{Peskin/QFT/1995}, we will start with the
 denominator. There the use of Feynman parameters will make the denominator more
 symmetric.
 
@@ -232,11 +234,11 @@ Feynman parameters. The form will be
     \int_0^1 \dif x \dif y \dif z \, \delta(x + y + z - 1)
     \frac{3-1}{D^3}
 \]
-where $D$ is the denominator which has to be built up now.
+where $D$ is the denominator which has to be built up now. It is
 \begin{align*}
     D
     &= x[\four k'^2 - m^2] + y[\four k^2 - m^2] + z[\four q'^2 - m_\mathrm h^2]
-    + [x + y + z] \iup \epsilon
+    + [x + y + z] \iup \epsilon \,.
     \intertext{%
         We will expand $\four k' = \four k + \four q$ and $\four q' = \four p -
         \four k$.
@@ -257,7 +259,7 @@ where $D$ is the denominator which has to be built up now.
         This is already in a form where we can complete the square in $\four
         k$.
     }
-    &= \sbr{\four k^2 + [x \four q - z \four p]}^2 - [x \four q - z \four p]^2
+    &= \sbr{\four k + [x \four q - z \four p]}^2 - [x \four q - z \four p]^2
     - m^2 [x + y]
     + x\four q^2 + z\four p^2 - z m_\mathrm h^2 + \iup \epsilon
     \intertext{%
@@ -303,7 +305,7 @@ flipped since $\Delta$ is subtracted in the denominator.
             = m^2 - m^2 - \four q^2
             = - \four q^2
         \]
-        Therefore we can write the $-2 \four q \cdot \four p$ as $- \four q^2$.
+        Therefore we can write the $-2 \four q \cdot \four p$ as $\four q^2$.
         We obtain
     }
     &= \four q^2 [x^2 - x]
