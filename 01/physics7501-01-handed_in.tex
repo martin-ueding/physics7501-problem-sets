@@ -393,13 +393,13 @@ sandwiched between Dirac spinors.
         the $\myslash p$ on the right side can be replaced by $m$ from the
         equations of motions.
     }
-    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] \myslash q + z \myslash p + m}
+    &= - \mat\gamma^\mu \four l^2 + \sbr{[1 - x] \myslash q + z \myslash p + m}
     \mat\gamma^\mu \sbr{- x \myslash q + [z + 1] m}
     \intertext{%
         The form we aim for has the Dirac matrix up front. We therefore
         anticommute the first big bracket beyond the Dirac matrix.
     }
-    &= \mat\gamma^\mu \four l^2 +
+    &= - \mat\gamma^\mu \four l^2 +
     \cbr{
         \sbr{[1 - x] q^\mu + z p^\mu + m}
         - \mat\gamma^\mu
@@ -409,7 +409,7 @@ sandwiched between Dirac spinors.
         We factor the curly brace out to separate terms with and without the
         Dirac matrix.
     }
-    &= \mat\gamma^\mu \four l^2 +
+    &= - \mat\gamma^\mu \four l^2 +
         \sbr{[1 - x] q^\mu + z p^\mu + m}
     \sbr{- x \myslash q + [z + 1] m}
     \\&\quad
@@ -421,7 +421,7 @@ sandwiched between Dirac spinors.
         we can drop that term from the first summand. In the second there still
         is the Dirac matrix which makes things more complicated.
     }
-    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    &= - \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
     - \mat\gamma^\mu
         \sbr{[1 - x] \myslash q + z \myslash p + m}
     \sbr{- x \myslash q + [z + 1] m}
@@ -429,7 +429,7 @@ sandwiched between Dirac spinors.
         We will now focus on the last summand. There we can factor out the six
         terms.
     }
-    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    &= - \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
     \\&\quad
     - \mat\gamma^\mu
     \cbr{
@@ -446,7 +446,7 @@ sandwiched between Dirac spinors.
         identity we previously showed. Then the stray $\myslash p$ is used to
         yield an $m$.
     }
-    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    &= - \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
     \\&\quad
     - \mat\gamma^\mu
     \cbr{
@@ -461,7 +461,7 @@ sandwiched between Dirac spinors.
         We can combine the two $m^2$ terms now. We also combine the terms with
         $\myslash q$ and $\four q^2$.
     }
-    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    &= - \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
     \\&\quad
     - \mat\gamma^\mu
     \cbr{
@@ -490,7 +490,7 @@ sandwiched between Dirac spinors.
         \]
         We will use that now to simplify our numerator.
     }
-    &= \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
+    &= - \mat\gamma^\mu \four l^2 + \sbr{[1 - x] q^\mu + z p^\mu + m} [z + 1] m
         + \sbr{[1 - x] [z + 1] - x} m p'^\mu
     \\&\quad
     - \mat\gamma^\mu
@@ -504,7 +504,7 @@ sandwiched between Dirac spinors.
     &=
     \mat\gamma^\mu
     \cbr{
-        \four l^2
+        - \four l^2
         - \sbr{\frac12 xz - [1 - x] x} \four q^2
         - [z + 1]^2 m^2
     }
