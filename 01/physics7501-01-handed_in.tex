@@ -555,14 +555,19 @@ compute that to see whether we have made a mistake so far.
 \begin{align*}
     q^\mu \cdot \ldots
     &= q^\mu m \cbr{
-        [1 - x] [z + 1] + \frac 12 \sbr{\sbr{[1 - x] [z + 1] - x} - z [z+1]}
+        2 [1 - x] [z + 1] + \frac 12 \sbr{\sbr{[1 - x] [z + 1] - x} - 2 z [z+1]}
     } \\
     &= q^\mu m \cbr{
-        \frac 32 \sbr{z - xz + 1 - x} - \frac 12 \sbr{z^2 + z}
+    \frac 32 z + \frac 52 - \frac 52 xz - 3x - z^2
     }
 \end{align*}
-That does not seem to vanish, even when $x \leftrightarrow z$ is exchanged.
-Therefore we must have made some mistake along the way.
+That does not seem to vanish. If it was antisymmetric in the variables $x$ and
+$y = 1 - x - z$, it would vanish; the denominator is symmetric in $x$ and $y$
+and the integration bounds are the same for each Feynman parameter.
+
+It does not work out. Therefore we must have made some mistake along the way.
+We have checked this calculation and improved it, but it still does not work
+out.
 
 \paragraph{Gordon identity}
 
@@ -570,7 +575,7 @@ The part which is of interest to us is the $B$. Writing it with the Gordon
 identity term give us
 \[
     \frac{\iup \mat\sigma^{\mu\nu} q_\nu}{2m}
-    m^2 \sbr{\sbr{[1 - x] [z + 1] - x} + z [z+1]}
+    m^2 \sbr{\sbr{[1 - x] [z + 1] - x} + 2 z [z+1]}
 \]
 
 \end{document}
