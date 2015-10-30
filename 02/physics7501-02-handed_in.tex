@@ -1,0 +1,89 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude, BCOR=1cm]{scrartcl}
+
+\usepackage[bibatend]{../header}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{slashed}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\myslash[1]{\underline{\slashed{\vec{#1}}}}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{2}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimmanek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{15} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+We will indicate four-vectors with bold sans-serif letters (like
+$\tens{abcdef}$) instead of using the underline. The underline looks rather
+ugly. There should not be any confusion between four-vectors and higher-rank
+tensors. This will still allow to discriminate between three-vectors ($\vec
+q$,~$\vec k$) and four-vectors ($\four q$,~$\four k$), although the difference
+is subtle now. Please tell if you have a preference.
+
+\section{Vacuum polarization}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics{loop}
+    \caption{%
+        Vacuum polarization
+    }
+    \label{fig:loop}
+\end{figure}
+
+\end{document}
+
+% vim: spell spelllang=en tw=79

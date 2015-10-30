@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+    \graph[feynman electrical layout, horizontal=i to o] {
+        i [particle=$\mu$] -- [photon, momentum=$\four q$] v1;
+        v1 -- [fermion, semi-left, edge label=$\four q+\four k$] v2;
+        v1 -- [anti fermion, semi-right, edge label'=$\four k$] v2;
+        v2 -- [photon, momentum=$\four q$] o [particle=$\nu$];
+    };
+\end{tikzpicture}
