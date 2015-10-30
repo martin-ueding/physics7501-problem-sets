@@ -40,3 +40,5 @@ clean:
 	$(RM) *.svg
 	$(RM) *.pdf
 	$(RM) -r build
+
+.PRECIOUS: %.tex %.pdf
