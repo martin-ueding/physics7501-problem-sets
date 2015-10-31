@@ -74,15 +74,57 @@ is subtle now. Please tell if you have a preference.
 
 \section{Vacuum polarization}
 
+The photon propagator, we will call it $\pi(\four q)$ is corrected in first
+order by the diagram in Figure~\ref{fig:loop}. All corrections are contained in
+the corrected propagator $\Pi(\four q)$. The notation is similar to the vertex
+correction where $\mat\gamma \mapsto \mat\Gamma$.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics{loop}
     \caption{%
-        Vacuum polarization
+        Vacuum polarization in first order
     }
     \label{fig:loop}
 \end{figure}
+
+The propagator is a rank-2 tensor and therefore has to transform
+Lorentz-covariantly. This means it can only be a linear combination of elements
+which are rank-2 tensors themselves. For this we have the metric tensor~$\tens
+g$ and the product~$\four q \otimes \four q$. All this can multiply a function
+which depends on a Lorentz scalar as this will be invariant. The only scalar
+that we have is $\four q^2$ which is Lorentz invariant.
+
+Therefore we can have something like
+\[
+    \Pi^{\mu\nu}(\four q) = \sbr{ [a \four q^2 + b] g^{\mu\nu} + c q^\mu q^\nu
+    } \Pi(\four q^2) \,.
+\]
+The QED Ward identity then says that replacing the polarization vector of an
+external photon with the photon's momentum must give zero when contracted. Here
+it means that
+\[
+    q_\mu \Pi^{\mu\nu} = 0 \,,
+\]
+the relation with $\nu$ contracted directly follows from the symmetry. We only
+have to check one of them.
+\begin{align*}
+    q_\mu \Pi^{\mu\nu}(\four q)
+    &= q_\mu \sbr{ [a \four q^2 + b] g^{\mu\nu} + c q^\mu q^\nu } \Pi(\four
+    q^2) \\
+    &= \sbr{ [a \four q^2 + b] q_\mu g^{\mu\nu} + c q_\mu q^\mu q^\nu }
+    \Pi(\four q^2) \\
+    &= \sbr{ [a \four q^2 + b] q^\nu + c \four q^2 q^\nu } \Pi(\four q^2) \\
+    &= \sbr{ [a \four q^2 + b + c \four q^2] q^\nu } \Pi(\four q^2)
+\end{align*}
+From here the condition
+\[
+    [a + c] \four q^2 + b = 0
+\]
+follows. This can only be fulfilled for any $\four q$ if $a = -c$ and $b = 0$
+are given. Therefore the propagator can only have a form as given on the
+problem set. The multiple $a$ can be absorbed into the $\Pi(\four q^2)$
+function to give Equation~(1) from the problem set.
 
 \end{document}
 
