@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+    \graph[feynman, horizontal'=mu to nu]
+    {
+        mu -- [photon] v1 -- [fermion, bend left] top -- [fermion, bend left] v2 -- [fermion, bend left] bottom -- [fermion, bend left] v1;
+        v2 -- [photon] nu;
+        top -- [photon] bottom;
+    };
+\end{tikzpicture}

@@ -6,6 +6,7 @@
 \usepackage{multicol}
 \usepackage{simplewick}
 \usepackage{slashed}
+\usepackage{subcaption}
 
 \newcommand\timeorder{\mathscr T}
 \newcommand\normorder{\mathscr N}
@@ -73,6 +74,7 @@ q$,~$\vec k$) and four-vectors ($\four q$,~$\four k$), although the difference
 is subtle now. Please tell if you have a preference.
 
 \section{Vacuum polarization}
+\label{homework:1}
 
 The photon propagator, we will call it $\pi(\four q)$ is corrected in first
 order by the diagram in Figure~\ref{fig:loop}. All corrections are contained in
@@ -112,10 +114,10 @@ have to check one of them.
     q_\mu \Pi^{\mu\nu}(\four q)
     &= q_\mu \sbr{ [a \four q^2 + b] g^{\mu\nu} + c q^\mu q^\nu } \Pi(\four
     q^2) \\
-    &= \sbr{ [a \four q^2 + b] q_\mu g^{\mu\nu} + c q_\mu q^\mu q^\nu }
+    &= \sbr{ [a \four q^2 + b] \, q_\mu g^{\mu\nu} + c q_\mu q^\mu q^\nu }
     \Pi(\four q^2) \\
-    &= \sbr{ [a \four q^2 + b] q^\nu + c \four q^2 q^\nu } \Pi(\four q^2) \\
-    &= \sbr{ [a \four q^2 + b + c \four q^2] q^\nu } \Pi(\four q^2)
+    &= \sbr{ [a \four q^2 + b] \, q^\nu + c \four q^2 q^\nu } \Pi(\four q^2) \\
+    &= [a \four q^2 + b + c \four q^2] \, q^\nu \Pi(\four q^2)
 \end{align*}
 From here the condition
 \[
@@ -125,6 +127,41 @@ follows. This can only be fulfilled for any $\four q$ if $a = -c$ and $b = 0$
 are given. Therefore the propagator can only have a form as given on the
 problem set. The multiple $a$ can be absorbed into the $\Pi(\four q^2)$
 function to give Equation~(1) from the problem set.
+
+\section{Chains}
+
+In Figure~\ref{fig:split/pokemon} two diagrams are shown which are not simple
+chains of the first order diagram. We would say that the full contribution
+needs to take those type of diagrams into account.
+
+\begin{figure}[htbp]
+    \begin{subfigure}[c]{.5\linewidth}
+        \centering
+        \includegraphics{split}
+        \caption{%
+            The “split egg” diagram
+        }
+        \label{fig:split}
+    \end{subfigure}
+    \begin{subfigure}[c]{.5\linewidth}
+        \centering
+        \includegraphics{pokemon}
+        \caption{%
+            The “Pokéball” diagram
+        }
+        \label{fig:pokemon}
+    \end{subfigure}
+    \caption{%
+        Correction diagrams which are not chains of the first-order diagram.
+    }
+    \label{fig:split/pokemon}
+\end{figure}
+
+The problem statement asks for \emph{one particle irreducible} diagrams. Then
+those can be chained together. This makes sense as this prevent overcounting of
+diagrams. The diagrams shown on the problem set are just chains of the first
+order diagram. There are more complicated 1-PI diagrams that needs to be
+included as well.
 
 \end{document}
 
