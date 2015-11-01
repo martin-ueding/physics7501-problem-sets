@@ -225,6 +225,28 @@ $\four q^2 \to 0$ of infinite order.
 
 We are not sure how to obtain this exact result.
 
+\subsection{Physical charge}
+
+The first fraction does not change, so we can just leave it be. The fraction in
+the parentheses has to be expanded. We start by replacing the bare charge with
+the physical charge.
+\begin{align*}
+    \frac{e_0^2}{1 - \Pi(\four q^2)}
+    &= \frac{e^2}{Z_3[1 - \Pi(\four q^2)]} \\
+    &= \frac{e^2}{[1 - \Pi(0)][1 - \Pi(\four q^2)]} \\
+    &= \frac{e^2}{1 - \Pi(0) - \Pi(\four q^2) + \Pi(0) \Pi(\four q^2)} \\
+    \intertext{%
+        And then we can perform the approximation.
+    }
+    &= \frac{e^2}{1 - [\Pi_2(0) + \Pi_2(\four q^2)] + \Pi_2(0) \Pi_2(\four q^2) + \mathrm O(\alpha^2)} \\
+    \intertext{%
+        The products of $\Pi$ should also be of order $\alpha^2$ as this term
+        must be at least linear in $\alpha$.
+    }
+    &= \frac{e^2}{1 - [\Pi_2(0) + \Pi_2(\four q^2)] + \mathrm O(\alpha^2)}
+\end{align*}
+Except for the sign, this looks like a step into the right direction.
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
