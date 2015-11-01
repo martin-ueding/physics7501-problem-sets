@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+    \graph[feynman electrical layout, horizontal=mu to nu]
+    {
+        mu [particle=$\mu$]
+        -- [photon] b [blob, fill=gray]
+        -- [photon] b2 [blob, fill=gray]
+        -- [photon] nu [particle=$\nu$];
+    };
+\end{tikzpicture}

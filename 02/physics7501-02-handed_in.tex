@@ -76,6 +76,8 @@ is subtle now. Please tell if you have a preference.
 \section{Vacuum polarization}
 \label{homework:1}
 
+\subsection{Form of propagator}
+
 The photon propagator, we will call it $\pi(\four q)$ is corrected in first
 order by the diagram in Figure~\ref{fig:loop}. All corrections are contained in
 the corrected propagator $\Pi(\four q)$. The notation is similar to the vertex
@@ -128,7 +130,7 @@ are given. Therefore the propagator can only have a form as given on the
 problem set. The multiple $a$ can be absorbed into the $\Pi(\four q^2)$
 function to give Equation~(1) from the problem set.
 
-\section{Chains}
+\subsection{Chains}
 
 In Figure~\ref{fig:split/pokemon} two diagrams are shown which are not simple
 chains of the first order diagram. We would say that the full contribution
@@ -162,6 +164,66 @@ those can be chained together. This makes sense as this prevent overcounting of
 diagrams. The diagrams shown on the problem set are just chains of the first
 order diagram. There are more complicated 1-PI diagrams that needs to be
 included as well.
+
+When we denote the 1-PI diagrams with a gray-filled blob, the equation would
+like the following:
+\begin{align*}
+    \vcenter{\hbox{\includegraphics{blob}}}
+    &=
+    \vcenter{\hbox{\includegraphics{blob0}}}
+    +
+    \vcenter{\hbox{\includegraphics{blob1}}}
+    \\&\quad
+    +
+    \vcenter{\hbox{\includegraphics{blob2}}}
+    + \ldots \\
+    &= \sum_{n=0}^\infty \sbr{
+    \vcenter{\hbox{\includegraphics{blob1}}}
+    }^n \,.
+\end{align*}
+
+\subsection{General form}
+
+The form given on the problem set will become the usual photon propagator when
+$\Pi \to 0$. This suggests that $\Pi$ is a correction to the propagator and not
+the \emph{corrected} propagator. \Textcite[219]{Peskin/QFT/1995} show a
+similar calculation with the electron self-energy corrections. There the
+expression $\Sigma(\four p)$ also does not contain the propagators. The
+expression is sandwiched with propagators to give the blob expression.
+
+In the general form we have some sort of power series in $\Pi^{\mu\nu}$.
+Between the gray blobs there is a photon propagator which ties the left
+outgoing and the right incoming photon together. Let us denote the photon
+propagator with $\mat S$. The whole contribution should be
+\[
+    \vcenter{\hbox{\includegraphics{blob}}}
+    = \mat S
+    \sum_{n=0}^\infty \sbr{\mat\Pi \mat S}^n \,.
+\]
+where $\mat \Pi$ is the matrix representation of the propagator. Then the power
+is just the power of matrices. The contraction happens by the metric tensor
+usually present in the photon propagator.
+
+The solution given on the problem set rather looks like it originated from an
+expression like
+\[
+    \mat S \sum_{n = 0}^\infty \mat\Pi^n \,.
+\]
+Then the geometric series would give the result
+\[
+    \mat S \frac{1}{1 - \Pi(\four q^2)}
+    =
+    \frac{-\iup g_{\mu\nu}}{\four q^2} \frac{1}{1 - \Pi(\four q^2)}
+    \,.
+\]
+
+The additional photon propagator that we have between the blobs will tie the
+$\Pi^{\alpha\beta}$ tensors together. There is an additional $1/\four q^2$
+contained in the denominator which does not seem to appear in the desired
+result. If it was included in the geometric series, it would lead to a pole at
+$\four q^2 \to 0$ of infinite order.
+
+We are not sure how to obtain this exact result.
 
 \end{document}
 
