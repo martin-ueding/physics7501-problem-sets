@@ -299,6 +299,61 @@ the physical charge.
     &= \frac{e^2}{1 - [\Pi_2(0) + \Pi_2(\four q^2)]} + \mathrm O(\alpha^2)
 \end{align*}
 
+\subsection{Invariant amplitude}
+
+We hope that instead of $\iup \Pi^{\mu\nu}(\four q)$ we are asked to compute
+$\iup \Pi^{\mu\nu}_2(\four q)$ (added “$_2$”) which is just the diagram shown in
+Figure~\ref{fig:loop}. Otherwise that would be a result to all orders of
+$\alpha$ which is something we probably cannot do, especially not in a homework
+problem.
+
+Looking at Figure~\ref{fig:loop} we can assemble the terms. The catch is the
+negative sign from the fermion loop. This is due to the contractions of all the
+fermion fields with each other. The contractions can be disentangled by
+anticommuting them such that they form a cyclic trace. An odd number of
+anticommutations is needed such that an overall minus sign is left. Together
+with the other terms we have
+\begin{align*}
+    \iup \Pi^{\mu\nu}_2
+    &= - \int \frac{\dif^4 k}{[2 \piup]^4}
+    \tr\del{
+        [- \iup e] \, \mat\gamma^\mu
+        \frac{\iup [\fourslash q + \fourslash k + m]}{[\four q + \four k]^2 - m^2}
+        [- \iup e] \, \mat\gamma^\nu
+        \frac{\iup [\fourslash k + m]}{[\four q + \four k]^2 - m^2}
+    }
+    \,.
+    \intertext{%
+        We can drop all the imaginary units, two of the negative sign and pull
+        the charges up front. The trace only acts on the numerator, so we can
+        shrink that to a single fraction now.
+    }
+    &= - e^2 \int \frac{\dif^4 k}{[2 \piup]^4}
+    \frac{
+        \tr\del{
+            \mat\gamma^\mu
+            [\fourslash q + \fourslash k + m]
+            \mat\gamma^\nu
+        [\fourslash k + m]}
+    }
+    {\sbr{[\four q + \four k]^2 - m^2} \sbr{[\four q + \four k]^2 - m^2}}
+    \intertext{%
+        For the trace we use an identity that we have shown last semester.
+    }
+    &= - 4 e^2 \int \frac{\dif^4 k}{[2 \piup]^4}
+    \frac{
+        [q^\mu + k^\mu]
+        k^\nu
+        +
+        k^\mu
+        [q^\nu + k^\nu]
+        -
+        g^{\mu\nu}
+        \sbr{ [\four q + \four k] \cdot \four k + m^2}
+    }
+    {\sbr{[\four q + \four k]^2 - m^2} \sbr{[\four q + \four k]^2 - m^2}}
+\end{align*}
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
