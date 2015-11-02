@@ -197,33 +197,80 @@ outgoing and the right incoming photon together. Let us denote the photon
 propagator with $\mat S$. The whole contribution should be
 \[
     \vcenter{\hbox{\includegraphics{blob}}}
-    = \mat S
-    \sum_{n=0}^\infty \sbr{\mat\Pi \mat S}^n \,.
+    = \mat S \sum_{n=0}^\infty \sbr{\iup \mat\Pi \mat S}^n \,.
 \]
 where $\mat \Pi$ is the matrix representation of the propagator. Then the power
 is just the power of matrices. The contraction happens by the metric tensor
 usually present in the photon propagator.
 
-The solution given on the problem set rather looks like it originated from an
-expression like
+There is a nice trick shown by the authors. The product $\iup \mat\Pi \mat S$
+actually is an idempotent projector:
+\begin{align*}
+    \iup \mat\Pi \mat S
+    &= \iup [ \four q^2 \eye - \four q \otimes \four q] \Pi(\four q^2)
+    \frac{- \iup \eye}{\four q^2} \\
+    \intertext{%
+        One can just cancel the $\four q^2$ and obtain
+    }
+    &= \sbr{ \eye - \frac{\four q \otimes \four q}{\four q^2}} \Pi(\four q^2)
+    \,,
+    \intertext{%
+        which we define to be
+    }
+    &= \mat P \Pi(\four q^2) \,.
+\end{align*}
+This is a projection operator to the subspace where the Ward identity holds. We
+call this operator $\mat P$ and use the fact that it is idempotent.
+
+Now we continue evaluating the blob.
+\begin{align*}
+    \mat S \sum_{n=0}^\infty \sbr{\iup \mat\Pi \mat S}^n
+    &= \mat S \sum_{n=0}^\infty \sbr{\mat P \Pi(\four q^2)}^n
+    \intertext{%
+        We split off the $n = 0$ summand. It does not contain a projector and
+        needs to be treated differently.
+    }
+    &= \mat S + \mat S \sum_{n=1}^\infty [\mat P \Pi(\four q^2)]^n
+    \intertext{%
+        The projection operator is idempotent and can be pulled out of the
+        power and even in front of the sum.
+    }
+    &= \mat S + \mat S \mat P \sum_{n=1}^\infty \Pi(\four q^2)^n
+    \intertext{%
+        The sum now is the geometric series where we can just use the solution
+        formula. Of course we assume that $\lim{n \to \infty} \Pi(\four q^2)^n
+        = 0$.
+    }
+    &= \mat S + \mat S \mat P \frac{1}{1 - \Pi(\four q^2)}
+    \intertext{%
+        From here it is easier to introduce indices again.
+    }
+    \leadsto \quad [\ldots]_{\mu\nu} &=
+    \frac{-\iup g_{\mu\nu}}{\four q^2}
+    +
+    \frac{-\iup g_{\mu\alpha}}{\four q^2}
+    \sbr{\delta^\alpha_\nu - \frac{q^\alpha q_\nu}{\four q^2}}
+    \frac{1}{1 - \Pi(\four q^2)}
+    \intertext{%
+        We first contract the indices to reduce the clutter.
+    }
+    &=
+    \frac{-\iup g_{\mu\nu}}{\four q^2}
+    +
+    \frac{-\iup}{\four q^2}
+    \sbr{g_{\mu\nu} - \frac{q_\mu q_\nu}{\four q^2}}
+    \frac{1}{1 - \Pi(\four q^2)}
+\end{align*}
+Now \textcite[246]{Peskin/QFT/1995} argue that every term proportional to
+$q_\mu$ or $q_\nu$ must vanish due to the Ward identity. To get rid of the
+first summand they write $g_{\mu\nu}$ as $q_\mu q_\mu / \four q^2$. Then they
+drop the first summand (last summand in their version (7.74)) and drop the
+second term in the square bracket. They end up with
 \[
-    \mat S \sum_{n = 0}^\infty \mat\Pi^n \,.
-\]
-Then the geometric series would give the result
-\[
-    \mat S \frac{1}{1 - \Pi(\four q^2)}
-    =
     \frac{-\iup g_{\mu\nu}}{\four q^2} \frac{1}{1 - \Pi(\four q^2)}
-    \,.
 \]
-
-The additional photon propagator that we have between the blobs will tie the
-$\Pi^{\alpha\beta}$ tensors together. There is an additional $1/\four q^2$
-contained in the denominator which does not seem to appear in the desired
-result. If it was included in the geometric series, it would lead to a pole at
-$\four q^2 \to 0$ of infinite order.
-
-We are not sure how to obtain this exact result.
+which is also the result desired here. We are not really show why those terms
+can be dropped.
 
 \subsection{Physical charge}
 
