@@ -7,6 +7,7 @@
 \usepackage{simplewick}
 \usepackage{slashed}
 \usepackage{subcaption}
+\usepackage{cancel}
 
 \newcommand\timeorder{\mathscr T}
 \newcommand\normorder{\mathscr N}
@@ -349,10 +350,96 @@ with the other terms we have
         [q^\nu + k^\nu]
         -
         g^{\mu\nu}
-        \sbr{ [\four q + \four k] \cdot \four k + m^2}
+        \sbr{ [\four q + \four k] \cdot \four k - m^2}
     }
     {\sbr{[\four q + \four k]^2 - m^2} \sbr{\four k^2 - m^2}}
 \end{align*}
+Then we are already done here.
+
+\subsection{Denominator and shift}
+
+The denominator will attain a form of
+\[
+    \int_0^1 \dif x \dif y \, \deltaup(x + y - 1) \frac 1{D^2}
+\]
+where $D$ is the denominator with Feynman parameters to be computed.
+\begin{align*}
+    D
+    &= x \sbr{[\four q + \four k]^2 - m^2} + y [\four k^2 - m^2] \\
+    &= x [\four q^2 + 2 \four q \cdot \four k + \four k^2 - m^2]
+    + y [\four k^2 - m^2] \\
+    \intertext{%
+        Since $x + y = 1$ we can join some of the terms which appear in both
+        brackets.
+    }
+    &= x [\four q^2 + 2 \four q \cdot \four k] + \four k^2 - m^2 \\
+    \intertext{%
+        We reorder the terms for the next step.
+    }
+    &= \four k^2 + 2 x \four q \cdot \four k + x \four q^2 - m^2 \\
+    \intertext{%
+        Here we complete the square in $\four k$ and define $\four l := \four k
+        + x \four q$.
+    }
+    &= [\four k + x \four q]^2 - x^2 \four q^2 + x \four q^2 - m^2 \\
+    &= \four l^2 + x[1-x] \four q^2 - m^2
+\end{align*}
+With $\Delta := - x[1-x] \four q^2 + m^2$ we can write the denominator as $D =
+\four l^2 - \Delta$. All the propagators contain an $\iup \epsilon$ which we
+only carry to first order. Therefore the denominator also has a $+ \iup
+\epsilon$ term which we have omitted here for the calculation.
+
+The shift of variables needs to be done in the numerator as well. There we had
+so far:
+\begin{align*}
+    N
+    &= [q^\mu + k^\mu] k^\nu + k^\mu [q^\nu + k^\nu]
+    - g^{\mu\nu} \sbr{ [\four q + \four k] \cdot \four k - m^2} \,.
+    \intertext{%
+        The calculation is straightforward, we replace $\four k$ with $\four l
+        - x \four q$.
+    }
+    &= [[1-x] q^\mu + l^\mu] [l^\nu - x q^\nu] + [l^\mu - x q^\mu] [[1-x] q^\nu + l^\nu]
+    - g^{\mu\nu} \sbr{ [[1-x] \four q + \four l] \cdot [\four l - x \four q] - m^2}
+    \intertext{%
+        Then we factor out all the terms.
+    }
+    &= l^\mu l^\nu - x[1-x] q^\mu q^\nu - \bcancel{x l^\mu q^\nu} +
+    \bcancel{[1-x] q^\mu l^\nu} + l^\mu l^\nu - x[1-x] q^\mu q^\nu +
+    \bcancel{[1-x] q^\mu q^\nu} - \bcancel{x q^\mu l^\nu}
+    \\&\quad
+    - g^{\mu\nu} \sbr{ \four l^2 - x[1-x] \four q^2 + \bcancel{[1-x] \four q
+    \cdot \four l} - \bcancel{x \four l \cdot \four q} - m^2}
+    \intertext{%
+        Terms linear in $\four l$ drop out due to the symmetric integration
+        domain. We have canceled those already. The cancel slash will aways go
+        downwards such that it is distinct from the Feynman slash.
+    }
+    &= 2 l^\mu l^\nu - 2 x[1-x] q^\mu q^\nu
+    - g^{\mu\nu} \sbr{\four l^2 - x[1-x] \four q^2 - m^2}
+    \intertext{%
+        This can be massaged into the form given on the problem set. Then this
+        is:
+    }
+    &= 2 l^\mu l^\nu - g^{\mu\nu} \four l^2 - 2 x[1-x] q^\mu q^\nu
+    + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2} \,.
+\end{align*}
+
+This result can be combined with the denominator that we have computed and
+obtain the full result. The Feynman parameter $y$ is not present in any of the
+terms any more, therefore we can just drop the integral and the
+Dirac-distribution:
+\[
+    \iup \Pi^{\mu\nu}_2
+    = - 4 e^2 \int \frac{\dif^4 k}{[2 \piup]^4}
+    \int_0^1 \dif x \,
+    \frac
+    {
+        2 l^\mu l^\nu - g^{\mu\nu} \four l^2 - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    {\sbr{\four l^2 - \Delta + \iup \epsilon}^2}
+\]
 
 \end{document}
 
