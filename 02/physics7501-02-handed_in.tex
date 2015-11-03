@@ -719,6 +719,68 @@ This result is independent and sensible in the $\epsilon = 0$ case. This
 expression matches the one given by \textcite[(7.91)]{Peskin/QFT/1995} and the
 one given on the problem set as Equation~(9).
 
+\subsection{Change of coupling constant}
+
+In the limit of deep elastic scattering we have $- \four q^2 \gg m^2$. This
+means that we can drop the $m^2$ in the denominator of the previous expression.
+\begin{align*}
+    \Pi_2(\four q^2) - \Pi_2(0)
+    &\approx
+    \frac{2 \alpha}{\piup}
+    \int_0^1 \dif x \, x [1-x]
+    \ln\del{\frac{-x[1-x] q^2}{m^2}}
+    \intertext{%
+        Then we can split the logarithm.
+    }
+    &=
+    \frac{2 \alpha}{\piup}
+    \int_0^1 \dif x \, x [1-x]
+    \sbr{
+        \ln\del{\frac{-q^2}{m^2}}
+        +
+        \ln\del{x[1-x]}
+    }
+    \intertext{%
+        The integral of the first summand is easy. The $x[1-x]$ integral give
+        $1/6$ which will then multiply the logarithm. The second part does not
+        seem that easy. Partial integration will require the evaluation of the
+        logarithm at 0 for both limits of $x$. This cannot be a good idea. The
+        book gives $-5/18$ as a result. We are not able to show this result.
+    }
+    &=
+    \frac{\alpha}{3\piup}
+    \sbr{
+        \ln\del{\frac{-q^2}{m^2}}
+        - \frac 53
+    }
+    \intertext{%
+        Then one can write the fraction more complicated as
+    }
+    &=
+    \frac{\alpha}{3\piup}
+    \sbr{
+        \ln\del{\frac{-q^2}{m^2}}
+        - \ln\del{\exp\del{\frac 53}}
+    }
+    \intertext{%
+        and join it into the other logarithm.
+    }
+    &= \frac{\alpha}{3\piup} \ln\del{\frac{-q^2}{A m^2}}
+\end{align*}
+To make it easier to read, one introduces $A := \exp(5/3)$ here.
+
+In part 4 of this problem there is the expression
+\[
+    \frac{e^2}{1 - [\Pi_2(\four q^2) - \Pi_2(0)]}
+\]
+which is a modified coupling constant. We just need to insert our latest result
+and add a factor of $1/4\piup$ to get the fine structure constant. This is then
+the desired result:
+\[
+    \alpha(\four q^2) = \frac{\alpha}{1 - \frac{\alpha}{3\piup}
+    \ln\del{\frac{-q^2}{A m^2}}} \,.
+\]
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
