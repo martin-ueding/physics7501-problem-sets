@@ -443,6 +443,138 @@ Dirac-distribution:
     {\sbr{\four l^2 - \Delta + \iup \epsilon}^2}
 \]
 
+\subsection{Wick rotation}
+
+\newcommand\lE{l_\text E}
+\newcommand\fourlE{\four l_\text E}
+
+The dimensional regularization works with generalized spherical coordinates.
+Therefore the signature of the metric must the all positive or negative. No
+dimension must be singled out, they need to obey an $\SO(4)$ symmetry and not
+an $\SO(1, 3)$ symmetry. This can be achieved by a Wick rotation which maps
+$l^0 \mapsto \iup \lE^0$. This simplifies the squares of four-vectors:
+\[
+    \four l^2 = [l^0]^2 - \vec l^2
+    = - [\iup l^0]^2 - \vec l^2
+    = - [\lE^0]^2 - \vec l^2
+    = - \fourlE^2 \,.
+\]
+
+In the denominator we go from $[\four l^2 - \Delta]^2$ to $[\fourlE^2 +
+\Delta]^2$ and we absorb the minus sign in the square.
+In the numerator we change
+\[
+    2 l^\mu l^\nu = \frac 2d g^{\mu\nu} \four l^2
+    = - \frac 2d g^{\mu\nu} \fourlE^2 \,.
+\]
+The second term, involving $\four l^2$, is replaced by $- \fourlE^2$. We then
+have the following integral with $d = 4$ for the moment:
+\[
+    \iup \Pi^{\mu\nu}_2
+    = - 4 e^2 \int \frac{\dif^4 \lE}{[2 \piup]^4}
+    \int_0^1 \dif x \,
+    \frac
+    {
+        \sbr{ g^{\mu\nu} - \frac 2d } \fourlE^2 - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    {\sbr{\fourlE^2 + \Delta}^2} \,.
+\]
+Next we can just set the dimension to $d$ as there are no other elements that
+depend on the dimensionality of the $\lE$ integral.
+\[
+    \iup \Pi^{\mu\nu}_2
+    = - 4 e^2 \int \frac{\dif^d \lE}{[2 \piup]^d}
+    \int_0^1 \dif x \,
+    \frac
+    {
+        \sbr{ g^{\mu\nu} - \frac 2d } \fourlE^2 - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    {\sbr{\fourlE^2 + \Delta}^2} \,.
+\]
+
+\subsection{Evaluation of integrals}
+
+The integral is parametrized with arbitrary real dimension and we can start to
+evaluate it. We expand the integral into multiple factors depending on their
+dependence on $\lE$.
+\begin{align*}
+    \iup \Pi^{\mu\nu}_2
+    &= - 4 e^2
+    \int_0^1 \dif x \,
+    \int \frac{\dif^d \lE}{[2 \piup]^d}
+    \sbr{
+        \sbr{g^{\mu\nu} - \frac 2d}
+        \frac{\fourlE^2}{\sbr{\fourlE^2 + \Delta}^2}
+        +
+        \frac{
+            - 2 x[1-x] q^\mu q^\nu
+            + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+        }
+        {\sbr{\fourlE^2 + \Delta}^2}
+    }
+    \intertext{%
+        And then we can isolate the integrals to match the Equation~(5) and (6)
+        on the problem set.
+    }
+    &=
+    - 4 e^2
+    \int_0^1 \dif x \,
+    \sbr{g^{\mu\nu} - \frac 2d}
+    \int \frac{\dif^d \lE}{[2 \piup]^d}
+    \frac{\fourlE^2}{\sbr{\fourlE^2 + \Delta}^2}
+    \\&\quad
+    - 4 e^2
+    \int_0^1 \dif x \,
+    \sbr{
+        - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    \int \frac{\dif^d \lE}{[2 \piup]^d}
+    \frac{1}{\sbr{\fourlE^2 + \Delta}^2}
+    \intertext{%
+        We just apply the formulas for the integrals.
+    }
+    &=
+    - 4 e^2
+    \int_0^1 \dif x \,
+    \sbr{g^{\mu\nu} - \frac 2d}
+    \frac{1}{[4\piup]^{d/2}} \frac d2
+    \frac{\Gammaup\del{2 - \frac d2 - 1}}{\Gammaup(2)}
+    \sbr{\frac 1\Delta}^{2 - d/2 - 1}
+    \\&\quad
+    - 4 e^2
+    \int_0^1 \dif x \,
+    \sbr{
+        - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    \frac{1}{[4\piup]^{d/2}} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    \sbr{\frac 1\Delta}^{2 - d/2}
+    \intertext{%
+        We now factor out the common terms again.
+    }
+    &=
+    - 4 e^2
+    \int_0^1 \dif x \,
+    \frac{1}{[4\piup]^{d/2}}
+    \sbr{\frac 1\Delta}^{2 - d/2}
+    \Gammaup\del{1 - \frac d2}
+    \\&\quad\times
+    \sbr{
+    \sbr{g^{\mu\nu} - \frac 2d}
+    \frac d2
+    \sbr{\frac 1\Delta}^{- 1}
+    +
+    \sbr{
+        - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    \sbr{1 - \frac d2}
+    }
+\end{align*}
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
