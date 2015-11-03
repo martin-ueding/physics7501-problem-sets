@@ -426,7 +426,6 @@ so far:
     &= 2 l^\mu l^\nu - g^{\mu\nu} \four l^2 - 2 x[1-x] q^\mu q^\nu
     + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2} \,.
 \end{align*}
-
 This result can be combined with the denominator that we have computed and
 obtain the full result. The Feynman parameter $y$ is not present in any of the
 terms any more, therefore we can just drop the integral and the
@@ -440,8 +439,9 @@ Dirac-distribution:
         2 l^\mu l^\nu - g^{\mu\nu} \four l^2 - 2 x[1-x] q^\mu q^\nu
         + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
     }
-    {\sbr{\four l^2 - \Delta + \iup \epsilon}^2}
+    {\sbr{\four l^2 - \Delta + \iup \epsilon}^2} \,.
 \]
+This is exactly Equation~(4) from the problem set which is nice.
 
 \subsection{Wick rotation}
 
@@ -468,44 +468,33 @@ In the numerator we change
     = - \frac 2d g^{\mu\nu} \fourlE^2 \,.
 \]
 The second term, involving $\four l^2$, is replaced by $- \fourlE^2$. We then
-have the following integral with $d = 4$ for the moment:
+have the following integral with dimension~$d$:
 \[
     \iup \Pi^{\mu\nu}_2
-    = - 4 e^2 \int \frac{\dif^4 \lE}{[2 \piup]^4}
+    = - 4 \iup e^2 \int \frac{\dif^d \lE}{[2 \piup]^d}
     \int_0^1 \dif x \,
     \frac
     {
-        \sbr{ g^{\mu\nu} - \frac 2d } \fourlE^2 - 2 x[1-x] q^\mu q^\nu
+        \sbr{1 - \frac 2d } g^{\mu\nu} \fourlE^2 - 2 x[1-x] q^\mu q^\nu
         + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
     }
     {\sbr{\fourlE^2 + \Delta}^2} \,.
 \]
-Next we can just set the dimension to $d$ as there are no other elements that
-depend on the dimensionality of the $\lE$ integral.
-\[
-    \iup \Pi^{\mu\nu}_2
-    = - 4 e^2 \int \frac{\dif^d \lE}{[2 \piup]^d}
-    \int_0^1 \dif x \,
-    \frac
-    {
-        \sbr{ g^{\mu\nu} - \frac 2d } \fourlE^2 - 2 x[1-x] q^\mu q^\nu
-        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
-    }
-    {\sbr{\fourlE^2 + \Delta}^2} \,.
-\]
+The additional imaginary unit up front originates in the change of integration
+variables.
 
-\subsection{Evaluation of integrals}
+\subsection{Evaluation of the integral}
 
 The integral is parametrized with arbitrary real dimension and we can start to
 evaluate it. We expand the integral into multiple factors depending on their
 dependence on $\lE$.
 \begin{align*}
     \iup \Pi^{\mu\nu}_2
-    &= - 4 e^2
+    &= - 4 \iup e^2
     \int_0^1 \dif x \,
     \int \frac{\dif^d \lE}{[2 \piup]^d}
     \sbr{
-        \sbr{g^{\mu\nu} - \frac 2d}
+        \sbr{1 - \frac 2d} g^{\mu\nu}
         \frac{\fourlE^2}{\sbr{\fourlE^2 + \Delta}^2}
         +
         \frac{
@@ -519,13 +508,13 @@ dependence on $\lE$.
         on the problem set.
     }
     &=
-    - 4 e^2
+    - 4 \iup e^2
     \int_0^1 \dif x \,
-    \sbr{g^{\mu\nu} - \frac 2d}
+    \sbr{1 - \frac 2d} g^{\mu\nu}
     \int \frac{\dif^d \lE}{[2 \piup]^d}
     \frac{\fourlE^2}{\sbr{\fourlE^2 + \Delta}^2}
     \\&\quad
-    - 4 e^2
+    - 4 \iup e^2
     \int_0^1 \dif x \,
     \sbr{
         - 2 x[1-x] q^\mu q^\nu
@@ -537,14 +526,14 @@ dependence on $\lE$.
         We just apply the formulas for the integrals.
     }
     &=
-    - 4 e^2
+    - 4 \iup e^2
     \int_0^1 \dif x \,
-    \sbr{g^{\mu\nu} - \frac 2d}
+    \sbr{1 - \frac 2d} g^{\mu\nu}
     \frac{1}{[4\piup]^{d/2}} \frac d2
     \frac{\Gammaup\del{2 - \frac d2 - 1}}{\Gammaup(2)}
     \sbr{\frac 1\Delta}^{2 - d/2 - 1}
     \\&\quad
-    - 4 e^2
+    - 4 \iup e^2
     \int_0^1 \dif x \,
     \sbr{
         - 2 x[1-x] q^\mu q^\nu
@@ -553,25 +542,57 @@ dependence on $\lE$.
     \frac{1}{[4\piup]^{d/2}} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
     \sbr{\frac 1\Delta}^{2 - d/2}
     \intertext{%
-        We now factor out the common terms again.
+        In the first term, we can combine the square bracket and the $d/2$
+        fraction.
     }
     &=
-    - 4 e^2
+    - 4 \iup e^2
     \int_0^1 \dif x \,
+    \sbr{\frac d2 - 1} g^{\mu\nu}
     \frac{1}{[4\piup]^{d/2}}
-    \sbr{\frac 1\Delta}^{2 - d/2}
-    \Gammaup\del{1 - \frac d2}
-    \\&\quad\times
-    \sbr{
-    \sbr{g^{\mu\nu} - \frac 2d}
-    \frac d2
-    \sbr{\frac 1\Delta}^{- 1}
-    +
+    \frac{\Gammaup\del{1 - \frac d2}}{\Gammaup(2)}
+    \sbr{\frac 1\Delta}^{2 - d/2 - 1}
+    \\&\quad
+    - 4 \iup e^2
+    \int_0^1 \dif x \,
     \sbr{
         - 2 x[1-x] q^\mu q^\nu
         + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
     }
-    \sbr{1 - \frac d2}
+    \frac{1}{[4\piup]^{d/2}} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    \sbr{\frac 1\Delta}^{2 - d/2}
+    \intertext{%
+        Then we can extract the minus sign. We move the resulting square
+        bracket into the $\Gammaup$-function and increase its argument by one.
+    }
+    &=
+    + 4 \iup e^2
+    \int_0^1 \dif x \, g^{\mu\nu}
+    \frac{1}{[4\piup]^{d/2}}
+    \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    \sbr{\frac 1\Delta}^{2 - d/2 - 1}
+    \\&\quad
+    - 4 \iup e^2
+    \int_0^1 \dif x \,
+    \sbr{
+        - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{m^2 + x[1-x] \four q^2}
+    }
+    \frac{1}{[4\piup]^{d/2}} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    \sbr{\frac 1\Delta}^{2 - d/2}
+    \intertext{%
+        After that we factor out the common terms. The first term only consists
+        of $- g^{\mu\nu} \Delta$ at this point. We merge that into the term
+        proportional to the metric tensor from the second summand.
+    }
+    &=
+    - 4 \iup e^2
+    \int_0^1 \dif x \,
+    \frac{1}{[4\piup]^{d/2}}
+    \frac{\Gammaup\del{2 - \frac d2}}{\Delta^{2-d/2}}
+    \sbr{
+        - 2 x[1-x] q^\mu q^\nu
+        + g^{\mu\nu} \sbr{- \Delta + m^2 + x[1-x] \four q^2}
     }
 \end{align*}
 
