@@ -705,13 +705,13 @@ So we start to derive this difference.
     }
     &= - \frac{2 \alpha}{\piup}
     \int_0^1 \dif x \, x [1-x]
-    \sbr{- \ln\del{\frac{m^2}{-x[1-x] q^2 + m^2}} + \mathrm O(\epsilon)}
+    \sbr{\ln\del{\frac{m^2}{-x[1-x] q^2 + m^2}} + \mathrm O(\epsilon)}
     \intertext{%
         And then we are already done. The $\epsilon$ singularity canceled. We
         can perform the limit to drop the higher order terms.
     }
     &\xrightarrow[\epsilon\to0]{}
-    \frac{2 \alpha}{\piup}
+    - \frac{2 \alpha}{\piup}
     \int_0^1 \dif x \, x [1-x]
     \ln\del{\frac{m^2}{-x[1-x] q^2 + m^2}}
 \end{align*}
