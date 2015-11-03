@@ -1,6 +1,7 @@
 \documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
 
 \usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
 
 \usepackage{lastpage}
 \usepackage{multicol}
@@ -270,10 +271,14 @@ second term in the square bracket. They end up with
 \[
     \frac{-\iup g_{\mu\nu}}{\four q^2} \frac{1}{1 - \Pi(\four q^2)}
 \]
-which is also the result desired here. We are not really show why those terms
-can be dropped. Using the same argument, the remaining metric tensor could be
-written as $q_\mu q_\mu / \four q^2$ and dropped as well. There must be an
-additional argument here, what is it?
+which is also the result desired here.
+
+\begin{question}
+    We are not really show why those terms can be dropped. Using the same
+    argument, the remaining metric tensor could be written as $q_\mu q_\mu /
+    \four q^2$ and dropped as well. There must be an additional argument here,
+    what is it?
+\end{question}
 
 \subsection{Physical charge}
 
@@ -485,6 +490,8 @@ variables.
 
 \subsection{Evaluation of the integral}
 
+\paragraph{Integral formula}
+
 The integral is parametrized with arbitrary real dimension and we can start to
 evaluate it. We expand the integral into multiple factors depending on their
 dependence on $\lE$.
@@ -594,7 +601,123 @@ dependence on $\lE$.
         - 2 x[1-x] q^\mu q^\nu
         + g^{\mu\nu} \sbr{- \Delta + m^2 + x[1-x] \four q^2}
     }
+    \intertext{%
+        The $\Delta$ was defined as $-x[1-x] \four q^2 + m^2$. We insert that
+        and see that the $m^2$ term cancels. The other term in the square
+        bracket doubles. We are left with
+    }
+    &=
+    \underbrace{
+        - 8 \iup e^2
+        \int_0^1 \dif x \,
+        \frac{1}{[4\piup]^{d/2}}
+        \frac{\Gammaup\del{2 - \frac d2}}{\Delta^{2-d/2}}
+    x [1-x]}_{\iup \Pi_2(\four q^2)} [g^{\mu\nu} \four q^2 - q^\mu q^\nu ] \,.
 \end{align*}
+The very last square bracket is the part that was not hidden in
+$\Pi_2(\four q^2)$. Therefore we can identity the remainder with
+exactly this term. This result matches the one from the book, so we probably
+are on the right track here.
+
+\paragraph{Separation of singularity}
+
+Our calculation continues with the separation of the singularity into a
+manageable expression that hopefully cancels when we compute an observable.
+Therefore we expand this around $d = 4$. We introduce $\epsilon := 4 - d$ as
+the positive difference of dimensionality. Then we can expand around $\epsilon
+= 0$. The $\Gammaup$-function can be expanded around the pole like so:
+\parencite[(7.83)]{Peskin/QFT/1995}
+\[
+    \Gammaup\del{2 - \frac d2} = \Gammaup\del{\frac \epsilon 2}
+    = \frac 2\epsilon - \gamma + \mathrm O(\epsilon) \,.
+\]
+Before we can proceed we should also derive another approximation, the one for
+powers:
+\[
+    x^{\epsilon/2}
+    = \exp\del{\ln(x) \frac\epsilon2}
+    = 1 + \ln(x) \frac\epsilon2 + \mathrm O(\epsilon^2) \,.
+\]
+We will need that twice now.
+
+So far we have
+\begin{align*}
+    \Pi_2(\four q^2)
+    &= - 8 e^2
+    \int_0^1 \dif x \,
+    \frac{[4 \piup]^{\epsilon/2}}{[4\piup]^{2}}
+    \frac{\Gammaup\del{\frac \epsilon2}}{\Delta^{\epsilon/2}}
+    x [1-x] \,.
+    \intertext{%
+        Using the approximations we obtain
+    }
+    &= - 8 e^2
+    \int_0^1 \dif x \,
+    \frac{1 + \ln(4 \piup) + \mathrm O(\epsilon^2)}{[4\piup]^2}
+    \sbr{\frac 2\epsilon - \gamma + \mathrm O(\epsilon)}
+    \sbr{1 - \ln(\Delta) + \mathrm O(\epsilon^2)}
+    x [1-x] \,.
+    \intertext{%
+        We can ignore all terms of order $\epsilon$ here as they will vanish in
+        the limit $\epsilon\to0$ anyway. Therefore there are only a few
+        interesting factors.
+    }
+    &= - 8 e^2
+    \int_0^1 \dif x \,
+    \frac{x [1-x]}{16 \piup^2}
+    \sbr{\frac2\epsilon + \ln(4 \piup) - \ln(\Delta) - \gamma + \mathrm
+    O(\epsilon)}
+    \intertext{%
+        And now we can cancel some constant factors and introduce the fine
+        structure constant $\alpha = \frac{e^2}{4 \piup}$.
+    }
+    &= - \frac{2 \alpha}{\piup}
+    \int_0^1 \dif x \, x [1-x]
+    \sbr{\frac2\epsilon + \ln(4 \piup) - \ln(\Delta) - \gamma + \mathrm
+    O(\epsilon)}
+\end{align*}
+This is the expression given by \textcite[(7.90)]{Peskin/QFT/1995} and should
+be correct.
+
+\paragraph{Difference expression}
+
+In the book it is explained that one cannot observe this quantity directly;
+that is a good thing as it is divergent. Only the scaling with respect to
+$\four q^2$ can be observed, therefore we have to take the difference to the
+limit of no exchanged momentum ($\four q^2 \to 0$).
+
+\begin{question}
+    By the way, isn't $\four q$ the momentum of a photon and should square to
+    zero for all physical photons? From the Feynman diagram in
+    Figure~\ref{fig:loop} it looks like the photon with momentum~$\four q$ is a
+    real one. Why isn't $\four q^2 = 0$ the whole time anyway?
+\end{question}
+
+So we start to derive this difference.
+\begin{align*}
+    \Pi_2(\four q^2) - \Pi_2(0)
+    &= - \frac{2 \alpha}{\piup}
+    \int_0^1 \dif x \, x [1-x]
+    \sbr{- \ln(\Delta(\four q^2)) + \ln(\Delta(0)) + \mathrm O(\epsilon)}
+    \intertext{%
+        We combine the logarithms and insert the explicit expression for
+        $\Delta$.
+    }
+    &= - \frac{2 \alpha}{\piup}
+    \int_0^1 \dif x \, x [1-x]
+    \sbr{- \ln\del{\frac{m^2}{-x[1-x] q^2 + m^2}} + \mathrm O(\epsilon)}
+    \intertext{%
+        And then we are already done. The $\epsilon$ singularity canceled. We
+        can perform the limit to drop the higher order terms.
+    }
+    &\xrightarrow[\epsilon\to0]{}
+    \frac{2 \alpha}{\piup}
+    \int_0^1 \dif x \, x [1-x]
+    \ln\del{\frac{m^2}{-x[1-x] q^2 + m^2}}
+\end{align*}
+This result is independent and sensible in the $\epsilon = 0$ case. This
+expression matches the one given by \textcite[(7.91)]{Peskin/QFT/1995} and the
+one given on the problem set as Equation~(9).
 
 \end{document}
 
