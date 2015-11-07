@@ -136,7 +136,88 @@ Greens-function.
 
 \subsection{Split}
 
+I have the propagator
+\begin{align*}
+    G(t, \xF, \xI)
+    &= \bra\xF \exp(- \iup t H) \ket\xI
+    \intertext{%
+        where I can introduce $\epsilon$ and $N$.
+    }
+    &= \bra\xF \exp(- \iup \epsilon N H) \ket\xI \\
+    \intertext{%
+        Then I write the product $\epsilon N$ as a sum
+    }
+    &= \bra\xF \exp\del{- \sum_{j=1}^N \iup \epsilon H} \ket\xI \\
+    \intertext{%
+        which I pull out of the exponential to become a product. This only
+        works since the Hamiltonian commutes with itself.
+    }
+    &= \bra\xF \sbr{\prod_{j=1}^N \exp\del{- \iup \epsilon H}} \ket\xI \\
+    \intertext{%
+        I pull one exponential out of the product.
+    }
+    &= \bra\xF \exp\del{- \iup \epsilon H} \sbr{\prod_{j=1}^{N-1} \exp\del{-
+    \iup \epsilon H}} \ket\xI \\
+    \intertext{%
+        And then I insert complete sets of position eigenstates in between.
+    }
+    &= \bra\xF \exp\del{- \iup \epsilon H} \sbr{\prod_{j=1}^{N-1} \int \dif x_j
+    \ket{x_j} \bra{x_j} \exp\del{- \iup \epsilon H}} \ket\xI
+\end{align*}
+A little massaging will extract the $N-1$ integrals and the $N$ exponentials
+sandwiched between position states into a form like the one given on the
+problem set.
+
 \subsection{Split of Hamiltonian}
+
+I now look at the propagator for an infinitesimal time step.
+\begin{align*}
+    G(\epsilon, x_k, x_{k-1})
+    &= \bra{x_k} \exp(-\iup \epsilon H) \ket{x_{k-1}}
+    \intertext{%
+        I insert the explicit Hamiltonian.
+    }
+    &= \bra{x_k} \exp\del{-\iup \epsilon \sbr{\hat T + \hat V}} \ket{x_{k-1}}
+    \intertext{%
+        The Baker-Campbell-Hausdorff formula says that I can split the
+        exponential into two factors if I include a third exponential which
+        starts with the commutator of the two parts. Since both $\hat T$ and
+        $\hat V$ are premultiplied with $\epsilon$, the commutator will be
+        order $\epsilon^2$ and I will therefore just drop that term.
+    }
+    &= \bra{x_k} \exp\del{-\iup \epsilon \hat T} \exp\del{-\iup \epsilon \hat V} \ket{x_{k-1}}
+    \intertext{%
+        I evaluate the potential on the in-state. After that it is just a
+        c-number and I move it to the end of the expression.
+    }
+    &= \bra{x_k} \exp\del{-\iup \epsilon \hat T}\ket{x_{k-1}}
+    \exp\del{-\iup \epsilon V(x_{k-1})}
+    \intertext{%
+        In order to evaluate the kinetic energy I need momentum eigenstates.
+        I can have those, I just have to take all of them at once.
+    }
+    &= \int \dif p \, \bra{x_k} \exp\del{-\iup \epsilon \hat T} \ket{p}
+    \braket{p|x_{k-1}}
+    \exp\del{-\iup \epsilon V(x_{k-1})}
+    \intertext{%
+        The action of the kinetic energy is now easy. After the evaluation of
+        the operator it is just another c-number.
+    }
+    &= \int \dif p \, \braket{x_k | p}
+    \braket{p|x_{k-1}}
+    \exp\del{-\iup \epsilon \frac{p^2}{2m}}
+    \exp\del{-\iup \epsilon V(x_{k-1})}
+    \intertext{%
+        Now I have to insert the explicit overlap.
+    }
+    &= \int \frac{\dif p}{2\piup} \,
+    \frac{1}{2\piup} \exp\del{\iup [x_k - x_{x-1}] p}
+    \exp\del{-\iup \epsilon \frac{p^2}{2m}}
+    \exp\del{-\iup \epsilon V(x_{k-1})}
+    \intertext{%
+        Next up is completion of the square in $p$ in the exponential.
+    }
+\end{align*}
 
 \subsection{Limit}
 
