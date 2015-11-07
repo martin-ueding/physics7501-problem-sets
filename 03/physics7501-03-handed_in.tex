@@ -1,0 +1,148 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{3}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimmanek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{10} \\
+        \nameref{homework:2} & & \punkte{10} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{The path integral in quantum mechanics}
+\label{homework:1}
+
+\subsection{Propagator}
+
+\newcommand\xF{x_\mathrm f}
+\newcommand\xI{x_\mathrm i}
+
+I have to show that
+\begin{align*}
+    G(t, \xF, \xI)
+    &= \int \dif x \, G(t - t', \xF, x) \, G(g', x, \xI) \,.
+\end{align*}
+
+This is straightforward. First I replace $G$ with the matrix element.
+\begin{align*}
+    G(t, \xF, \xI)
+    &= \bra\xF \exp(- \iup t H) \ket\xI
+    \intertext{%
+        The exponential can be taken apart. The Hamiltonian commutes with
+        itself and therefore the exponentials work like with c-numbers.
+    }
+    &= \bra\xF \exp(- \iup [t-t'] H) \exp(- \iup t' H) \ket\xI
+    \intertext{%
+        Then I insert a complete set of position eigenstates in between the
+        exponentials.
+    }
+    &= \int \dif x \, \bra\xF \exp(- \iup [t-t'] H) \ket x \bra x \exp(- \iup t' H) \ket\xI
+    \intertext{%
+        Those matrix elements are propagators again. I arrive at
+    }
+    &= \int \dif x \, G(t - t', \xF, x) \, G(g', x, \xI) \,,
+\end{align*}
+which is the desired expression.
+
+Next I check that adding a Heaviside step function makes it a retarded
+Greens-function.
+\begin{align*}
+    [\iup \partial_0 - H] \, G_\mathrm r(t, \xF, \xI)
+    &= [\iup \partial_0 - H] \, \Theta(t) \, G(t, \xF, \xI)
+    \intertext{%
+        I insert the explicit form of the propagator.
+    }
+    &= [\iup \partial_0 - H] \, \Theta(t) \, \bra\xF \exp(- \iup t H) \ket\xI
+    \intertext{%
+        The time derivative will give me two terms.
+    }
+    &= \iup \, \delta(t) \, \bra\xF \exp(- \iup t H) \ket\xI
+    - \Theta(t) \, \bra\xF H \exp(- \iup t H) \ket\xI
+    \\&\quad
+    - H \Theta(t) \, \bra\xF \exp(- \iup t H) \ket\xI
+    \intertext{%
+        The first term will only contribute if $t = 0$. Since the exponential
+        is smooth in $t$, one can just set $t = 0$ there. The other two terms
+        should cancel. Letting the Hamiltonian act on $\bra \xF$ in both cases
+        gives the same energy in both cases. The remainder of the first term is
+        then the following:
+    }
+    &= \iup \, \delta(t) \, \braket{\xF|\xI} \,.
+    \intertext{%
+        And this simplifies to the desired right side of the equation:
+    }
+    &= \iup \, \delta(t) \, \delta(\xF - \xI) \,.
+\end{align*}
+
+\subsection{Split}
+
+\subsection{Split of Hamiltonian}
+
+\subsection{Limit}
+
+\section{Multi-dimensional gaussian integration}
+\label{homework:2}
+
+\end{document}
+
+% vim: spell spelllang=en tw=79
