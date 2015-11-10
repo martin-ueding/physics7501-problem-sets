@@ -14,6 +14,7 @@
 \newcommand\normorder{\mathscr N}
 \newcommand\eye{\mat 1_4}
 \newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
 
 \hypersetup{
     pdftitle=
@@ -354,7 +355,8 @@ coordinates trick.
     \intertext{%
         Now $x^2 + y^2 = r^2$ in polar coordinates. The measure of the
         integration, which can be derived from Gram's determinant of the
-        metric tensor, is $r \dif r \dif \phi$.
+        metric tensor, is $r \dif r \dif \phi$. One could also try to sound
+        fancy by calling this the pullback/pushforward of the volume form.
     }
     &= \int_0^\infty r \dif r \int_0^{2\piup} \dif \phi \exp(-ar^2) \\
     \intertext{%
@@ -374,6 +376,65 @@ That was the square of the integral to be calculated, so the integral itself is
 \]
 In our case we have $a = 1/2$ and therefore the end result is $\sqrt{2 \piup}$.
 
+\subsection{Second integral}
+
+Now there is a matrix product product in the exponential. We introduce an
+orthogonal transformation $\mat O$ such that $\mat O\inv = \mat O^\T$. Since
+the determinant is multiplicative and is invariant under the transpose,
+$\det(\mat O) = \pm 1$.
+We start by introducing the unit matrix in form of the transformation.
+\begin{align*}
+    \int \dif x^d \, \exp\del{- \frac12 \vec x^\T \mat A \vec x}
+    &= \int \dif x^d \,
+    \exp\del{- \frac12 \vec x^\T \mat O^\T \mat O \mat A \mat O^\T \mat O \vec x}
+    \intertext{%
+        The matrix $\mat A$ will be diagonalized by this basis transformation
+        and we get the eigenvalue matrix $\mat\Lambda$.
+    }
+    &= \int \dif x^d \,
+    \exp\del{- \frac12 \vec x^\T \mat O^\T \mat \Lambda \mat O \vec x}
+    \intertext{%
+        The transposed vector can be grouped with the transformation.
+    }
+    &= \int \dif x^d \,
+    \exp\del{- \frac12 [\mat O \vec x]^\T \mat \Lambda \mat O \vec x}
+    \intertext{%
+        The integrand can be simplified with a substitution $\vec y := \mat O
+        \vec x$ and therefore $\vec x = \mat O^\T \vec y$. The exterior
+        derivative gives $\dif x^i = O^{\T \, i}{}_j \dif y^j$. The $d$-form
+        $\dif x^d$ can be written as $\epsilon_{i \ldots k} \dif x^i \wedge
+        \ldots \wedge \dif x^k$. Those get replaced by $O^{\T \, i}{}_j \dif
+        y^j$. Then those $\dif y^j$ are wedged together and are also
+        antisymmetric. In the end one has $\epsilon_{i \ldots k} O^{\T \,
+        i}{}_m \ldots O^{\T \, i}{}_o \epsilon^{m \ldots o}$ which is just the
+        determinant of $\mat O$. And that is $\pm 1$ where one might even chose
+        that is has to have $+1$ and move the $-1$ into the eigenvalue. Then
+        the expression simplifies to
+    }
+    &= \int \dif y^d \,
+    \exp\del{- \frac12 \vec y^\T \mat \Lambda \vec y} \,.
+    \intertext{%
+        The matrix $\mat \Lambda$ is diagonal. Therefore one can write the
+        matrix product simpler as
+    }
+    &= \int \dif y^d \,
+    \exp\del{- \frac12 \sum_i \lambda_i [y^i]^2} \,.
+    \intertext{%
+        The sum can be pulled out of the exponential.
+    }
+    &= \prod_i \int \dif y^i \,
+    \exp\del{- \frac12 \lambda_i [y^i]^2}
+    \intertext{%
+        Those integrals will just give $\sqrt{2\piup/\lambda_i}$.
+    }
+    &= \prod_i \sqrt{\frac{2\piup}{\lambda_i}}
+    \intertext{%
+        The product of the eigenvalues is the determinant of the matrix in
+        question.
+    }
+    &= \sqrt{\frac{[2\piup]^2}{\det(\mat A)}}
+\end{align*}
+And that is the desired result.
 
 \end{document}
 
