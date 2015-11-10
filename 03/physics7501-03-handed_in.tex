@@ -296,10 +296,84 @@ This formalism with finite $N$ is very useful for lattice computation of
 quantum systems \parencite{Creutz/Statistical_Approach_QM}. One has to do this
 in imaginary time such that the quantum mechanical system evolving in time as
 mediated by the Lagrangian becomes a crystal where the neighboring sites are
-coupled by the Lagrangian.
+coupled by the Lagrangian. That is what I did in my bachelor's thesis with the
+harmonic oscillator \parencite{Ueding/Bachelorarbeit}.
 
 \section{Multi-dimensional gaussian integration}
 \label{homework:2}
+
+\subsection{First integral}
+
+We did pretty much the same thing on an AQT sheet\footnote{It was the third
+problem set, you can find all my AQT solutions at\\
+\url{http://martin-ueding.de/de/studies/msc_physics/physics606/index.html}.}
+already, so we will shamelessly copy the year-old result.
+
+We need this integral as a preliminary:
+\[
+    \int_0^\infty \dif x \, x \exp(-ax^2) \,.
+\]
+We do this by using substitution with
+\[
+    z := x^2
+    \eqnsep
+    \dif z = 2 x \, \dif x \,.
+\]
+Using that, we yield
+\[
+    \int \dif x \, x \exp(-ax^2) = \frac{1}{2} \int \dif z \, \exp(-az) = -
+    \frac{1}{2a} \exp(-az) \,.
+\]
+Evaluating this at the boundary $[0, \infty)$ we obtain the result
+\[
+    \frac{1}{2a}.
+\]
+
+If the real part of $a$ is negative, the integrand is not bounded any more and
+the function is not integrable any more. The result
+\[
+    \frac{1}{2a}
+\]
+would turn negative for negative $\Re a$. However, the integrand itself would
+still be positive semi-definite. Therefore, this cannot be right. Unless one
+goes into the realm of complex magic where
+\[
+    \sum_{i = 0}^\infty 2^{2i} = - \frac{1}{3}
+\]
+can make some sense \parencite[78]{penrose-road_to_reality}.
+
+The actual integral to compute needs to be squared first to use the polar
+coordinates trick.
+\begin{align*}
+    |I_0(a)|^2
+    &=
+    \int_{_\infty}^\infty \dif x \exp(-ax^2)
+    \int_{_\infty}^\infty \dif y \exp(-ay^2) \\
+    &=
+    \int_{_\infty}^\infty \dif x \int_{_\infty}^\infty \dif y \exp(-a[x^2+y^2]) \\
+    \intertext{%
+        Now $x^2 + y^2 = r^2$ in polar coordinates. The measure of the
+        integration, which can be derived from Gram's determinant of the
+        metric tensor, is $r \dif r \dif \phi$.
+    }
+    &= \int_0^\infty r \dif r \int_0^{2\piup} \dif \phi \exp(-ar^2) \\
+    \intertext{%
+        Since the integrand does not depend on $\phi$, we will get a simple
+        scalar factor:
+    }
+    &= 2 \piup \int_0^\infty r \dif r \exp(-ar^2) \,. \\
+    \intertext{%
+        Using the previously derived fact that this integral is $1/2a$ we can
+        write down the result:
+    }
+    &= \frac{\piup}a.
+\end{align*}
+That was the square of the integral to be calculated, so the integral itself is
+\[
+    \sqrt{\frac\piup a} \,.
+\]
+In our case we have $a = 1/2$ and therefore the end result is $\sqrt{2 \piup}$.
+
 
 \end{document}
 
