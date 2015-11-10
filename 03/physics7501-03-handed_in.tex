@@ -83,7 +83,7 @@ I have to show that
     &= \int \dif x \, G(t - t', \xF, x) \, G(g', x, \xI) \,.
 \end{align*}
 
-This is straightforward. First I replace $G$ with the matrix element.
+This is straightforward. First we replace $G$ with the matrix element.
 \begin{align*}
     G(t, \xF, \xI)
     &= \bra\xF \exp(- \iup t H) \ket\xI
@@ -93,24 +93,24 @@ This is straightforward. First I replace $G$ with the matrix element.
     }
     &= \bra\xF \exp(- \iup [t-t'] H) \exp(- \iup t' H) \ket\xI
     \intertext{%
-        Then I insert a complete set of position eigenstates in between the
+        Then we insert a complete set of position eigenstates in between the
         exponentials.
     }
     &= \int \dif x \, \bra\xF \exp(- \iup [t-t'] H) \ket x \bra x \exp(- \iup t' H) \ket\xI
     \intertext{%
-        Those matrix elements are propagators again. I arrive at
+        Those matrix elements are propagators again. We arrive at
     }
     &= \int \dif x \, G(t - t', \xF, x) \, G(g', x, \xI) \,,
 \end{align*}
 which is the desired expression.
 
-Next I check that adding a Heaviside step function makes it a retarded
+Next we check that adding a Heaviside step function makes it a retarded
 Greens-function.
 \begin{align*}
     [\iup \partial_0 - H] \, G_\mathrm r(t, \xF, \xI)
     &= [\iup \partial_0 - H] \, \Theta(t) \, G(t, \xF, \xI)
     \intertext{%
-        I insert the explicit form of the propagator.
+        We insert the explicit form of the propagator.
     }
     &= [\iup \partial_0 - H] \, \Theta(t) \, \bra\xF \exp(- \iup t H) \ket\xI
     \intertext{%
@@ -136,30 +136,30 @@ Greens-function.
 
 \subsection{Split}
 
-I have the propagator
+We have the propagator
 \begin{align*}
     G(t, \xF, \xI)
     &= \bra\xF \exp(- \iup t H) \ket\xI
     \intertext{%
-        where I can introduce $\epsilon$ and $N$.
+        where we can introduce $\epsilon$ and $N$.
     }
     &= \bra\xF \exp(- \iup \epsilon N H) \ket\xI \\
     \intertext{%
-        Then I write the product $\epsilon N$ as a sum
+        Then we write the product $\epsilon N$ as a sum
     }
     &= \bra\xF \exp\del{- \sum_{j=1}^N \iup \epsilon H} \ket\xI \\
     \intertext{%
-        which I pull out of the exponential to become a product. This only
+        which we pull out of the exponential to become a product. This only
         works since the Hamiltonian commutes with itself.
     }
     &= \bra\xF \sbr{\prod_{j=1}^N \exp\del{- \iup \epsilon H}} \ket\xI \\
     \intertext{%
-        I pull one exponential out of the product.
+        We pull one exponential out of the product.
     }
     &= \bra\xF \exp\del{- \iup \epsilon H} \sbr{\prod_{j=1}^{N-1} \exp\del{-
     \iup \epsilon H}} \ket\xI \\
     \intertext{%
-        And then I insert complete sets of position eigenstates in between.
+        And then we insert complete sets of position eigenstates in between.
     }
     &= \bra\xF \exp\del{- \iup \epsilon H} \sbr{\prod_{j=1}^{N-1} \int \dif x_j
     \ket{x_j} \bra{x_j} \exp\del{- \iup \epsilon H}} \ket\xI
@@ -170,31 +170,31 @@ problem set.
 
 \subsection{Split of Hamiltonian}
 
-I now look at the propagator for an infinitesimal time step.
+We now look at the propagator for an infinitesimal time step.
 \begin{align*}
     G(\epsilon, x_k, x_{k-1})
     &= \bra{x_k} \exp(-\iup \epsilon H) \ket{x_{k-1}}
     \intertext{%
-        I insert the explicit Hamiltonian.
+        We insert the explicit Hamiltonian.
     }
     &= \bra{x_k} \exp\del{-\iup \epsilon \sbr{\hat T + \hat V}} \ket{x_{k-1}}
     \intertext{%
-        The Baker-Campbell-Hausdorff formula says that I can split the
-        exponential into two factors if I include a third exponential which
+        The Baker-Campbell-Hausdorff formula says that we can split the
+        exponential into two factors if we include a third exponential which
         starts with the commutator of the two parts. Since both $\hat T$ and
         $\hat V$ are premultiplied with $\epsilon$, the commutator will be
-        order $\epsilon^2$ and I will therefore just drop that term.
+        order $\epsilon^2$ and we will therefore just drop that term.
     }
     &= \bra{x_k} \exp\del{-\iup \epsilon \hat T} \exp\del{-\iup \epsilon \hat V} \ket{x_{k-1}}
     \intertext{%
-        I evaluate the potential on the in-state. After that it is just a
-        c-number and I move it to the end of the expression.
+        We evaluate the potential on the in-state. After that it is just a
+        c-number and we move it to the end of the expression.
     }
     &= \bra{x_k} \exp\del{-\iup \epsilon \hat T}\ket{x_{k-1}}
     \exp\del{-\iup \epsilon V(x_{k-1})}
     \intertext{%
-        In order to evaluate the kinetic energy I need momentum eigenstates.
-        I can have those, I just have to take all of them at once.
+        In order to evaluate the kinetic energy we need momentum eigenstates.
+        We can have those, we just have to take all of them at once.
     }
     &= \int \dif p \, \bra{x_k} \exp\del{-\iup \epsilon \hat T} \ket{p}
     \braket{p|x_{k-1}}
@@ -208,18 +208,95 @@ I now look at the propagator for an infinitesimal time step.
     \exp\del{-\iup \epsilon \frac{p^2}{2m}}
     \exp\del{-\iup \epsilon V(x_{k-1})}
     \intertext{%
-        Now I have to insert the explicit overlap.
+        Now we have to insert the explicit overlap.
     }
     &= \int \frac{\dif p}{2\piup} \,
     \frac{1}{2\piup} \exp\del{\iup [x_k - x_{x-1}] p}
     \exp\del{-\iup \epsilon \frac{p^2}{2m}}
     \exp\del{-\iup \epsilon V(x_{k-1})}
     \intertext{%
+        We combine the $p$-dependent terms after the integral and pull the
+        potential out up front.
+    }
+    &= \exp\del{-\iup \epsilon V(x_{k-1})}
+    \int \frac{\dif p}{[2\piup]^2} \,
+    \exp\del{-\iup \epsilon \frac{p^2}{2m} + \iup [x_k - x_{x-1}] p}
+    \intertext{%
         Next up is completion of the square in $p$ in the exponential.
     }
+    &= \exp\del{-\iup \epsilon V(x_{k-1})}
+    \int \frac{\dif p}{[2\piup]^2} \,
+    \\&\quad \times
+    \exp\del{-\sbr{\sqrt{\frac{\iup \epsilon}{2m}} p - \sqrt{\frac{\iup
+    m}{2\epsilon}} [x_k - x_{x-1}]}^2 + \frac{\iup m}{2\epsilon} [x_k -
+    x_{x-1}]^2}
+    \intertext{%
+        The last part of the exponential can be pulled in front of the
+        integral.
+    }
+    &= \exp\del{-\iup \epsilon V(x_{k-1})}
+    \exp\del{\frac{\iup m}{2\epsilon} [x_k - x_{x-1}]^2}
+    \\&\quad \times
+    \int \frac{\dif p}{[2\piup]^2} \,
+    \exp\del{-\sbr{\sqrt{\frac{\iup \epsilon}{2m}} p - \sqrt{\frac{\iup
+    m}{2\epsilon}} [x_k - x_{x-1}]}^2}
+    \intertext{%
+        Due to the infinite bounds of the integration we can just shift the
+        integration variable $p$ by a fixed amount and then have the simpler
+        integral
+    }
+    &= \exp\del{-\iup \epsilon V(x_{k-1})}
+    \exp\del{\frac{\iup m}{2\epsilon} [x_k - x_{x-1}]^2}
+    \int \frac{\dif p}{[2\piup]^2} \,
+    \exp\del{-\frac{\iup \epsilon}{2m} p^2} \,.
+    \intertext{%
+        This type of integral will be derived in the second part of the
+        problem. It was also derived in the “Mathematischer Vorkurs” in 2011
+        and every other lecture, especially AQT. So that is just $\sqrt{\pi/a}$
+        where $a$ is the factor such that the integrand is $\exp(-a p^2)$. We
+        then have
+    }
+    &=
+    \frac{1}{[2\piup]^2}
+    \sqrt{\frac{2\piup m}{\iup \epsilon}}
+    \exp\del{\frac{\iup m}{2\epsilon} [x_k - x_{x-1}]^2 -\iup \epsilon V(x_{k-1})}
+    \,.
+    \intertext{%
+        For some reason there is a factor $2 \piup$ too much here. We will
+        include one of them in the square root. We will also factor out $\iup
+        \epsilon$ in the exponential.
+    }
+    &= \frac{1}{2\piup} \sqrt{\frac{m}{2 \piup \iup \epsilon}}
+    \exp\del{\iup \epsilon \sbr{\frac{m}{2} \frac{[x_k -
+    x_{x-1}]^2}{\epsilon^2} - V(x_{k-1})}}
 \end{align*}
+Except for the additional factor of $2 \piup$ this is the desired result.
 
 \subsection{Limit}
+
+This limit makes the integral a functional integral which integrates over all
+functions of $x$ which satisfy the boundary conditions. One combines an
+infinite amount of propagators and takes the limit $\epsilon \to 0$ such that
+their combination becomes in integral. All the intermediate positions have to
+be integrated over. The result then is the Feynman path integral.
+
+\begin{question}
+    There is a fundamental problem with this. The space of all functions that
+    have $x(0) = \xI$ and $x(t) = \xF$ as boundary conditions is uncountable
+    infinite, it has cardinality $c = 2^{\aleph_0}$. The limit $N \to \infty$
+    can only make $N \to \aleph_0$ which is smaller in an appropriate sense as
+    we have $\aleph_0/c \to 0$. Therefore we are ignoring virtually all
+    functions that contribute! Mathematicians sometimes ask me how I sleep at
+    night and the only things I can offer are ignorance and the number of
+    digits in the electron's magnetic moment. Is there something more to this?
+\end{question}
+
+
+This formalism with finite $N$ is very useful for lattice computation of
+quantum systems \parencite{Creutz/Statistical_Approach_QM}. One has to do this
+in imaginary time such that the quantum mechanical system evolving in time as
+mediated by the Lagrangian becomes a crystal where the neighboring sites are
+coupled by the Lagrangian.
 
 \section{Multi-dimensional gaussian integration}
 \label{homework:2}
