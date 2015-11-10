@@ -489,6 +489,74 @@ The basic idea is the same here. We insert pairs of transformations everywhere.
     \sqrt{\frac{[2 \piup]^N}{\det(\mat A)}}
 \end{align*}
 
+\subsection{Two-point correlation}
+
+First we note the following:
+\[
+    \pd{}{A^a{}_b} x_i A^i{}_j x^j = x_a x^b \,.
+\]
+Then we can write the two-point correlation function as the following:
+\[
+    \int \dif x^d \, x_a x^b \exp\del{- \frac 12 \vec x^\T \mat A \vec x}
+    =
+    - 2 \int \dif x^d \pd{}{A^a{}_b} \exp\del{- \frac 12 \vec x^\T \mat A \vec
+    x} \,.
+\]
+
+We can probably exchange the integration and the differentiation since the
+exponential is a smooth function and $\vec x^\T \mat A \vec x$ should be
+positive-definite. The derivative of the determinant follows from chain and
+product rule:
+\begin{align*}
+    \pd{}{A^a{}_b} \frac{1}{\sqrt{\det(\mat A)}}
+    &= \frac 12 \sqrt{\det(\mat A)} \pd{}{A^a{}_b} \det(\mat A)
+    \intertext{%
+        We write the determinant as an antisymmetric product product of $N$
+        matrices.
+    }
+    &= \frac 12 \sqrt{\det(\mat A)} \pd{}{A^a{}_b}
+    \epsilon_{i \ldots k} A^i{}_m \ldots A^k{}_o \epsilon^{m \ldots o}
+    \intertext{%
+        Now we apply the product rule.
+    }
+    &= \frac 12 \sqrt{\det(\mat A)}
+    \sbr{
+        \epsilon_{i \ldots k} \delta^i_a \delta^b_m \ldots A^k{}_o \epsilon^{m \ldots o}
+        + \ldots +
+        \epsilon_{i \ldots k} A^i{}_m \ldots \delta^i_a \delta^b_o \epsilon^{m \ldots o}
+    }
+    \intertext{%
+        The indices of the Kronecker-symbols can be exchanged to the front in
+        both Levi-Civita symbols at the same time. Therefore no sign change
+        will occur. In the end all terms have $N-1$ matrices and there are $N$.
+    }
+    &= \frac N2 \sqrt{\det(\mat A)} \,
+    \epsilon_{i \ldots k} \delta^i_a \delta^b_m \ldots A^k{}_o \epsilon^{m \ldots o}
+\end{align*}
+
+According to \textcite[Figure~13.7]{penrose-road_to_reality} the inverse of a
+matrix can be written with those antisymmetric tensors. The prefactors do not
+really match, though. We have are missing a factor $2/\det(A)$ to make it
+match. But at least this is proportional to $A_{ij}\inv$ :-).
+
+\subsection{Contractions}
+
+Probably contractions with an odd number of elements do not make too much sense
+as they did with Wick's theorem as well. The exponential weight factor is
+symmetric and an odd number of $x$ will probably make the integral vanish.
+
+Just from symmetry a four-point function must have definitive symmetry in all
+the four indices. Perhaps one takes a product of two $\mat A\inv$ and takes all
+index combinations across the four indices. The matrix~$\mat A$ is already
+symmetric in its indices, so those correlation functions should be symmetric in
+all their indices. The symmetrization over all indices can be used then to
+produce such an expression. So if $\bracket{x_i x_j} = A_{ij}\inv$ then
+\[
+    \bracket{x_i x_j x_k x_l} = A_{(ij}\inv A_{kl)}\inv \,.
+\]
+These can be written out as a bunch of terms which are product of two-point
+correlation functions and that would be a “contraction” in some sense.
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
