@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+    \graph[feynman electrical layout, vertical'=v to w]
+    {
+        a --[scalar, momentum={$\four k_1$}] v;
+        b --[scalar, momentum'={$\four k_2$}] w;
+        v --[charged scalar, semi-left,  edge label={$\four q$}] w;
+        v --[anti charged scalar, semi-right, edge label'={$\four q$}] w;
+        v --[scalar, momentum={$\four k_1$}] c;
+        w --[scalar, momentum'={$\four k_2$}] d;
+    };
+\end{tikzpicture}

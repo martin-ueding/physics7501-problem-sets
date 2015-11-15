@@ -1,0 +1,179 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{4}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimmanek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{15} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{The optical theorem in $\phi^4$-theory}
+\label{homework:1}
+
+\subsection{Validity of analysis}
+
+The three channels in are shown in Figure~\ref{fig:channels}. The loop momentum
+is always $\four q$ and an additional four-momentum transfer is needed. The
+computation of the diagrams is very parallel as they all have two propagators.
+The $\phi^4$-theory diagrams feel rather relaxing after all the fermionic
+diagrams!
+
+\begin{figure}
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{s-channel}
+        \caption{%
+            $s$-channel
+        }
+        \label{fig:s-channel}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{t-channel}
+        \caption{%
+            $t$-channel
+        }
+        \label{fig:t-channel}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{u-channel}
+        \caption{%
+            $u$-channel
+        }
+        \label{fig:u-channel}
+    \end{subfigure}
+    \caption{%
+        The three diagrams in $\lambda^2$ forward scattering. Time direction is
+        to the right. $\four \Sigma := \four k_1 + \four k_2$, $\four \Delta =
+        \four k_1 - \four k_2$.
+    }
+    \label{fig:channels}
+\end{figure}
+
+\subsubsection{$t$-channel}
+
+The $t$-channel is shown in Figure~\ref{fig:t-channel} and contains no net
+momentum transfer in the loop. Therefore the propagator part of the invariant
+matrix element is just
+\[
+    \frac{1}{[\four q^2 - m^2 + \iup \epsilon]^2} \,.
+\]
+We can write the loop momentum as $\four q^2 = E_q^2 - \vec q^3$. Then the
+denominator is
+\[
+    \frac{1}{[E_q^2 - \vec q^2 - m^2 + \iup \epsilon]^2} \,.
+\]
+The whole denominator has to be zero to give a pole. The integration over $E_q$
+is the one which shall be the one going over the pole. The pole will be at
+\[
+    E_q = \pm \sqrt{m^2 + \vec q^2 - \iup \epsilon}
+    \simeq \pm \sqrt{m^2 + \vec q^2} \mp \iup \epsilon \,.
+\]
+The residual of the denominator (with the square) for $E_q > 0$ is
+\[
+    - \frac{1}{4 \sqrt{\vec q^2 + m^2}^3}
+\]
+whereas the other side is positive. If take the first one, the pole is slightly
+below the real axis. We close the contour downwards (anti clockwise) and incur
+a factor $- 2 \piup \iup$ from the residue theorem and the negative counting
+winding number. Therefore the whole expression becomes
+\[
+    \frac{\piup \iup}{2 \sqrt{\vec q^2 + m^2}^3} \,.
+\]
+It is completely imaginary. This is proportional (with a real factor) to $\iup
+\mathscr M$ as there are only momentum integrations in the three-space as well
+as constant factors left. Therefore $\mathscr M \in \R$ and it does not
+contribute to the optical theorem.
+
+\subsubsection{$u$-channel}
+
+The Feynman diagram for the $u$-channel is shown in Figure~\ref{fig:u-channel}.
+The two propagators are
+\[
+    \frac{1}{\sbr{\four q + \frac{\four\Delta}2}^2 - m^2 + \iup\epsilon}
+    \frac{1}{\sbr{\four q - \frac{\four\Delta}2}^2 - m^2 + \iup\epsilon} \,.
+\]
+The momentum transfer $\four \Delta$ is defined as $\four k_1 - \four k_2$. In
+the center of mass frame for both particles (which we assume we are identical)
+the transfer is given as $\four \Delta = (0, 2\vec k_1)$. Then we can write the
+denominators as
+\[
+    \sbr{\four q \pm \frac{\four\Delta}2}^2 - m^2 + \iup\epsilon
+    = E_q^2 - \vec q \pm 2 \vec q \cdot \vec k_1 - \vec k_1^2 - m^2 +
+    \iup\epsilon \,.
+\]
+Although this is different from the $t$-channel, the position of the pole is
+just shifted, the structure of the poles should still be the same. Therefore
+the residue is real and the invariant matrix element is purely imaginary. This
+diagram does not contribute either.
+
+\the\linewidth
+
+\end{document}
+
+% vim: spell spelllang=en tw=79
