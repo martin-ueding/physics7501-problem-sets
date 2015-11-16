@@ -115,6 +115,70 @@ diagrams!
     \label{fig:channels}
 \end{figure}
 
+\subsubsection{$s$-channel}
+
+The invariant matrix element for the $s$-channel is
+\begin{align*}
+    \iup \mathscr M
+    &= [- \iup \lambda]^2 \int \frac{\dif^4 q}{[2 \piup]^4}
+    \frac{\iup}{\sbr{\frac{\four k}2 - \four q}^2 - m^2 + \iup \epsilon}
+    \frac{\iup}{\sbr{\frac{\four k}2 + \four q}^2 - m^2 + \iup \epsilon} \,.
+    \intertext{%
+        Grouping all the minus signs gives us
+    }
+    &= \lambda^2 \int \frac{\dif^4 q}{[2 \piup]^4}
+    \frac{1}{\sbr{\frac{\four k}2 - \four q}^2 - m^2 + \iup \epsilon}
+    \frac{1}{\sbr{\frac{\four k}2 + \four q}^2 - m^2 + \iup \epsilon} \,.
+\end{align*}
+From here we introduce Feynman parameters and look at the denominator only. The
+numerator is not very interesting in this case as we have only $\phi^4$-theory.
+The denominator with parameters then is
+\begin{align*}
+    D
+    &= x \sbr{\frac{\four k}2 - \four q}^2
+    + y \sbr{\frac{\four k}2 + \four q}^2 - m^2 + \iup \epsilon \,.
+    \intertext{%
+        We can expand the brackets and have
+    }
+    &= \frac{\four k^2}{4} + \four q^2 - m^2 + \iup \epsilon + [y-x] \four k
+    \cdot \four q \,, \\
+    &= \four q^2 + \four q \cdot \four k [y-x] + \frac{\four k^2}{4} + \iup
+    \epsilon - m^2 \,.
+    \intertext{%
+        Now we will complete the square to make the shift in the integration
+        variable.
+    }
+    &= \sbr{\four q + \frac{\four k}{2} [y - x]}^2 - \frac{\four k^2}{4}[y-x]^2
+    + \frac{\four k^2}{4} - m^2 + \iup \epsilon
+\end{align*}
+The square bracket will become $\four l$ and the $\Delta$ then is
+\[
+    \Delta = \frac{\four k^2}{4} \sbr{[y-x]^2 - 1} + m^2 \,.
+\]
+
+From the procedure of dimensional regularization we can just jump to the final
+result which is
+\[
+    \iup \mathscr M
+    = \lambda^2 \frac{\iup}{[4\piup]^2} \sbr{\frac 2\epsilon - \gamma - 2
+    \ln(\Delta) + \mathrm O(\epsilon)} \,.
+\]
+For $\Delta \in \R^+$ this will give a real number for $\mathscr M$; there is
+an imaginary unit on the left and right side of the equation which could be
+canceled. There is still the $2/\epsilon$ divergence but we will not look at
+that. It should also create some problem but it will probably cancel or
+something like that. However, it is a real divergence and will never contribute
+any imaginary part.
+
+For $\Delta < 0$ we will have a problem with the logarithm. It will give some
+sort of imaginary part depending on where one put the branch cut of the
+logarithm itself. For $\Delta < 0$ we have the need to look at the range of the
+Feynman parameters. $[y - x]^2$ will always lie in the interval $[0, 1]$.
+Subtracting one will give us $[-1, 0]$ as the interval. We take $-1$ to be the
+most extreme case and obtain $|\four k| > 2m$ from that. This is exactly the
+particle creation threshold that is needed to get both propagators on-shell at
+the same time.
+
 \subsubsection{$t$-channel}
 
 The $t$-channel is shown in Figure~\ref{fig:t-channel} and contains no net
@@ -123,7 +187,7 @@ matrix element is just
 \[
     \frac{1}{[\four q^2 - m^2 + \iup \epsilon]^2} \,.
 \]
-We can write the loop momentum as $\four q^2 = E_q^2 - \vec q^3$. Then the
+We can write the loop momentum as $\four q^2 = E_q^2 - \vec q^2$. Then the
 denominator is
 \[
     \frac{1}{[E_q^2 - \vec q^2 - m^2 + \iup \epsilon]^2} \,.
@@ -150,6 +214,11 @@ It is completely imaginary. This is proportional (with a real factor) to $\iup
 as constant factors left. Therefore $\mathscr M \in \R$ and it does not
 contribute to the optical theorem.
 
+This can also be seen when using the Feynman parameters. They are not really
+needed here as the integrand already has the desired form with $\Delta = m^2$
+here. Since $\Delta$ does not depend on $\four k$ here and is from $\R^+$,
+there is no way to create some branch cut with this.
+
 \subsubsection{$u$-channel}
 
 The Feynman diagram for the $u$-channel is shown in Figure~\ref{fig:u-channel}.
@@ -171,8 +240,6 @@ Although this is different from the $t$-channel, the position of the pole is
 just shifted, the structure of the poles should still be the same. Therefore
 the residue is real and the invariant matrix element is purely imaginary. This
 diagram does not contribute either.
-
-\the\linewidth
 
 \end{document}
 
