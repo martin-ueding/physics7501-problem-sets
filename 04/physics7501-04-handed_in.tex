@@ -241,6 +241,62 @@ just shifted, the structure of the poles should still be the same. Therefore
 the residue is real and the invariant matrix element is purely imaginary. This
 diagram does not contribute either.
 
+\subsection{Identity}
+
+Once you know the trick, this one is actually quite simple. One uses an
+integration contour like shown in Figure~\ref{fig:contour}.
+
+\begin{figure}
+    \centering
+    \includegraphics{contour}
+    \caption{%
+        Integration contour for distribution identity.
+    }
+    \label{fig:contour}
+\end{figure}
+
+Then the integral with a test function $f$ can be written as where we split the
+integral into three sections
+\begin{align*}
+    \int \dif x \, \frac{f(x)}{x + \iup \epsilon}
+    &= \sbr{\int_{-\infty}^{-\delta} + \int_{-\delta}^{\delta} +
+    \int_\delta^\infty} \dif x \,
+    \frac{f(x)}{x + \iup \epsilon}
+    \,.
+    \intertext{%
+        In the first and last integral, nothing interesting happens when
+        $\epsilon \to 0$. Therefore we can directly write this shorter as
+    }
+    &= \int_{-\delta}^{\delta} \dif x \,
+    \frac{f(x)}{x + \iup \epsilon} + P\del{\frac {f(x)}x} \,.
+    \intertext{%
+        The first integral has to be evaluated explicitly. We parametrize this
+        infinitesimal section as the contour shown in Figure~\ref{fig:contour}.
+        The change of variables $x$ to $\delta \eup^{\iup \theta}$ will give us
+        an additional factor of $\iup \delta \eup^{\iup \theta}$ for $\dif
+        \theta$ in the integration.
+    }
+    &= \int_{\piup}^{0} \dif \theta \, \iup \delta \eup^{\iup \theta}
+    \frac{f(\delta \eup^{\iup \theta})}{\delta \eup^{\iup \theta} + \iup
+    \epsilon} + P\del{\frac {f(x)}x}
+    \intertext{%
+        Then we can let $\epsilon \to 0$ and cancel the remaining divisor.
+    }
+    &= \int_{\piup}^{0} \dif \theta \, \iup 
+    f(\delta \eup^{\iup \theta})
+    + P\del{\frac {f(x)}x}
+    \intertext{%
+        We can also let $\delta \to 0$ now safely and then the integral will
+        just give us a factor of $- \piup$.
+    }
+    &= - \iup \piup f(0) + P\del{\frac {f(x)}x}
+\end{align*}
+Without the test function $f$ the identity assumes the desired form of
+\[
+    \lim_{\epsilon\to 0} \frac{1}{x + \iup \epsilon}
+    = - \iup \piup \delta(x) + P\del{\frac 1x} \,.
+\]
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
