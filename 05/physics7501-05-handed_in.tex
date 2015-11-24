@@ -6,6 +6,7 @@
 \usepackage{lastpage}
 \usepackage{multicol}
 \usepackage{simplewick}
+\usepackage{multicol}
 \usepackage{slashed}
 \usepackage{subcaption}
 \usepackage{cancel}
@@ -33,7 +34,7 @@
 
 \title{Problem Set \arabic{problemset}}
 
-\newcommand\thegroup{Tutor: Thorsten Schimmanek}
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
 
 \publishers{\thegroup}
 \ofoot{\thegroup}
@@ -69,8 +70,158 @@
     \end{small}
 \end{center}
 
+\vspace{3ex}
+
+\begin{multicols}{2}
+    I am not sure whether I got all the renormalization straight so far. When
+    we first started with Feynman diagrams it seemed that there was no need for
+    those field strength renormalization factors~$Z$ at all. To sort those
+    things out I would like to write down what I think I have understood such
+    that you can point to where my misunderstanding starts.
+
+    The $S$-matrix translates states from the past infinity to the future
+    infinity. We use that for scattering as we assume that the time of the
+    scattering is limited and the particles did not interact with each other
+    before the time of the scattering. The assumption of non-interaction
+    between the distinct particles seems reasonable as they are far away from
+    each other. The propagation from the past infinity to the scattering was
+    somewhat excluded as we only looked into amputated diagrams. The amputated
+    diagrams could be computed with the Feynman rules and the various tricks
+    that we have learned during the course so far.
+
+    I assume that taking amputated diagrams means to approximate the time
+    evolution from past infinity to the scattering with the free theory. If
+    that is indeed the case, we only made an approximation there such that the
+    $S$-matrix would be easier to compute. The disconnected diagrams (the
+    vacuum bubbles) factored out of the correlation functions and therefore do
+    not contribute at all. I took the latter statement as an exact statement
+    (the proof looked exact). Perhaps I have misunderstood the amputated
+    diagrams as being an analogous thing and thought that this was not an
+    approximation.
+
+    From the charge and mass renormalization I have the impression that the
+    amputation is an approximation that we would like to get rid of in
+    Chapter~7 of \emph{the book}. The propagation from past infinity (and to
+    future infinity) is also perturbed by the various interactions like the
+    electron self-energy diagrams to arbitrary order. Now that I see that this
+    changes the mass and charge of the involved particles, it seems incorrect
+    to assume that even a single particle propagates as a free particle as
+    there is always the vacuum which is not empty at all.
+
+    In order to compute the $S$-matrix elements correctly we would have to
+    include all the diagrams with external leg corrections as well. This would
+    increase the number of diagrams significantly. It would give the right
+    result to the given order, right? It is just a lot work that we would like
+    to get around. So this is where the LSZ reduction formula comes into play
+    which relates the amputated diagram to the $S$-matrix element with
+    additional factors, the renormalization factors~$Z$. Therefore we can still
+    just compute the amputated diagrams and add some pre-computed factors $Z$
+    to the final result. This result will have time evolution with the
+    interacting time evolution operator built in. And the time evolution
+    operator is just another word for the propagators, right? The propagators
+    obtain a correction like $\Sigma$ or $\Pi$ as we have computed in class and
+    in the exercises.
+
+    Those corrections to the propagator are a bit hard to manage and we do not
+    need to carry the $\Sigma$ and $\Pi$ around explicitly. The in- and
+    out-states that we want to use with the $S$-matrix are on-shell particles
+    which fulfil the Dirac equation $[\fourslash p - m] u(\four p) = 0$ with
+    the physical mass~$m$. Therefore the fermion propagator $\iup /
+    [\fourslash p - m]$ will have a pole at the physical mass. The behaviour at
+    the pole is characterized by the residue at the pole. Therefore we can just
+    encapsulate the difference in the free and interacting propagator \emph{for
+    on-shell particles} in the residue of the propagator at the physical mass.
+    The whole time evolution from the past infinity to the scattering event
+    occurs with a single particle which has to me on-shell. Therefore the
+    amputated diagrams is just multiplied with the residue of the pole. And
+    that residue is called $Z$ (or $\sqrt Z$?) and hence enters with LSZ
+    formula.
+
+    All this means that we can continue as usual: Compute the amputated Feynman
+    diagram using the various rules and tricks. Only at the end we tack on a
+    number of $Z$ factors to accommodate the corrections to the propagator for
+    incoming and outgoing particles. The propagators in the amputated diagram
+    are not corrected as we compute the diagram to a given order using the
+    normal propagators. Using the corrected propagators there as well would
+    shift the order of the diagram to a higher value which we do not
+    necessarily want.
+
+    \Textcite{Peskin/QFT/1995} have Chapter~7 about all those ideas. There are
+    $Z$ and $Z_1$, $Z_2$ popping up here and there. Is the $Z$ the one and only
+    renormalization factor for the scalar $\phi^4$-theory as there is only one
+    kind of particle? Then the $Z_1$ seem to come from the vertex diagram where
+    the transition from $\mat\gamma^\mu$ to $\mat\Gamma^\mu$ is done. Then
+    there is $Z_2$ from the self-energy of the electron. In the end they turn
+    out to be the same anyway in order to keep the photon massless. Then I
+    think I saw a $Z_3$ somewhere as well, that was the correction to the
+    electric charge from the self-energy of the photon which we have computed
+    in the homework, right? The notation also gets a tad overloaded by the use
+    of $\Sigma$ for the exact result and $\Sigma_2$ as a second order result.
+    Are any of the $Z_2$ or $Z_1$ just a second or first order approximation to
+    the $Z$ or distinct quantities? In the lecture there were $Z_2^1$ and
+    similar constructs, so I assume that $Z_2$ and $Z_1$ are distinct as the
+    book also suggests.
+\end{multicols}
+
 \section{Yukawa corrections}
 \label{homework:1}
+
+\begin{multicols}{2}
+    The contribution to $Z_1$ was second in the book, the first renormalization
+    constant introduced was $Z$ and $Z_2$. The way they are introduced they are
+    the probability to create a particular one-particle state from the vacuum.
+    Annihilation is the same as the modulus squared is taken. That $Z_2$ was
+    just added to the left side of the equation which relates the vertex
+    $\mat\Gamma^\mu$ to the form factors~$F_1$ and $F_2$
+    \parencite[(7.46)]{Peskin/QFT/1995}.
+
+    We need $F_1(0) = 1$ to make the theory consistent. Currently I think that
+    this needs to be fulfilled to give the Ward identity which is equivalent to
+    a massless photon? The problem with adding $Z_2$ on the left side is that
+    $F_1(0)$ is not necessarily unity afterwards. To remedy this one introduced
+    a $Z_1$ such that it would cancel the $Z_2$ in the case of $\four q = 0$,
+    the case of no momentum transfered \parencite[(7.47)]{Peskin/QFT/1995}.
+
+    Since the exact $\mat\Gamma^\mu$ and the exact $Z_2$ and $Z_1$ depend on
+    all orders of $\alpha$, we cannot compute them here. They are different
+    though, since the vertex correction diagram contains a different propagator
+    with mass and a different vertex without a Dirac matrix. This will alter
+    the overall invariant matrix element of that vertex correction diagram in
+    first order. Higher orders will be different as well. Corrections to the
+    electron propagator with virtual $\phi$-particles will also differ from the
+    corrections with photons.
+
+    Perhaps we are just asked to verify the whole thing to second order in
+    $\lambda^2$ which is the first interesting order? Then the computation of
+    the first order vertex diagram would suffice and we could compare them to
+    lowest order at least. Computing either diagram with dimensional
+    regularization should be doable, especially since there are the Dirac
+    matrices only from the electron propagators and not also from the
+    electron-photon vertices.
+
+    The $Z_2$ is defined as the residue of the pole in the electron propagator
+    \parencite[243]{Peskin/QFT/1995}, therefore we should be able to compute
+    that from the geometric series of first-order self-energy diagrams. Here I
+    would proceed as we did with the self-energy of the electron with the
+    photon. The 1PI-diagram could be computed, perhaps dimensional
+    regularization is needed there. Then the expression $\Sigma_2$ (or was it
+    $\Pi_2?$) can be put into the geometric series. Hopefully it would simplify
+    enough that it can be evaluated. Then the residue would give me $Z_2$.
+
+    I still have no idea how to compute $Z_1$. It is introduced as a “second
+    rescaling factor” \parencite[230]{Peskin/QFT/1995} which has to be equal to
+    $Z_2$ such that it works. They refer to the proof in section~7.4 which is
+    exactly where the Ward-Takahashi identity is proven. From the problem
+    statement it sounds like one should be able to extract it from the vertex
+    diagram.
+
+    However I fail to see where I could really start. Now my time runs out and
+    I cannot do a Wick rotation and do this homework in imaginary time.
+    Therefore I just have to leave you with three pages of questions. Sorry.
+    Having read the sections 7.1--7.4 a couple times now I still have no clear
+    idea how all these concepts relate. I would greatly appreciate if you could
+    give me a few pointers into the right directions to clear it up.
+\end{multicols}
 
 \end{document}
 
