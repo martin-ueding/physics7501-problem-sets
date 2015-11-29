@@ -1,0 +1,196 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{multicol}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{5}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{15} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{Grassmann numbers and the fermionic path integral}
+\label{homework:1}
+
+\subsection{Taylor series and shift}
+
+The Grassmann numbers themselves are the generators of the algebra. It probably
+makes sense to add 1 to the generators also in order to have $\C$  be part of
+the algebra as well. We will call that set $\setname G$.\footnote{%
+    The notation $\mathbb C$ and $\mathbb G$ might be more common for fields. I like to go
+    with the ISO 80000-2 standard (which allows both variants) and also take
+    the heritage of those letters (like $\mathbb C$) into account. In \LaTeX\
+    they are called “blackboard bold” which means this way of writing letters
+    is the attempt to write bold on the blackboard. Since we have more powerful
+    typesetting in \LaTeX\ than on the board, I will sure make use of them and
+    display the letters in bold. Same goes for underline for emphasis, which is
+    a no-go in typed documents. Perhaps it is not the best idea to deviate too
+    much from common notation even though its usage in a powerful typesetting
+    system feels rather backwards.
+}
+The function $f$ then is
+\[
+    f \colon \setname G \to \setname G \,.
+\]
+Since the Grassmann numbers anticommute they square to zero.\footnote{%
+    On the Wikipedia article about Grassmann numbers they are called “non-zero
+    square roots of zero” which I find a quite intriguing thought. Almost ten
+    years ago the concept of $\sqrt{-1}$ has baffled me, now this is the next
+    step. This time I know that field axioms are not god-given and therefore
+    algebra structures can be defined like one wishes to furnish those axioms.
+    Still, it is an interesting way of stating the squaring to zero feature.
+}
+This also means that a function of a single Grassmann variable cannot have
+arbitrary form. Analytic functions can always be written as a power series,
+functions can at most be linear in Grassmann variables which really limits
+their complexity. Any function can be written as
+\[
+    f(\theta) = A + B \theta \,,
+\]
+where we use the same notation as \textcite[299]{Peskin/QFT/1995}. Higher order
+terms in $\theta$ vanish directly.
+
+\paragraph{Taylor series}
+
+The Taylor series of such a function in $\theta$ just has two terms as higher
+powers of $\theta$ will vanish. Also higher derivatives in $\theta$ will also
+vanish when one looks at the general form motivated above.
+
+\paragraph{Integral}
+
+The integration must be invariant under shifts in the integration variable. We
+have
+\begin{align*}
+    \int \dif \theta \, f(\theta)
+    &= \int \dif \theta \, [A + B \theta]
+    \intertext{%
+        as the general form. Now shifting $\theta$ by $\eta$ does not change
+        $\dif \theta$ and we have
+    }
+    &= \int \dif \theta \, [A + B [\theta + \eta]]
+    \intertext{%
+        which we can expand to yield
+    }
+    &= \int \dif \theta \, [A + B \theta + B \eta] \,.
+    \intertext{%
+        It is best to regroup the terms such that the constant and linear terms
+        clearly pop out:
+    }
+    &= \int \dif \theta \, [\underbrace{A + B \eta}_{A'} + B \theta] \,.
+\end{align*}
+The result of the integration must not be changed when $A \to A'$ it performed.
+Therefore the integral must not depend on $A$ as it is a linear function and
+has to be rather simple. The only dependence can be $B$ then. A definition that
+fulfils this is
+\[
+    \int \dif \theta \, [A + B\theta] = k B \,.
+\]
+
+Could this $k$ be a Grassmann number, i.e.\ $k \in \setname G$? $B$ is
+definitely a regular complex number, so the product would not directly
+vanish. However, the integral would then be a $\setname G$-linear function
+which does not play well with integrations in $\C$. It therefore makes sense to
+define $k \in \C$ and therefore $kB = c$ is a regular complex number.
+
+\paragraph{Integration and Differentiation}
+
+On the problem set it is noted that integration and differentiation are
+equivalent. Since there are only two possible monoms of Grassmann variables
+($A$ and $B \theta$), this is easy to check. The integral and derivative with
+respect to $\theta$ of the first term is zero. The integral and derivative of
+the second is just $B$. Setting $k = 1$ makes this truly the same thing which
+is probably very handy along the road.
+
+\subsection{Unitary transformation}
+
+The unitary transformation is probably a \emph{special} unitary transformation.
+In the case of a general unitary transformation the determinant might be a
+complex phase factor which does change the integrals unless complex conjugated
+counter-terms are involved as well. So $U$ is taken from $\SU(n)$ and $\mathrm
+U(1)$ is excluded here? Since the problem talks about matrices, $\SU(n)$ would
+not really be a problem. So this just applies when there are multiple fields?
+\Textcite[301]{Peskin/QFT/1995} show that the integral with $\dif \theta^* \dif
+\theta$ is invariant under $\mathrm U(n)$ but integrals with $\dif \theta$
+depend on $\det(U)$ which might have a phase factor.
+
+We will now show that the transformation introduces a factor on $\det(U)$. The
+invariance has to be evaluated with respect of that determinant then which is
+unity for the special transformations.
+
+\begin{table}
+    \begin{question}
+        $\mathrm U(1)$ only has one generator, 1. Therefore the group $\SU(1) =
+        \{ 1 \}$ is a quite trivial group. The groups $\SU(n)$ all have $n^2-1$
+        generators and $\mathrm U(n)$ should have $n^2$ generators. Is it in
+        general that
+        \[
+            \mathrm U(n) \simeq \mathrm U(1) \times \SU(n)
+        \]
+        holds?
+    \end{question}
+\end{table}
+
+\end{document}
+
+% vim: spell spelllang=en tw=79

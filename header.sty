@@ -211,11 +211,13 @@
 
 % Symbols for the various mathematical fields (natural numbers, integers,
 % rational numbers, real numbers, complex numbers).
-\newcommand{\C}{\text{\bfseries\sffamily C}}
-\newcommand{\N}{\text{\bfseries\sffamily N}}
-\newcommand{\Q}{\text{\bfseries\sffamily Q}}
-\newcommand{\R}{\text{\bfseries\sffamily R}}
-\newcommand{\Z}{\text{\bfseries\sffamily Z}}
+\newcommand\setname[1]{\text{\bfseries\sffamily{#1}}}
+
+\newcommand\C{\setname C}
+\newcommand\N{\setname N}
+\newcommand\Q{\setname Q}
+\newcommand\R{\setname R}
+\newcommand\Z{\setname Z}
 
 % Shape like operators.
 \DeclareMathOperator{\dalambert}{\Box}
