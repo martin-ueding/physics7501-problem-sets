@@ -344,6 +344,39 @@ sign and leave us with a nice expression without any signs.
 \end{align*}
 That is the final result then.
 
+\subsection{Generating functional}
+
+The generating functional was introduced to allow the build-up of correlation
+functions using functional derivatives. We had a homework where we worked with
+those kind of integrals where a source term $J$ was added. At the time I did a
+functional derivative with respect to the matrix elements. You wrote that we
+are supposed to do that with respect to $J$. I do see why that is the case now.
+
+This functional was not really derived, it was rather defined and shown that it
+is quite useful. The same probably happens here. We propose the generating
+function for the free Dirac theory to include some source terms. The
+correlation functions can have $\psi$ and $\bar\psi$ terms in them, therefore
+we need two source terms. Those source terms are taken to be $\eta$ and
+$\bar\eta$. This has the nice side effect that the Lagrangian density will stay
+real for every choice of complex $\eta$ and $\psi$.
+
+Having that in mind, it is not a big leap to define\footnote{%
+    I do not like to write $Z[\bar\eta, \eta]$ as that notation looks like $Z$
+    being multiplied with the commutator of the two variables. Also I want to
+    be able to distinguish $H(t - t_0)$ from $H[t - t_0]$, i.e.\ the
+    Hamiltonian \emph{evaluated} at $t - t_0$ and the Hamiltonian
+    \emph{multiplied} at $t - t_0$, both is a reasonable thing. I chose to
+    represent this with different parentheses.
+}
+\[
+    Z(\bar\eta, \eta) = \int \mathcal D \bar\psi \, \mathcal D \bar\psi
+    \exp\del{\iup \int \dif^4 x \sbr{\bar\psi [\iup \slashed\partial - m]
+    \psi + \bar\eta \psi + \bar\psi \eta}} \,.
+\]
+From here we have to show that it takes the form in the second line which
+relies on this being a free theory where all the Gaussian integrals are only
+quadratic in the exponent.
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
