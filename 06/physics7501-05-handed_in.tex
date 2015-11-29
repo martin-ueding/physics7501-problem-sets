@@ -265,7 +265,8 @@ integral\footnote{%
     \,,
     \intertext{%
         where we name the eigenvalues of $\mat B$ just $b_i$. Now the integrals
-        are actually independent and we can rewrite them as
+        are actually independent. This only works because pairs of Grassmann
+        numbers commute with other pairs. We can rewrite the integrals as
     }
     &= \prod_i \int \dif \bar\theta_i' \dif \theta_i'
     \exp\del{- \bar\theta_i' b_i \theta_i'}
@@ -287,6 +288,61 @@ integral\footnote{%
     }
     &= \det(\mat B) \,.
 \end{align*}
+
+The other one can be shown using the differentiation again. So we obtain the
+desired bilinear using a partial integration. The bilinear is in the wrong
+order in the exponential. Luckily we obtain another minus sign from the
+exponential. Anticommuting the two Grassmann variables will remove the minus
+sign and leave us with a nice expression without any signs.
+\begin{align*}
+    \sbr{\int \prod_a \dif \bar\theta_a \dif \theta_a} \theta_k \bar\theta_l
+    \exp(- \bar\theta_i B_{ij} \theta_j)
+    &= \sbr{\int \prod_a \dif \bar\theta_a \dif \theta_a} \pd{}{B_{kl}}
+    \exp(- \bar\theta_i B_{ij} \theta_j)
+    \intertext{%
+        Assuming all behaves well we can pull out the derivative.
+    }
+    &= \pd{}{B_{kl}} \sbr{\int \prod_a \dif \bar\theta_a \dif \theta_a}
+    \exp(- \bar\theta_i B_{ij} \theta_j)
+    \intertext{%
+        This integral was already computed and we insert the result.
+    }
+    &= \pd{}{B_{kl}} \det(\mat B)
+    \intertext{%
+        The determinant can be written as a lot of $B$s and Levi-Civita
+        symbols.
+    }
+    &= \pd{}{B_{kl}} \frac{1}{n!}
+    \epsilon_{ab \ldots d}
+    B^a{}_{a'}
+    B^b{}_{b'}
+    \ldots
+    B^d{}_{d'}
+    \epsilon^{a'b' \ldots d'}
+    \intertext{%
+        The product rule (or Leibniz rule if we want to sound fancy) will
+        create $n$ terms. They are all equal in the following sense: The matrix
+        element differentiated will have an index pair of $i$ and $i'$. This
+        has the same position in both Levi-Civita symbols. We can permute the
+        indices on both symbols at the same time such that $i$ and $i'$ are the
+        front element. Then we rename all the other dummy indices such that the
+        terms are the same. Our combined terms are then
+    }
+    &= \frac{n}{n!}
+    \epsilon_{kb \ldots d}
+    B^b{}_{b'}
+    \ldots
+    B^d{}_{d'}
+    \epsilon^{lb' \ldots d'} \,.
+    \intertext{%
+        According to \textcite[Fig.~13.7]{penrose-road_to_reality} the inverse
+        of a matrix is very similar to that, except that we also need to divide
+        by the $n!$ times determinant to get it right. Since we do not have
+        that term here, we have to multiply with it.
+    }
+    &= \det(\mat B) (\mat B\inv)_{kl}
+\end{align*}
+That is the final result then.
 
 \end{document}
 
