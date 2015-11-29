@@ -366,7 +366,9 @@ Having that in mind, it is not a big leap to define\footnote{%
     be able to distinguish $H(t - t_0)$ from $H[t - t_0]$, i.e.\ the
     Hamiltonian \emph{evaluated} at $t - t_0$ and the Hamiltonian
     \emph{multiplied} at $t - t_0$, both is a reasonable thing. I chose to
-    represent this with different parentheses.
+    represent this with different parentheses. The whole rationale is at
+    \url{http://martin-ueding.de/en/physics/function-notation/index.html} I you
+    want to know more about my idiosyncrasies \Winkey.
 }
 \[
     Z(\bar\eta, \eta) = \int \mathcal D \bar\psi \, \mathcal D \bar\psi
@@ -376,6 +378,93 @@ Having that in mind, it is not a big leap to define\footnote{%
 From here we have to show that it takes the form in the second line which
 relies on this being a free theory where all the Gaussian integrals are only
 quadratic in the exponent.
+
+The integration by parts as done by \textcite[290]{Peskin/QFT/1995} is not
+needed here, we have a first order differential operator $\hat O$ here such
+that we have a bilinear of the form $\bar\psi \hat O \psi$ already. Therefore
+we can directly strive to complete the “square”. Here it rather means to
+complete the terms linear in the spinors to bilinears. The following
+substitutions seem to work rather well:
+\[
+    \psi'(x) = \psi(x) - \iup \int \dif^4 y \, S_\text F(x - y) \eta(y)
+    \eqnsep
+    \bar\psi'(x) = \bar\psi(x) - \iup \int \dif^4 z \, S_\text F(x - z)
+    \bar\eta(y) \,.
+\]
+The second is just the hermitian conjugate of the other one. Then we insert
+that into the Lagrangian density. Writing out the whole thing here would just
+kill the paper. The density is
+\begin{align*}
+    \mathcal L
+    &= \bar\psi [\iup \slashed\partial - m] \psi
+    + \bar\eta \psi + \bar\psi \eta \,.
+    \intertext{%
+        With the new fields it is
+    }
+    &= \sbr{\bar\psi'(x) + \iup \int \dif^4 z \, S_\text F(x - z)
+    \bar\eta(z)}
+    [\iup \slashed\partial - m]
+    \sbr{\psi'(x) + \iup \int \dif^4 y \, S_\text F(x - y) \eta(y)}
+    \\&\quad
+    + \bar\eta 
+    \sbr{\psi'(x) + \iup \int \dif^4 y \, S_\text F(x - y) \eta(y)}
+    + \sbr{\bar\psi'(x) + \iup \int \dif^4 z \, S_\text F(x - z) \bar\eta(z)}
+    \eta \,.
+    \intertext{%
+        This has to be factored out. Some of the terms will be old Lagrangian
+        density with the primed spinors. We write this as $\mathcal L'$. The
+        new terms are now
+    }
+    &= \mathcal L'
+    - \int \dif^4 z \, S_\text F(x - z) \bar\eta(z)
+    [\iup \slashed\partial - m]
+    \int \dif^4 y \, S_\text F(x - y) \eta(y)
+    \\&\quad
+    +
+    \iup \bar\psi'(x)
+    [\iup \slashed\partial - m]
+    \int \dif^4 y \, S_\text F(x - y) \eta(y)
+    +
+    \iup \int \dif^4 z \, S_\text F(x - z) \bar\eta(z)
+    [\iup \slashed\partial - m]
+    \psi'(x)
+    \\&\quad
+    + \iup \bar\eta \int \dif^4 y \, S_\text F(x - y) \eta(y)
+    + \iup \int \dif^4 z \, S_\text F(x - z) \bar\eta(z) \eta \,.
+    \intertext{%
+        In the book they stress that the propagator is the Green's function to
+        the kinetic operator. Therefore it is the “operator inverse” that will
+        give a Dirac $\delta$-distribution. That is then integrated over.
+        Perhaps it gives an imaginary unit or some other phase factor. Either
+        way, the first three summands simplify this way. We add the explicit
+        function argument to the remaining factors, this is just $x$ by
+        default.
+    }
+    &= \mathcal L'
+    - \int \dif^4 y \, \bar\eta(x) S_\text F(x - y) \eta(y)
+    + \iup \bar\psi'(x) \eta(x)
+    + \iup \bar\eta(x) \psi'(x)
+    \\&\quad
+    + \iup \int \dif^4 y \, \bar\eta(x) S_\text F(x - y) \eta(y)
+    + \iup \int \dif^4 z \, \bar\eta(z) S_\text F(x - z) \eta(x) \,.
+\end{align*}
+The last two terms are equal to the first one except for the sign. It
+would be very handy if we had a phase factor from the Green's function property
+that we have just used. Then two of the three terms would cancel and one would
+be left with just a factor of one imaginary unit. Also the $\bar\psi' \eta$ and
+the hermitian conjugate term would cancel with the source terms present in
+$\mathcal L'$. Then the final thing would be
+\[
+    \mathcal L = \mathcal L_0 + 
+    + \iup \int \dif^4 z \, \bar\eta(z) S_\text F(x - z) \eta(x) \,.
+\]
+Plugging this into the exponential function where we have $\exp(- \iup \int
+\dif^4 x \mathcal L)$, we would get the desired $Z_0$ times the exponential
+with a negative sign in it.
+
+I am sorry I cannot look closer into that right now. Please tell me in the
+tutorial (or on this sheet) what the phase factor is if I plug in the Green's
+function into the equation itself.
 
 \end{document}
 
