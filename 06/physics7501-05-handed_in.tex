@@ -10,6 +10,7 @@
 \usepackage{slashed}
 \usepackage{subcaption}
 \usepackage{cancel}
+\usepackage{tikzsymbols}
 
 \newcommand\timeorder{\mathscr T}
 \newcommand\normorder{\mathscr N}
@@ -190,6 +191,102 @@ unity for the special transformations.
         holds?
     \end{question}
 \end{table}
+
+First we show a useful identity. We are given
+\[
+    \prod_a \theta_i = \frac{1}{n!} \epsilon^{ij\ldots l} \theta_i \theta_j
+    \ldots \theta_l \,.
+\]
+We have used $a$ on the left side in order to distinguish from $i$. We will
+need that distinction in a bit. Now we want to “divide” by the Levi-Civita
+symbol~$\epsilon$. We do that in the following way: If we have an equation that
+has free indices $ij \ldots l$ and we contract it with the present Levi-Civita
+symbol, we have found the above equation “divided by $\epsilon$” such that it
+is on the other side. We take $\epsilon$ to be normalized to $n!$. Then the
+desired relation is
+\[
+    \epsilon_{ij \ldots l} \prod_a \theta_a = \theta_i \theta_j \ldots \theta_l
+    \,.
+\]
+Multiplication and contraction with $\epsilon$ will give a factor of $n!$ on
+the left side. Moving that to the right gives the $1/n!$ needed there.
+
+Now we can rewrite the transformed product. This is
+\begin{align*}
+    \prod_a \theta_a'
+    &= \frac{1}{n!} \epsilon^{ij \ldots l} \theta_i' \theta_j' \ldots \theta_l'
+    \,.
+    \intertext{%
+        Then we can expand the $\theta'$ in terms of $\theta$. We obtain
+    }
+    &= \frac{1}{n!} \epsilon^{ij \ldots l} U_i^{i'} U_j^{j'} \ldots U_l^{l'}
+    \theta_{i'} \theta_{j'} \ldots \theta_{l'} \,.
+    \intertext{%
+        Now we can use the relation shown above. This will transform the
+        $\theta$ on the right side to
+    }
+    &= \frac{1}{n!} \epsilon^{ij \ldots l} U_i^{i'} U_j^{j'} \ldots U_l^{l'}
+    \epsilon_{i'j' \ldots l'} \prod_a \theta_a \,.
+    \intertext{%
+        The fancy factor in front of the product symbol is just the determinant
+        of the matrix $\mat U$. This mean that we have
+    }
+    &= \det(\mat U) \prod_a \theta_a \,.
+\end{align*}
+The change with an arbitrary linear transformation therefore changes the
+product by its determinant.'
+
+At this point the similarity to the differential forms which are also
+antisymmetric is very apparent. A linear transformation introduces the
+\emph{Jacobian} which is nothing else than this determinant of the linear
+transformation matrix.
+
+Again, if $\mat U \in \SU(n)$, then $\det(\mat U) = 1$ and the integral is
+invariant under that transformation.
+
+\subsection{Integral identities}
+
+We have seen before that the integral “stamps out” the factor in front of the
+Grassmann variable in question. This will simplify the first integral
+significantly. A change of variables with an unitary transformation does not
+change the integral. The matrices of interest to quantum theory can be
+diagonalized by an unitary transformation. Therefore we can rewrite the given
+integral\footnote{%
+    The exterior derivate was missing in the volume elements. The integral
+    would then be over a 0-form which I do not really know what that would be.
+    I guess it would be zero as the result would be a $-1$-form which is not
+    possible. Anyway, I just added the “d” as that is clear from the context
+    \Smiley.
+} as
+\begin{align*}
+    \sbr{\int \prod_a \dif \bar\theta_a \dif \theta_a} \exp(- \bar\theta_i B_{ij} \theta_j)
+    &= \sbr{\int \prod_a \dif \bar\theta_a' \dif \theta_a'}
+    \exp\del{- \sum _i \bar\theta_i' b_i \theta_i'}
+    \,,
+    \intertext{%
+        where we name the eigenvalues of $\mat B$ just $b_i$. Now the integrals
+        are actually independent and we can rewrite them as
+    }
+    &= \prod_i \int \dif \bar\theta_i' \dif \theta_i'
+    \exp\del{- \bar\theta_i' b_i \theta_i'}
+    \,.
+    \intertext{%
+        Due to the antisymmetry of the variables we can write out all the
+        summands of the exponential fully. That is a first, writing out a
+        normal exponential is quite time consuming \Tongey. Anyway, we then have
+    }
+    &= \prod_i \int \dif \bar\theta_i' \dif \theta_i'
+    \sbr{1 - \bar\theta_i' \theta_i' b_i}
+    \,.
+    \intertext{%
+        The integration stamps out the $b_i$ and the remainder is
+    }
+    &= \prod_i b_i
+    \intertext{%
+        which is just
+    }
+    &= \det(\mat B) \,.
+\end{align*}
 
 \end{document}
 
