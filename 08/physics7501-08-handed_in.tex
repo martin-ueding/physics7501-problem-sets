@@ -212,6 +212,15 @@ The field strength tensor can be defined proportional to the curvature,
 
 \paragraph{Transformation of field strength tensor}
 
+A nice thing that we will use a lot of times is the following:
+\[
+    U U\inv = 1
+    \implies
+    \partial_\mu U U\inv = 
+    U_{,\mu} U\inv + U U\inv_{,\mu}
+    = 0 \,.
+\]
+
 The commutator of the connections is
 \begin{align*}
     [\Dif_\mu, \Dif_\nu]
@@ -258,11 +267,8 @@ The commutator of the connections is
         - e^2 U A_{[\mu} A_{\nu]} U\inv
     \bigg]
     \intertext{%
-        As a next step we use that the inverse exponential map just has a
-        negative argument. Therefore the differentiation of the inverse
-        exponential map will just give the negative compared to the normal map.
-        Therefore the two terms with derivatives of the exponential map will
-        just cancel.
+        As a next step we use the derived trick and the two terms with
+        derivatives of the exponential map will just cancel.
     }
     &= 2 \sbr{
         \partial_{[\mu} \partial_{\nu]}
@@ -289,6 +295,92 @@ The commutator of the connections is
 \end{align*}
 
 \paragraph{Invariance}
+
+We want that the transformation and the connection commute with each other.
+This will make a lot of things easier. So we start with the transformation of
+$\psi$,
+\begin{align*}
+    \Dif_\mu \psi
+    &\mapsto \Dif_\mu U \psi \,.
+    \intertext{%
+        Then we expand the covariant derivative.
+    }
+    &= [\partial_\mu + \iup e A_\mu] U \psi
+    \intertext{%
+        The product rule tells us to let the partial derivative act on $U$ and
+        on $\psi$.
+    }
+    &= [U_{,\mu} + U \partial_\mu + \iup e A_\mu U] \psi
+    \intertext{%
+        The partial derivative of the transformation is given by the chain
+        rule. For the potential we can add another $U U\inv$ pair and then
+        factor out the $U$ in front.
+    }
+    &= U [\iup \alpha_{,\mu} + \partial_\mu + \iup e U\inv A_\mu U] \psi
+    \intertext{%
+        Shuffling the terms give a suggestive form. Then we can identity this
+        as a backwards transformation.
+    }
+    &= U [\partial_\mu + \underbrace{\iup e U\inv A_\mu U + \iup
+    \alpha_{,\mu}}_{\iup e A'_\mu}] \psi
+    \intertext{%
+        So if we also let $A$ transform in the way given in Equation~(2) on the
+        problem set this all gives the form we want.
+    }
+    &= U [\partial_\mu + \iup e A_\mu] \psi
+    \intertext{%
+        This simplifies to
+    }
+    &= U \Dif_\mu \psi \,.
+\end{align*}
+So $U$ and $\Dif_\mu$ commute in the abelian case which is nice.
+
+\subsection{Invariant Lagrangian}
+
+The Lagrangian is given as
+\begin{align*}
+    \bar\psi [\iup \slashed\Dif - m] \psi
+    &= \iup \bar\psi \slashed\Dif \psi - \bar\psi \psi \,.
+    \intertext{%
+        We apply the transformation to the $\psi$.
+    }
+    &\mapsto \iup \bar\psi U\inv \slashed\Dif' U \psi - \bar\psi U\inv U \psi
+    \intertext{%
+        The second summand is invariant under this transformation. The first
+        summand would be invariant with the previous result if we would still
+        deal with an abelian gauge. This is no longer the case, so we have to
+        show the above result again in more generality.
+    }
+    &= \iup \bar\psi U\inv [\partial_\mu + \iup g A'_\mu] \mat\gamma^\mu U \psi
+    - \bar\psi \psi
+    \intertext{%
+        The transformed potential has to be inserted. It is crucial to get the
+        scope of the partial derivative in the transformation of the potential
+        right. It only works on the immediately following inverse
+        transformation. So all in all we now have
+    }
+    &= \iup \bar\psi U\inv [\partial_\mu + \iup g U A_\mu U \inv + U
+    U\inv_{,\mu}] \mat\gamma^\mu U \psi
+    - \bar\psi \psi \,.
+    \intertext{%
+        We move the first $U\inv$ and the last $U$ into the bracket and let it
+        act on all the terms.
+    }
+    &= \iup \bar\psi [U \inv \partial_\mu U + \iup g A_\mu \inv +
+    U\inv_{,\mu} U] \mat\gamma^\mu  \psi
+    - \bar\psi \psi \,.
+    \intertext{%
+        The first summand will give another product rule, this gives two terms.
+    }
+    &= \iup \bar\psi [U \inv U_{,\mu} + \partial_\mu + \iup g A_\mu \inv +
+    U\inv_{,\mu} U] \mat\gamma^\mu  \psi
+    - \bar\psi \psi \,.
+    \intertext{%
+        The first and last summand just add to zero. Remaining is just a single
+        $\Dif$ so that we have an invariant Lagrangian.
+    }
+    &= \iup \bar\psi \slashed\Dif \psi - \bar\psi \psi \,.
+\end{align*}
 
 \end{document}
 
