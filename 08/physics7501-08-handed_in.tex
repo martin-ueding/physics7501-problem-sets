@@ -1,0 +1,168 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{multicol}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+\usepackage{tikzsymbols}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{8}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{20} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{(Non-)abelian gauge invariance}
+\label{homework:1}
+
+In the past weeks I have reached another level in understanding the whole
+\enquote{Gauge Theory} business \Laughey. You don't have to read this, I just
+wanted to share how my understanding progresses as a lot comes from discussions
+with you.
+
+\begin{multicols}{2}
+    In general relativity one has a \emph{connection}\footnote{%
+        In physics that is usually called \enquote{covariant derivative} from
+        what I read. I like to stick with the mathematical names since I first
+        read those names in the book by \textcite{penrose-road_to_reality}.
+    } $\vnabla$ with \emph{connection coefficients}\footnote{%
+        And in physics the \emph{connection coefficients} are called
+        \enquote{connection}. Who makes this stuff up?
+    } $\Gamma^\gamma_{\alpha\beta}$. The connection acting on a vector is then
+    given as
+    \[
+        \nabla_\mu X_\nu
+        = \partial_\mu X_\nu + \Gamma^\gamma_{\mu\nu} X_\gamma \,,
+    \]
+    or at least very close to that.
+    Then the equation of motion is
+    \[
+        m_i \left[ \ddot x^\mu_i + \Gamma_{\alpha\beta}^\mu \dot x_i^\alpha
+        \dot x_i^\beta \right] = q_i F^\mu{}_\nu \dot x_i^\nu
+    \]
+    and the Lagrangian density contains a term with the Ricci scalar, which is a
+    functional of the Christoffel symbols.
+
+    So the Christoffel symbols, the connection coefficients, were introduced in
+    GR in order to have a sensible differentiation as the (co)tangent spaces at
+    different points of the manifold are not comparable directly any more. One
+    needs to introduce some sort of \emph{connection} (literally) to compare
+    the fibers at different points of the underlying manifold. In GR this is
+    the tangent bundle which is something I can depict in my imagination. One
+    chooses this connection to be the Levi-Civita-connection such that metric
+    and affine geodesics coincide. So that is just a complicated way to say
+    that the metric tensor is invariant under the connection which is a handy
+    thing to have. I think there were more arguments to this specific choice of
+    connection but I cannot recall that.
+
+    The connection coefficients then take on a life on their own and contribute
+    to the Lagrangian density in form of the Ricci scalar $\mathcal R$. This
+    means that the Christoffel symbols obtain some sort of tangible physical
+    role and also appear in the equation of motion.
+
+    Now in quantum electromagnetism we start off with $\mathcal L = \bar\psi
+    [\iup \slashed\partial - m] \psi$ and note that we have a local symmetry in
+    the spinors. The symmetry is a U(1) symmetry which means that our $\psi$
+    now is a cross section through the fiber bundle $\R^4 \times \mathrm U(1)$.
+    By the way, $\mathrm U(1) \simeq S^1$ and that fiber bundle now looks
+    awfully close to the little I know about Kaluza–Klein theory. Is that a
+    coincidence? $\psi(\four x)$ is now a cross section through the fiber
+    bundle. Here the bundle is not as easily imaginable as the tangent bundle,
+    so it took me a while to wrap my head around that. We are in need of a
+    \emph{connection} between the different points in spacetime as each point
+    now has a different gauge. Therefore it does not make sense to write
+    ordinary derivatives any more. We want a partial derivative in every
+    spacetime direction, so we need four connection coefficients. Those are
+    called $A_\mu$ knowing what the \enquote{life of its own} will make those
+    coefficients.
+
+    Having the connection coefficients, it is simple to write down the
+    connection. That is then the \emph{covariant derivative}. Just as in the GR
+    case one needs to have a Lagrangian density which transforms with the
+    trivial representation of the symmetry group, i.e.\ a scalar. Therefore one
+    needs to add terms such that this turns out. In GR it was shown how this
+    Lagrangian has to look like. Here we just have to build a Lagrangian
+    without any ordinary derivative and match $\bar\psi$ with $\psi$ to give
+    Gauge invariant terms. The Lagrangian density therefore is just
+    \[
+        \mathcal L = \bar\psi[\iup\slashed\nabla - m] \psi - \frac14 F \wedge
+        \hodge F \,,
+    \]
+    where $\nabla$ is the connection and $F$ is a two-form. From here it is
+    evident that it is gauge invariant, at least under an abelian gauge
+    transformation. Each summand is invariant on its own and that is rather
+    beautiful.
+
+    I never thought that I would learn something about electromagnetism by
+    studying general relativity. But apparently it served as a very good
+    analogy.
+
+\end{multicols}
+
+Thank you for all the discussions so far! \Smiley
+
+\subsection{Transformation behavior}
+
+
+\end{document}
+
+% vim: spell spelllang=en tw=79
