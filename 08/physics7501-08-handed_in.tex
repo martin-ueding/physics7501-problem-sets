@@ -162,6 +162,133 @@ Thank you for all the discussions so far! \Smiley
 
 \subsection{Transformation behavior}
 
+\paragraph{Field strength tensor}
+
+The field strength tensor can be defined proportional to the curvature,
+\begin{align*}
+    F_{\mu\nu} &= \frac{\iup}{e} [\Dif_\mu, \Dif_\nu] \,.
+    \intertext{%
+        We can also write this as idempotent antisymmetrization and have
+    }
+    &= \frac{2\iup}{e} \Dif_{[\mu} \Dif_{\nu]} \,.
+    \intertext{%
+        Inserting all the terms and factoring out gives us
+    }
+    &= \frac{2\iup}{e} \sbr{
+    \partial_{[\mu} \partial_{\nu]}
+    + \iup e \partial_{[\mu} A_{\nu]}
+    + \iup e A_{[\mu} \partial_{\nu]}
+    - e^2 A_{[\mu} A_{\nu]}
+    }
+    \intertext{%
+        The first term vanishes as partial derivatives of differentiable
+        functions are symmetric. The last term vanishes also since the
+        components of the potential are just real numbers and commute. This
+        will of course change later with non-abelian gauge groups but we are
+        not there yet. So the middle terms remain only. These are
+    }
+    &= 2 \sbr{
+    \partial_{[\mu} A_{\nu]}
+    + A_{[\mu} \partial_{\nu]}
+    } \,.
+    \intertext{%
+        The partial derivative is supposed to act on another function as well.
+        So we apply the product rule in the first term and obtain
+    }
+    &= 2 \sbr{
+    \sbr{\partial_{[\mu} A_{\nu]}}
+    + A_{[\nu} \partial_{\mu]}
+    + A_{[\mu} \partial_{\nu]}
+    } \,.
+    \intertext{%
+        The first term is scoped such that the partial derivative only acts on
+        the connection coefficient. The last two terms then cancel if we switch
+        the indices to give a minus sign. The remainder is the usual definition
+        of the field strength tensor,
+    }
+    &= 2 \sbr{\partial_{[\mu} A_{\nu]}} \,, \\
+    &= F_{\mu\nu} \,.
+\end{align*}
+
+\paragraph{Transformation of field strength tensor}
+
+The commutator of the connections is
+\begin{align*}
+    [\Dif_\mu, \Dif_\nu]
+    &= 2 \sbr{
+    \partial_{[\mu} \partial_{\nu]}
+    + \iup e \partial_{[\mu} A_{\nu]}
+    + \iup e A_{[\mu} \partial_{\nu]}
+    - e^2 A_{[\mu} A_{\nu]} \,.
+    }
+    \intertext{%
+        We apply the mapping and obtain
+    }
+    &\mapsto 2 \sbr{
+    \partial_{[\mu} \partial_{\nu]}
+    + \iup e \partial_{[\mu} U A_{\nu]} U\inv
+    + \iup e U A_{[\mu} U\inv \partial_{\nu]}
+    - e^2 U A_{[\mu} U\inv U A_{\nu]} U\inv
+    }
+    \intertext{%
+        We can collapse the $U\inv U$ in the last term. Also we can push the
+        partial derivative through all the other terms until it is at the end.
+    }
+    &= 2 \bigg[
+        \partial_{[\mu} \partial_{\nu]}
+        + \iup e U_{[,\mu} A_{\nu]} U\inv
+        + \iup e U \partial_{[\mu} A_{\nu]} U\inv
+        + \iup e U A_{[\nu,\mu]} U\inv
+        + \iup e U A_{[\nu} \partial U\inv_{,\mu]}
+        + \iup e U A_{[\nu} U\inv \partial_{\mu]}
+        \\&\quad
+        + \iup e U A_{[\mu} U\inv \partial_{\nu]}
+        - e^2 U A_{[\mu} A_{\nu]} U\inv
+    \bigg]
+    \intertext{%
+        The terms with the trailing derivatives will again cancel like above.
+    }
+    &= 2 \bigg[
+        \partial_{[\mu} \partial_{\nu]}
+        + \iup e U_{[,\mu} A_{\nu]} U\inv
+        + \iup e U \partial_{[\mu} A_{\nu]} U\inv
+        + \iup e U A_{[\nu,\mu]} U\inv
+        + \iup e U A_{[\nu} \partial U\inv_{,\mu]}
+        \\&\quad
+        - e^2 U A_{[\mu} A_{\nu]} U\inv
+    \bigg]
+    \intertext{%
+        As a next step we use that the inverse exponential map just has a
+        negative argument. Therefore the differentiation of the inverse
+        exponential map will just give the negative compared to the normal map.
+        Therefore the two terms with derivatives of the exponential map will
+        just cancel.
+    }
+    &= 2 \sbr{
+        \partial_{[\mu} \partial_{\nu]}
+        + \iup e U \partial_{[\mu} A_{\nu]} U\inv
+        + \iup e U A_{[\nu,\mu]} U\inv
+        - e^2 U A_{[\mu} A_{\nu]} U\inv
+    }
+    \intertext{%
+        Most terms are now sandwiched in transformations. The first term does
+        not have those terms. Since partial derivatives commute, we can just
+        add $U U\inv$ on either side and move one half through the commutator.
+        Then we obtain
+    }
+    &= 2 U \sbr{
+        \partial_{[\mu} \partial_{\nu]}
+        + \iup e \partial_{[\mu} A_{\nu]}
+        + \iup e A_{[\nu,\mu]}
+        - e^2 A_{[\mu} A_{\nu]}
+    } U\inv \,,
+    \intertext{%
+        which is the desired expression
+    }
+    &= U [\Dif_\mu, \Dif_\nu] U\inv \,.
+\end{align*}
+
+\paragraph{Invariance}
 
 \end{document}
 
