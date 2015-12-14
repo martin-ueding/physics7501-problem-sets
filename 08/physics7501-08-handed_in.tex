@@ -418,6 +418,225 @@ tensor. Anyway, we have
 \end{align*}
 The compact way to write this would be $F = \dif A + A \wedge A$.
 
+\paragraph{Transformation of the curvature}
+
+This is a tedious calculation. Lots of little places to screw up and to get
+some signs wrong.
+
+So we start with the curvature again
+\begin{align*}
+    [\Dif_\mu, \Dif_\nu]
+    &= [\partial_\mu, \partial_\nu] - \iup g [\partial_\mu, A_\nu] -
+    \iup g [A_\mu, \partial_\nu] - g^2 [A_\mu, A_\nu]
+    \intertext{%
+        Again the term vanishes, so we will just drop that already. There will
+        be enough terms shortly.
+    }
+    &= \iup g [\partial_\mu, A_\nu] + \iup g [A_\mu, \partial_\nu] - g^2 [A_\mu, A_\nu]
+    \intertext{%
+        Now we can apply the transformation. We always incur extra terms from
+        the transformation of the non-abelian $A$.
+    }
+    &\mapsto
+    - \iup g \sbr{\partial_\mu, U A_\nu U\inv + \frac ig U U\inv_{,\nu}}
+    - \iup g \sbr{U A_\mu U\inv + \frac ig U U\inv_{,\mu}, \partial_\nu}
+    \\&\qquad
+    - g^2 \sbr{U A_\mu U\inv + \frac ig U U\inv_{,\mu}, U A_\nu U\inv + \frac ig U
+    U\inv_{,\nu}}
+    \intertext{%
+        Next we break up all the commutators.
+    }
+    &=
+    - \iup g \sbr{\partial_\mu, U A_\nu U\inv}
+    + \sbr{\partial_\mu, U U\inv_{,\nu}}
+    - \iup g \sbr{U A_\mu U\inv, \partial_\nu}
+    + \sbr{U U\inv_{,\mu}, \partial_\nu}
+    - g^2 \sbr{U A_\mu U\inv, U A_\nu U\inv}
+    \\&\qquad
+    - \iup g \sbr{U A_\mu U\inv, U U\inv_{,\nu}}
+    - \iup g \sbr{U U\inv_{,\mu}, U A_\nu U\inv}
+    + \sbr{U U\inv_{,\mu}, U U\inv_{,\nu}}
+    \intertext{%
+        It makes sense to reorder them a bit.
+    }
+    &=
+    - \iup g \sbr{\partial_\mu, U A_\nu U\inv}
+    - \iup g \sbr{U A_\mu U\inv, \partial_\nu}
+    - \iup g \sbr{U A_\mu U\inv, U U\inv_{,\nu}}
+    - \iup g \sbr{U U\inv_{,\mu}, U A_\nu U\inv}
+    \\&\qquad
+    + \sbr{\partial_\mu, U U\inv_{,\nu}}
+    + \sbr{U U\inv_{,\mu}, \partial_\nu}
+    + \sbr{U U\inv_{,\mu}, U U\inv_{,\nu}}
+    - g^2 \sbr{U A_\mu U\inv, U A_\nu U\inv}
+    \intertext{%
+        There are eight commutators in the above expression, four in each row.
+        We will now transform every one of them a bit in order to keep this
+        reasonable in amount of dead trees.
+        \textcircled 1 and \textcircled 2:
+        The first two commutators contain a partial derivative. This means that
+        we have to apply the product rule and throw away the last term which
+        acts on the trailing function (which is omitted here). The result is on
+        the first line in the next equation block.
+        \textcircled 3 and \textcircled 4:
+        These do not contain any derivatives and just need to be expanded. The
+        result is on the second line.
+        \textcircled 5 and \textcircled 6:
+        Again we have to push the derivative through each factor.
+        \textcircled 7:
+        We just write out the commutator explicitly.
+        \textcircled 8:
+        That one reduces nicely to a transformed commutator of the potential
+        alone. The $U U\inv$ pairs in the middle just collapse.
+    }
+    &=
+    - \iup g \sbr{U_{,\mu} A_\nu U\inv + U A_{\nu,\mu} U\inv + U A_\nu
+    U\inv_{,\mu}}
+    + \iup g \sbr{U_{,\nu} \, A_\mu U\inv + U A_{\mu,\nu} U\inv - U A_\mu
+    U\inv_{,\nu}}
+    \\&\qquad
+    - \iup g \sbr{U A_\mu U\inv U U\inv_{,\nu} - U U\inv_{,\nu} U A_\mu U\inv}
+    - \iup g \sbr{U U\inv_{,\mu} U A_\nu U\inv - U U\inv_{,\mu} U A_\nu U\inv}
+    \\&\qquad
+    + \sbr{U_{,\mu} U\inv_{,\nu} + U U\inv_{,\nu,\mu}}
+    - \sbr{U_{,\nu} U\inv_{,\mu} + U U\inv_{,\mu,\nu}}
+    + \sbr{U U\inv_{,\mu} U U\inv_{,\nu} - U U\inv_{,\nu} U U\inv_{,\mu}}
+    \\&\qquad
+    - g^2 U \sbr{A_\mu, A_\nu} U\inv
+    \intertext{%
+        There are two things to be done here. $U U\inv$ and $U\inv U$ pairs
+        need to be collapsed. Also we need to apply the trick to shift the
+        differentiated $U$ in order to do some collapsing.
+    }
+    &=
+    - \iup g \sbr{U_{,\mu} A_\nu U\inv + U A_{\nu,\mu} U\inv + U A_\nu
+    U\inv_{,\mu}}
+    + \iup g \sbr{U_{,\nu} \, A_\mu U\inv + U A_{\mu,\nu} U\inv - U A_\mu
+    U\inv_{,\nu}}
+    \\&\qquad
+    - \iup g \sbr{U A_\mu U\inv_{,\nu} + U_{,\nu} A_\mu U\inv}
+    - \iup g \sbr{- U_{,\mu} A_\nu U\inv + U_{,\mu} A_\nu U\inv}
+    \\&\qquad
+    + \sbr{U_{,\mu} U\inv_{,\nu} + U U\inv_{,\nu,\mu}}
+    - \sbr{U_{,\nu} U\inv_{,\mu} + U U\inv_{,\mu,\nu}}
+    + \sbr{- U_{,\mu} U\inv_{,\nu} + U_{,\nu} U\inv_{,\mu}}
+    \\&\qquad
+    - g^2 U \sbr{A_\mu, A_\nu} U\inv
+    \intertext{%
+        We again shuffle the terms around. Well, some minor mistake happened
+        here and I did not have to fix that. In my notes it worked out …
+    }
+    &=
+    \iup g \sbr{
+          U A_{\mu,\nu} U\inv
+        - U A_{\nu,\mu} U\inv
+        + U A_\mu U\inv_{,\nu}
+        - U A_\mu U\inv_{,\nu}
+        + U A_\nu U\inv_{,\mu}
+        - U A_\nu U\inv_{,\mu}
+    }
+    \\&\qquad
+    + \iup g \sbr{
+          U_{,\mu} A_\nu U\inv
+        - U_{,\mu} A_\nu U\inv
+        + U_{,\nu} A_\mu U\inv
+        - U_{,\nu} A_\mu U\inv
+    }
+    \\&\qquad
+    + \sbr{
+          U_{,\mu} U\inv_{,\nu}
+        - U_{,\mu} U\inv_{,\nu}
+        + U U\inv_{,\nu,\mu}
+        - U U\inv_{,\mu,\nu}
+        + U_{,\nu} U\inv_{,\mu}
+        - U_{,\nu} U\inv_{,\mu}
+    }
+    \\&\qquad
+    - g^2 U \sbr{A_\mu, A_\nu} U\inv
+    \intertext{%
+        We see that pretty much all terms cancel. The only remaining terms are
+    }
+    &=
+    \iup g \sbr{
+          U A_{\mu,\nu} U\inv
+        - U A_{\nu,\mu} U\inv
+    }
+    - g^2 U \sbr{A_\mu, A_\nu} U\inv
+    \intertext{%
+        Those can be grouped with
+    }
+    &=
+    U \sbr{\iup g \sbr{A_{\mu,\nu} -  A_{\nu,\mu}} - g^2 \sbr{A_\mu, A_\nu}} U \inv
+\end{align*}
+We can now restore the commutator with the partial derivatives with the same
+reasoning used in a previous problem and have the transformed curvature as to
+be shown.
+
+\paragraph{Trace}
+
+Last we have to show that the trace of two contracted field strength tensors is
+gauge invariant. At this point in the course we have so many different types of
+indices:
+
+\begin{tabular}{lll}
+    Type & Range & Letters \\
+    \midrule
+    Lorentz & \numrange 03 & $\mu,\nu,\ldots$ \\
+    Dirac or spinor & \numrange 14 & $\alpha,\beta,\ldots$ \\
+    Color & \numrange 13 & $i, j,\ldots$ \\
+    Gluon & \numrange 18 & $a, b,\ldots$ \\
+\end{tabular}
+
+Of course it is only a gluon when we have $\SU(3)$ and we are here in $\SU(N)$.
+It will go to $N^2 - 1$ in all cases. I heard that the gluon indices are also
+called color indices. So we have color indices from \numrange 13 and \numrange
+18? If that is true, who came up with that?
+
+And I have a hunch that we will obtain another index for the flavor as we have
+$\SU(N)_\text{flavor}$ and $\SU(3)_\text{color}$. Since the strong and
+electromagnetic interaction are agnostic to flavor, we have not seen those.
+Perhaps it comes up in the weak interaction which can change the flavor? Man, I
+thought I've seen a lot of indices in general relativity \Sey.
+
+Anyway, what I was going go get at is that “trace” is now pretty ambiguous. And
+we do not even have a thermodynamic trace here in high energy physics. So I
+propose to use
+\[
+    \trcolor(x)
+    \eqnsep
+    \trgluon(x)
+    \eqnsep
+    \trdirac(x)
+    \qquad\text{and}\qquad
+    \trlorentz(x)
+\]
+to make clear what is summed over. Perhaps I only have to do this in the
+beginning just as adding hats to the quantum mechanical operators in the fourth
+semester.
+
+To cut to the chase, we have
+\begin{align*}
+    \frac 12 \trcolor(F^{\mu\nu} F_{\mu\nu})
+    &= \frac 12 \trcolor(F^{\mu\nu}_a t^a  F_{\mu\nu}^b t_b) \,.
+    \intertext{%
+        The field strength tensors with all their indices explicit are now just
+        scalars. Therefore we can pull them out of the trace.
+    }
+    &= \frac 12 F^{\mu\nu}_a  F_{\mu\nu}^b \trcolor(t^a t_b)
+    \intertext{%
+        The generators in the fundamental representation have one gluon and two
+        color indices. Therefore a color trace is the perfect thing. In the
+        adjoint representation they have three gluon indices and therefore
+        would need a gluon trace. We were given the normalization so we can now
+        write this as
+    }
+    &= - \frac 14 F^{\mu\nu}_a  F_{\mu\nu}^b \delta^a_b
+    \intertext{%
+        We can get rid of one of the indices and obtain the final result of
+    }
+    &= - \frac 14 F^{\mu\nu}_a  F_{\mu\nu}^1 \,.
+\end{align*}
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
