@@ -382,6 +382,42 @@ The Lagrangian is given as
     &= \iup \bar\psi \slashed\Dif \psi - \bar\psi \psi \,.
 \end{align*}
 
+\subsection{Non-abelian field strength tensor}
+
+\paragraph{Definition via curvature}
+
+We have shown that the abelian field strength tensor can also be written as
+the curvature of the connection. Now we have to repeat the same thing for the
+non-abelian case. It is rather irritating that both the letters $A$ and $F$ are
+used for the abelian and non-abelian case. In some lectures they add hats for
+the non-abelian quantities. I also have seen $G$ for the gluon field strength
+tensor. Anyway, we have
+\begin{align*}
+    F_{\mu\nu}
+    &= \frac \iup g [\Dif_\mu, \Dif_\nu] \,.
+    \intertext{%
+        We expand the covariant derivative.
+    }
+    &= \frac \iup g [\partial_\mu, \partial_\nu] + [\partial_\mu, A_\nu] +
+    [A_\mu, \partial_\nu] - \frac \iup g [A_\mu, A_\nu]
+    \intertext{%
+        The first term vanishes as usual. The second and third term give $\dif
+        A$. The last term has to written with generators in order to get some
+        structure constants.
+    }
+    &= A_{\nu,\mu} - A_{\mu,\nu} - \frac \iup g A_\mu^b A_\nu^c [t_b, t_c]
+    \intertext{%
+        The commutator is by definition given by the structure constants.
+    }
+    &= A_{\nu,\mu} - A_{\mu,\nu} + \frac 1g A_\mu^b A_\nu^c f^{abc} t_a
+    \intertext{%
+        We can now project all this on $t_a$ and have
+    }
+    F_{\mu\nu}^a
+    &= A_{\nu,\mu}^a - A_{\mu,\nu}^a + \frac 1g A_\mu^b A_\nu^c f^{abc} \,.
+\end{align*}
+The compact way to write this would be $F = \dif A + A \wedge A$.
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
