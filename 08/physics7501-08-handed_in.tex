@@ -578,13 +578,18 @@ Last we have to show that the trace of two contracted field strength tensors is
 gauge invariant. At this point in the course we have so many different types of
 indices:
 
-\begin{tabular}{lll}
-    Type & Range & Letters \\
+\begin{tabular}{llll}
+    Type & Range & Letters & Example \\
     \midrule
-    Lorentz & \numrange 03 & $\mu,\nu,\ldots$ \\
-    Dirac or spinor & \numrange 14 & $\alpha,\beta,\ldots$ \\
-    Color & \numrange 13 & $i, j,\ldots$ \\
-    Gluon & \numrange 18 & $a, b,\ldots$ \\
+    Lorentz & \numrange 03 & $\mu,\nu,\ldots$ & EM potential $A_\mu$, metric
+    tensor $g_{\mu\nu}$ \\
+    Spatial & \numrange 13 & $i, j,\ldots$ & Electric field $F^{0i} = E^i$ \\
+    Dirac or spinor & \numrange 14 & $\alpha,\beta,\ldots$ & Dirac matrix
+    $[\mat\gamma^\mu]^\alpha{}_\beta$ \\
+    Spin $s_z$ & $-s$ to $s$ & $s, t, \ldots$ & Spinor $u^s(\four p)$ \\
+    Gluon & \numrange 18 & $a, b,\ldots$ & Structure constant $f^{abc}$ \\
+    Color & \numrange 13 & $i, j,\ldots$ & Generator in fundamental
+    representation $[\mat t_a]^i{}_j$ \\
 \end{tabular}
 
 Of course it is only a gluon when we have $\SU(3)$ and we are here in $\SU(N)$.
@@ -720,6 +725,29 @@ The finite transformation is
     }
     &= F_{\mu\nu} - \alpha^b F_{\mu\nu}^c f^{abc} t_a + \mathrm O(\alpha^2)
 \end{align*}
+
+\subsection{Bianchi identity}
+
+We have to show the Bianchi identity of the field strength tensor. This can be
+written as
+\[
+    \Dif_{[\mu} F^a_{\nu\rho]} = 0
+\]
+or with even more ridiculous notation as
+\[
+    F^a_{[\nu\rho;\mu]} = 0 \,.
+\]
+It is nice and compact but does not help that much. The Jacobi identity of the
+structure constants can be boiled down to
+\[
+    f^{de[a} f^{bc]d} = 0 \,.
+\]
+So somehow we have to go from three antisymmetrized Lorentz indices to three
+antisymmetrized gluon indices. The number of summands match there. The
+antisymmetrization would give six, the field strength tensor and the structure
+constants are antisymmetric in their indices already. This makes it boil down
+to three summands again. Actually that is the justification to write the given
+identities with the antisymmetrization notation in the first place.
 
 \end{document}
 
