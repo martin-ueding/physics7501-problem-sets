@@ -645,6 +645,82 @@ The spinor is easy. The finite transformation is defined as $\psi \to U \psi$.
 Linearizing the exponential map will give $U \approx 1 + \iup \alpha^a t_a$ and
 we have the desired expression.
 
+\paragraph{Potential}
+
+The finite transformation of the potential is given as
+\begin{align*}
+    A_\mu
+    &\to U A_\mu U\inv + \frac \iup g U U\inv_{,\mu} \,.
+    \intertext{%
+        We need to linearize this and obtain
+    }
+    &= [1 + \iup \alpha^a t_a] A_\mu [1 - \iup \alpha^b t_b]
+    + \frac \iup g [1 + \iup \alpha^a t_a] \partial_\mu [1 - \iup \alpha^b t_b]
+    + \mathrm O(\alpha^2)
+    \,.
+    \intertext{%
+        This can of be simplified, of course. We then have to leading order in
+        $\alpha$
+    }
+    &= A_\mu
+    + \iup \alpha^a t_a A_\mu
+    - \iup A_\mu \alpha^b t_b
+    + \frac 1g [1 + \iup \alpha^a t_a] \alpha^b_{,\mu} t_b
+    + \mathrm O(\alpha^2) \\
+    &= A_\mu
+    + \iup \alpha^b t_b A_\mu
+    - \iup \alpha^b A_\mu t_b
+    + \frac 1g \alpha^a_{,\mu} t_a
+    + \mathrm O(\alpha^2)
+    \,.
+    \intertext{%
+        Now we write the second and third summand as a commutator.
+    }
+    &= A_\mu
+    + \frac 1g \alpha^a_{,\mu} t_a
+    + \iup \alpha^b A_\mu^c t_b t_c
+    - \iup \alpha^b A_\mu^c t_c t_b
+    + \mathrm O(\alpha^2) \\
+    &= A_\mu
+    + \frac 1g \alpha^a_{,\mu} t_a
+    + \iup \alpha^b A_\mu^c [t_b t_c, t_c t_b]
+    + \mathrm O(\alpha^2)
+    \intertext{%
+        Then we just apply the Lie algebra and have
+    }
+    &= A_\mu
+    + \frac 1g \alpha^a_{,\mu} t_a
+    - f^{abc} A_\mu^c \alpha^b t_a
+    + \mathrm O(\alpha^2)
+\end{align*}
+One can now factor out $t_a$ and have the $a$-th component there. Somehow there
+is still some sign error.
+
+\paragraph{Field strength}
+
+The finite transformation is
+\begin{align*}
+    F_{\mu\nu}
+    &\mapsto U F_{\mu\nu}^a t_a U\inv \,.
+    \intertext{%
+        Again we expand all this.
+    }
+    &= \sbr{1 + \iup \alpha^b t_b} \sbr{A_{\nu,\mu}^a - A_{\mu,\nu}^a + g f^{abc}
+    A_\mu^b A_\nu^c} t_a \sbr{1 - \iup \alpha^b t_b} + \mathrm O(\alpha^2)
+    \intertext{%
+        In the leading order just a few terms remain.
+    }
+    &= F_{\mu\nu} + \iup \alpha^b F_{\mu\nu}^a [t_b, t_a] + \mathrm O(\alpha^2)
+    \intertext{%
+        We again use the algebra.
+    }
+    &= F_{\mu\nu} - \alpha^b F_{\mu\nu}^a f^{cba} t_c + \mathrm O(\alpha^2)
+    \intertext{%
+        Renaming the indices will give us the result on the problem set.
+    }
+    &= F_{\mu\nu} - \alpha^b F_{\mu\nu}^c f^{abc} t_a + \mathrm O(\alpha^2)
+\end{align*}
+
 \end{document}
 
 % vim: spell spelllang=en tw=79
