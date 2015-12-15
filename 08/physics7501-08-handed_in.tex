@@ -216,7 +216,7 @@ A nice thing that we will use a lot of times is the following:
 \[
     U U\inv = 1
     \implies
-    \partial_\mu U U\inv = 
+    \partial_\mu U U\inv =
     U_{,\mu} U\inv + U U\inv_{,\mu}
     = 0 \,.
 \]
@@ -748,6 +748,141 @@ antisymmetrization would give six, the field strength tensor and the structure
 constants are antisymmetric in their indices already. This makes it boil down
 to three summands again. Actually that is the justification to write the given
 identities with the antisymmetrization notation in the first place.
+
+We start by writing out one of the summands in full.
+\begin{align*}
+    \Dif_\mu F^a_{\nu\rho}
+    &= \sbr{\partial_\mu - \iup g A_\mu}
+    \sbr{\partial_\nu A_\rho^a - \partial_\rho A_\nu^a + g f^{abc} A_\rho^b
+    A_\nu^c} \\
+    &=
+    \partial_\mu \partial_\nu A_\rho^a - \partial_\mu \partial_\rho A_\nu^a + g
+    f^{abc} \partial_\mu A_\rho^b A_\nu^c
+    - \iup g A_\mu \partial_\nu A_\rho^a + \iup g A_\mu \partial_\rho A_\nu^a - \iup g^2
+    f^{abc} A_\mu A_\rho^b A_\nu^c
+    \intertext{%
+        We can write this with antisymmetrized indices.
+    }
+    \Dif_{[\mu} F^a_{\nu\rho]}
+    &= \partial_{[\mu} \partial_\nu A_{\rho]}^a - \partial_{[\mu} \partial_\rho
+    A_{\nu]}^a + g
+    f^{abc} \partial_{[\mu} A_\rho^b A_{\nu]}^c
+    - \iup g A_{[\mu} \partial_\nu A_{\rho]}^a + \iup g A_{[\mu} \partial_\rho
+    A_{\nu]}^a - \iup g^2
+    f^{abc} A_{[\mu} A_\rho^b A_{\nu]}^c
+    \intertext{%
+        The first terms already vanish individually due to the symmetry of
+        partial derivatives of differentiable function. The third term contains
+        a product rule, we will work that out. Then in the fourth and fifth
+        term they look very similar. We exchange two indices and incur a minus
+        sign. After that the terms are equal and we can just combine them.
+    }
+    &= g f^{abc} \sbr{A_{[\rho,\mu}^b A_{\nu]}^c + A_{[\rho}^b A_{\nu,\mu]}^c}
+    - 2 \iup g A_{[\mu} \partial_\nu A_{\rho]}^a
+    - \iup g^2 f^{abc} A_{[\mu} A_\rho^b A_{\nu]}^c
+    \intertext{%
+        The current first summand contains a bracket with two very similar
+        summands. In the second summand, we permute $\rho$ with $\nu$ and
+        obtain a minus sign from the antisymmetrization. Then we exchange the
+        gluon indices and rename them back. From the structure constant we will
+        obtain another minus sign. Then we can just exchange the two $A$
+        factors which cyclically permutes the indices without any additional
+        sign. All in all the two terms are therefore equal.
+    }
+    &= 2 g f^{abc} A_{[\rho,\mu}^b A_{\nu]}^c
+    - 2 \iup g A_{[\mu} \partial_\nu A_{\rho]}^a
+    - \iup g^2 f^{abc} A_{[\mu} A_\rho^b A_{\nu]}^c
+    \intertext{%
+        The first two terms can also be make more similar. In the first term we
+        can just exchange the two $A$ terms. The antisymmetrization will not
+        give a minus sign as it is a cyclic permutation.
+    }
+    &= 2 g f^{abc} A_{[\nu}^c A_{\rho,\mu]}^b
+    - 2 \iup g A_{[\mu} A_{\rho,\nu]}^a
+    - \iup g^2 f^{abc} A_{[\mu} A_\rho^b A_{\nu]}^c
+    \intertext{%
+        In the first term we do a cyclic permutation of the indices. In the
+        second term we switch the last indices to get the in Greek alphabet
+        order. That will give a change in signs.
+    }
+    &= 2 g f^{abc} A_{[\mu}^c A_{\nu,\rho]}^b
+    + 2 \iup g A_{[\mu} A_{\nu,\rho]}^a
+    - \iup g^2 f^{abc} A_{[\mu} A_\rho^b A_{\nu]}^c
+\end{align*}
+
+We will concentrate on the last of the three terms. We add the generator $t_a$
+to the contraction and also write the generator for the only $A$ without a
+gluon index as an explicit construction.
+\begin{align*}
+    - \iup g^2 f^{abc} A_{[\mu} A_\rho^b A_{\nu]}^c
+    &\leadsto
+    - \iup g^2 f^{abc} A_{[\mu}^d A_\rho^b A_{\nu]}^c t_d t_a
+    \intertext{%
+        In the adjoint representation the generators can be written as
+        structure constants. This needs to new indices which we call $f$ and
+        $h$. Between the generators there is a summation, that will be $g$. So
+        we have
+    }
+    &\leadsto
+    - \iup g^2 f^{abc} A_{[\mu}^d A_\rho^b A_{\nu]}^c f^{dfg} f^{agh}
+    \intertext{%
+        We are free to move everything around as every index is explicit. Also
+        we pull up the antisymmetrization to the gluon indices.
+    }
+    &= - \iup g^2 f^{abc} f^{dfg} f^{agh} A_{\mu}^{[d} A_\rho^b A_{\nu}^{c]}
+    \intertext{%
+        And then we can also antisymmetrize in the structure constants.
+    }
+    &= - \iup g^2 f^{a[bc} f^{d]fg} f^{agh} A_{\mu}^{d} A_\rho^b A_{\nu}^{c}
+\end{align*}
+This is somewhat close but not really the Jacobi identity for the structure
+constants.
+
+A better approach would we to write the Bianci identity
+\[
+    \Dif_{[\mu} F^a_{\nu\rho]} = 0
+\]
+as
+\[
+    \sbr{\Dif_{[\mu}, \sbr{\Dif_\nu, \Dif_{\rho]}}} = 0 \,.
+\]
+
+There will be a lot of terms since each covariant derivative consists of two
+summands. This makes for eight terms. All terms with two or more partial
+derivatives vanish directly due to the symmetry of the partial derivatives.
+Therefore there is only the terms with one partial derivative and the term with
+three $A$. This is the same we had above.
+
+The term with three $A$ vanishes. We start with writing explicit generators.
+\begin{align*}
+    \sbr{A_{[\mu}, \sbr{A_\nu, A_{\rho]}}}
+    &= A_{[\mu}^a A_\nu^b A_{\rho]}^c \sbr{t_a, \sbr{t_b, t_c}}
+    \intertext{%
+        Then we move the antisymmetrization to the color indices and from there
+        to the generators themselves.
+    }
+    &= A_{\mu}^a A_\nu^b A_{\rho}^c \sbr{t_{[a}, \sbr{t_b, t_{c]}}}
+    \intertext{%
+        The inner commutator will give a structure constant.
+    }
+    &= \iup A_{\mu}^a A_\nu^b A_{\rho}^c \sbr{t_{[a}, f_{bc]d} t_d}
+    \intertext{%
+        Then we move the structure constant to the front.
+    }
+    &= \iup A_{\mu}^a A_\nu^b A_{\rho}^c f_{d[bc} \sbr{t_{a]}, t_d}
+    \intertext{%
+        Now we can apply the Lie algebra again.
+    }
+    &= \iup A_{\mu}^a A_\nu^b A_{\rho}^c f_{d[bc} f_{a]de} t_e
+    \intertext{%
+        Now we have the Jacobi identity of the structure constants and see that
+        the whole expression vanishes.
+    }
+    &= \iup A_{\mu}^a A_\nu^b A_{\rho}^c \cdot 0 \cdot t_e \\
+    &= 0
+\end{align*}
+One still has to show that terms with a single partial derivative will vanish
+as well.
 
 \end{document}
 
