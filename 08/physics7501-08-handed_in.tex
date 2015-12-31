@@ -838,13 +838,13 @@ gluon index as an explicit construction.
 This is somewhat close but not really the Jacobi identity for the structure
 constants.
 
-A better approach would we to write the Bianci identity
+A better approach would be to use the general Jacoby identity
 \[
-    \Dif_{[\mu} F^a_{\nu\rho]} = 0
+    \sbr{\Dif_{[\mu}, \sbr{\Dif_\nu, \Dif_{\rho]}}} = 0
 \]
-as
+and from there derive the Bianchi identity
 \[
-    \sbr{\Dif_{[\mu}, \sbr{\Dif_\nu, \Dif_{\rho]}}} = 0 \,.
+    \Dif_{[\mu} F^a_{\nu\rho]} = 0 \,.
 \]
 
 There will be a lot of terms since each covariant derivative consists of two
@@ -882,7 +882,8 @@ The term with three $A$ vanishes. We start with writing explicit generators.
     &= 0
 \end{align*}
 One still has to show that terms with a single partial derivative will vanish
-as well.
+as well. This can indeed be done (Malvin did that) but I do not have the time
+to do that in detail, sorry.
 
 \end{document}
 

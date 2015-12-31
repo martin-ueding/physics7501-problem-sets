@@ -242,12 +242,8 @@
 \newcommand{\inner}[2]{\bracket{#1, #2}}
 \newcommand{\Inner}[2]{\Bracket{#1, #2}}
 
-% Placeholders.
-\newcommand{\fehlt}{\textcolor{darkred}{Hier fehlen noch Inhalte.}}
-\newcommand{\messwert}{\textcolor{blue}{\square}}
-
 % Separator for equations on a single line.
-\newcommand{\eqnsep}{,\qquad}
+\newcommand{\eqnsep}{\,,\qquad}
 
 % Quantum Mechanics.
 \RequirePackage{braket}
@@ -293,16 +289,10 @@
 %                            Bibliography (BibTeX)                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\IfFileExists{../../central-bibtex/Central}
-{\newcommand{\bibliographyfile}{../../central-bibtex/Central}}
-{
-    \IfFileExists{central-bibtex/Central}
-    {\newcommand{\bibliographyfile}{central-bibtex/Central}}
-    {\newcommand{\bibliographyfile}{../../../../zentrale_BibTeX/Central}}
-}
+\newcommand\bibliographyfile{../../../../zentrale_BibTeX/Central.bib}
 
 \RequirePackage[
-    backend=bibtex,
+    backend=biber,
     style=authoryear-icomp,
     %isbn=false,
     %pagetracker=false,
@@ -321,17 +311,11 @@
 
 \IfFileExists{\bibliographyfile}{
     \bibliography{\bibliographyfile}
-
-    \if@bibatend
-        \AtEndDocument{\printbibliography}
-    \fi
-}{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                Abbreviations                                %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\dhabk}{\mbox{d.\,h.}}
+    \AtEndDocument{\printbibliography}
+}{
+    \PackageError{header}{Bibliography file not found!}
+    {Try to fix the path of the bibliographyfile that is currently set to \bibliographyfile.}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                  Licences                                   %
@@ -362,4 +346,8 @@
 
 \RequirePackage{tikz-feynman}
 
+
+% Force floats to the top or bottom.
+\def\fps@figure{tb}
+\def\fps@table{tb}
 \endinput
