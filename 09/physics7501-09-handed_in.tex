@@ -153,9 +153,159 @@ abelian theory ($f^{abc} \equiv 0$) and also when the Lorentz gauge is chosen.
 
 \subsection{Feynman rules for non-ghosts}
 
+Here we will derive the QCD vertices. At first I thought \enquote{Didn't we
+derive those already? They look so familiar!} but that was only in Theoretical
+Particle/Hadron Physics and the derivation was rather quick. Here we will
+reproduce it in all its \cancel{glory} gory.
+
 \paragraph{Three-gluon-vertex}
 
 \paragraph{Four-gluon-vertex}
+
+The quartic gluon interaction vertex is shown in Figure~\ref{fig:four}. The
+naming of the incoming polarizations and colors (adj.) follows
+\textcite[Figure~16.1]{Peskin/QFT/1995} to allow easy comparison of the result.
+
+\begin{figure}
+    \centering
+    \includegraphics{four}
+    \caption{%
+        Quartic gluon interaction vertex.
+    }
+    \label{fig:four}
+\end{figure}
+
+The term in the Lagrangian responsible for this vertex is
+\[
+    - \frac14 g^2 f^{abc} f^{ade} A_\mu^b A_\nu^c A^\mu_d A^\nu_e \,.
+\]
+Since we want to use the more common indices for the end result, we need to
+rename the indices in that expression. Then we have
+\[
+    - \frac14 g^2 f^{fgh} f^{fij} A_\kappa^g A_\lambda^h A^\kappa_i A^\lambda_j \,.
+\]
+Although the indices $i$ and $j$ look like color-fundamental indices they are
+supposed to be color-adjoint indices. I'm sorry, there are just not enough
+letters from \enquote a to \enquote i in the alphabet \Winkey. The Feynman
+rule for the vertex is derived using functional derivatives with respect to the
+fields. The number of indices is a notational hurdle in itself made worse by
+upper and lower indices. The metric tensor becomes a Kronecker-symbol when the
+indices are mixed. It can be done rigorously with upper and lower indices, but
+that is not important here. Therefore we will just move all the Lorentz indices
+down and color-adjoint indices up. Indices occurring twice are still summed
+over by introduction of the appropriate metric tensor. This will make it a bit
+harder to read at the expense of rigor. So our vertex $V^{bcde}$ is
+\begin{align*}
+    V^{bcde}
+    &= - \frac\iup4 g^2 f^{fgh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \frac{\deltaup}{\deltaup A^d_\sigma}
+    A_\kappa^g A_\lambda^h A_\kappa^i A_\lambda^j \,.
+    \intertext{%
+        Naïve computation would give 24 terms directly, that is not really
+        nice. Therefore one should simplify after every step. The first
+        differentiation will give us
+    }
+    &= - \frac\iup4 g^2 f^{fgh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        \Xi_{\sigma\kappa}^{dg} A_{\lambda}^{h} A_{\kappa}^{i} A_{\lambda}^{j}
+        + A_{\kappa}^{g} \Xi_{\sigma\lambda}^{dh} A_{\kappa}^{i} A_{\lambda}^{j}
+        + A_{\kappa}^{g} A_{\lambda}^{h} \Xi_{\sigma\kappa}^{di} A_{\lambda}^{j}
+        + A_{\kappa}^{g} A_{\lambda}^{h} A_{\kappa}^{i} \Xi_{\sigma\lambda}^{dj}
+    \Big]
+    \intertext{%
+        We reduce the number of Lorentz indices and move the $\Xi$ up front.
+        Also we exchange the terms such that the order of the Lorentz indices
+        is always the same.
+    }
+    &= - \frac\iup4 g^2 f^{fgh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        \Xi^{dg} A_{\lambda}^{h} A_{\lambda}^{j}A_{\sigma}^{i} 
+        + \Xi^{dh} A_{\lambda}^{g} A_{\lambda}^{i} A_{\sigma}^{j}
+        + \Xi^{di} A_{\lambda}^{h} A_{\lambda}^{j} A_{\sigma}^{g}
+        + \Xi^{dj} A_{\lambda}^{g} A_{\lambda}^{i} A_{\sigma}^{h}
+    \Big]
+    \intertext{%
+        The structure constants are antisymmetric under the exchange $g
+        \leftrightarrow h$ and $i \leftrightarrow j$. They are even when done
+        both at the same time, of course. The two structure constants are even
+        under the exchange $g, h \leftrightarrow i, j$ as this can be untangled
+        by just commuting the structure constants. The first two summands are
+        equal with the two pairwise exchanges done. In the second one we have
+        $(ihjg)$ and $(jgih)$. We perform the two transforms as well and see
+        that the third and fourth term are equal as well. Therefore the
+        expression is reduced to
+    }
+    &= - \frac\iup2 g^2 f^{fgh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        \Xi^{dg} A_{\lambda}^{h} A_{\lambda}^{j}A_{\sigma}^{i} 
+        + \Xi^{dh} A_{\lambda}^{g} A_{\lambda}^{i} A_{\sigma}^{j}
+    \Big] \,.
+    \intertext{%
+        As the telemarketers say: \enquote{But why stop here?}. The remaining two
+        terms now have the indices $(ghji)$ and $(hgij)$. A quick exchange of
+        $i$ with $j$ as well as $h$ with $g$ will give the first term.
+        Therefore we are left with a single term only! The $\Xi$ can be removed
+        by renaming the index in the structure constant directly. Our current
+        expression is the eye in the storm and just has one summand:
+    }
+    &= - \iup g^2 f^{fdh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        A_{\lambda}^{h} A_{\lambda}^{j} A_{\sigma}^{i} 
+    \Big] \,.
+    \intertext{%
+        The next derivative will give us three terms again. Those are
+    }
+    &= - \iup g^2 f^{fdh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        \Xi_{\rho\lambda}^{ch} A_{\lambda}^{j} A_{\sigma}^{i} 
+        + A_{\lambda}^{h} \Xi_{\rho\lambda}^{cj} A_{\sigma}^{i} 
+        + A_{\lambda}^{h} A_{\lambda}^{j} \Xi_{\rho\sigma}^{ci} 
+    \Big] \,.
+    \intertext{%
+        Again we reduce the number of indices as far as we can. This leaves us
+    }
+    &= - \iup g^2 f^{fdh} f^{fij}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        \Xi^{ch} A_{\rho}^{j} A_{\sigma}^{i} 
+        + \Xi^{cj} A_{\rho}^{h} A_{\sigma}^{i} 
+        + \Xi_{\rho\sigma}^{ci}  A_{\lambda}^{h} A_{\lambda}^{j}
+    \Big] \,.
+    \intertext{%
+        At this point we expand the structure constants and just rename the
+        indices to get rid of the $\Xi$. The only remaining $\Xi$ with just
+        Lorentz indices is transformed into a metric tensor (in Lorentz space).
+    }
+    &= - \iup g^2
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        f^{fdc} f^{fij} A_{\rho}^{j} A_{\sigma}^{i} 
+        + f^{fdh} f^{fic} A_{\rho}^{h} A_{\sigma}^{i} 
+        + f^{fdh} f^{fcj} g_{\rho\sigma} A_{\lambda}^{h} A_{\lambda}^{j}
+    \Big] \,.
+\end{align*}
 
 \end{document}
 
