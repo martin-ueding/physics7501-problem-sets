@@ -88,10 +88,10 @@ The Yang-Mills Lagrangian coupling to quarks is given by
 \[
     \mathcal L_\text{YM}
     = \underbrace{\bar\psi [\iup \slashed\Dif - m] \psi}_\text{coupled fermion}
-    + \underbrace{\trcolorf\del{\hat F_{\mu\nu} \hat F^{\mu\nu}}}_\text{gluons}
+    - \underbrace{\frac 14 \trcolorf\del{\hat F_{\mu\nu} \hat F^{\mu\nu}}}_\text{gluons}
     - \underbrace{\frac{1}{2\xi} \partial^\mu \hat A_\mu}_\text{gauge fixing}
     + \underbrace{\bar c^a \dalambert c^a}_\text{free ghost}
-    + \underbrace{\bar c^a g f^{abc} \partial^\mu A_\mu^b c^c}_\text{ghost-gluon
+    + \underbrace{\bar c^a g f^{abc} \partial^\mu A_\mu^b c^c}_\text{ghost--gluon
     interaction} \,.
 \]
 This is a rather compact notation where complexity is hidden in the
@@ -99,6 +99,57 @@ gauge-covariant derivative and the gluon field-strength tensor. The trace is
 meant to go over the fundamental indices as the gluon field-strength tensor
 $\tens{\hat F}$ is a shorthand for $\tens F^a \mat t^a$ and the generators
 $\mat t^a$ are given in the fundamental representation.
+
+The gluon term must be expanded to give an expression to work with and derive
+Feynman rules from.
+\begin{align*}
+    - \frac14 \trcolorf\del{\hat F_{\mu\nu} \hat F^{\mu\nu}}
+    &= - \frac14 F_{\mu\nu}^a F^{\mu\nu}_b \trcolorf(t^a t^b) \\
+    &= - \frac18 F_{\mu\nu}^a F^{\mu\nu}_b \delta^{ab} \\
+    &= - \frac18 F_{\mu\nu}^a F^{\mu\nu}_a \\
+    &= - \frac18 \sbr{\partial_\mu A_\nu^a - \partial_\nu A_\mu^a + g f^{abc} A_\mu^b
+    A_\nu^c}^2 \\
+    &= - \frac18 \sbr{\iup k_\mu A_\nu^a - \iup k_\nu A_\mu^a + g f^{abc} A_\mu^b
+    A_\nu^c}^2 \\
+    &= - \frac18 \bigg[
+        - 2 k^2 (A^a)^2
+        + 2 k^\mu k^\nu A^a_\mu A^a_\nu
+        + 2 \iup g f^{abc} \sbr{k^\mu a^\nu_a - k^\nu A^\mu_a} A_\mu^b A_\nu^c
+        \\
+        &\qquad
+        + g^2 f^{abc} f^{ade} A_\mu^b A_\nu^c A^\mu_d A^\nu_e
+    \bigg] \\
+    &= \frac14 k^2 (A^a)^2
+    - \frac14 k^\mu k^\nu A^a_\mu A^a_\nu
+    - \frac12 \iup g f^{abc} k^\mu a^\nu_a A_\mu^b A_\nu^c
+    - \frac18 g^2 f^{abc} f^{ade} A_\mu^b A_\nu^c A^\mu_d A^\nu_e
+\end{align*}
+
+The expanded Lagrangian can be written as
+\begin{align*}
+    \mathcal L_\text{YM, Quarks} &= \mathcal L_\text{free} + \mathcal L_\text{int}
+    \intertext{with}
+    \mathcal L_\text{free}
+    &=
+    \underbrace{\bar\psi [\iup \slashed\partial - m] \psi}_\text{free fermion}
+    + \underbrace{\frac14 A^a_\mu \sbr{\dalambert g^{\mu\nu} -
+    \partial^\mu \partial^\nu} A^a_\nu}_\text{free gluon}
+    + \underbrace{\bar c^a \dalambert c^a}_\text{free ghost}
+    - \underbrace{\frac{1}{2\xi} \partial^\mu \hat A_\mu}_\text{gauge fixing}
+    \\
+    \mathcal L_\text{int}
+    &=
+    \underbrace{g \bar\psi \hat{\fourslash A} \psi}_\text{fermion--gluon}
+    + \underbrace{\bar c^a g f^{abc} [\partial^\mu A_\mu^b]
+    c^c}_\text{ghost--gluon}
+    - \underbrace{\frac12 \iup g f^{abc} [\partial^\mu A^\nu_a] A_\mu^b
+    A_\nu^c}_\text{triple gluon interaction}
+    - \underbrace{\frac18 g^2 f^{abc} f^{ade} A_\mu^b A_\nu^c A^\mu_d
+    A^\nu_e}_\text{quartic gluon interaction}
+\end{align*}
+
+One can see in the \enquote{ghost--gluon} term that the ghosts decouple in an
+abelian theory ($f^{abc} \equiv 0$) and also when the Lorentz gauge is chosen.
 
 \subsection{Feynman rules for non-ghosts}
 
