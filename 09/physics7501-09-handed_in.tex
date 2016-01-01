@@ -160,6 +160,166 @@ reproduce it in all its \cancel{glory} gory.
 
 \paragraph{Three-gluon-vertex}
 
+The quartic gluon interaction vertex is shown in Figure~\ref{fig:three}. The
+naming of the incoming polarizations and colors (adj.) follows
+\textcite[Figure~16.1]{Peskin/QFT/1995} to allow easy comparison of the result.
+
+\begin{figure}
+    \centering
+    \includegraphics{three}
+    \caption{%
+        Triple gluon interaction vertex.
+    }
+    \label{fig:three}
+\end{figure}
+
+From the Lagrangian the term we need to use is
+\[
+    - g f^{abc} [\partial_\kappa A^a_\lambda] A^\kappa_b A^\lambda_c \,.
+\]
+
+The Feynman rule for the vertex is derived using functional derivatives with
+respect to the fields. The number of indices is a notational hurdle in itself
+made worse by upper and lower indices. The metric tensor becomes a
+Kronecker-symbol when the indices are mixed. It can be done rigorously with
+upper and lower indices, but that is not important here. Therefore we will just
+move all the Lorentz indices down and color-adjoint indices up. Indices
+occurring twice are still summed over by introduction of the appropriate metric
+tensor. This will make it a bit harder to read at the expense of rigor.
+
+Since we want to use the more common indices for the end result, we need to
+rename the indices in that expression. Then we have
+\[
+    - g f^{def} \sbr{\partial^\kappa A_d^\lambda} A_\kappa^e A_\lambda^f \,.
+\]
+In order to get rid of the partial derivative we need to look at this in
+momentum space.
+\[
+    - \iup g f^{def} k^\kappa A_d^\lambda A_\kappa^e A_\lambda^f
+\]
+
+Now we need to apply functional derivatives to this expression in order to
+retrieve the Feynman rules. The derivatives and the momentum $k^\kappa$ in
+there are a bit tricky. The way I see it that we are now doing the functional
+differentiation in momentum space. This derivative will then give a
+$\delta$-distribution with two momenta, one of them being the $k^\kappa$ that
+is in the term. Performing the Fourier integral will then set this $k^\kappa$
+to the momentum of the incoming particle that corresponds to that particular
+functional derivative.
+
+Another thing that we will use is the $\Xi_{\mu\nu}^{ab}$ symbol that is just
+$g_{\mu\nu} \delta^{ab}$. If some indices are missing, it is just the
+corresponding part. This will save a lot of fudging with indices as a
+functional derivative will just replace $A$ with $\Xi$ and add the indices from
+the functional derivative to it.
+
+With those two things in place we can tackle the three gluon vertex
+$V^{abc}_{\mu\nu\rho}$.
+\begin{align*}
+    V^{abc}_{\mu\nu\rho}
+    &= g f^{def}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \frac{\deltaup}{\deltaup A^c_\rho}
+    \Big[
+        k^\kappa A_{\lambda}^{d} A_{\kappa}^{e} A_{\lambda}^{f}
+    \Big]
+    \intertext{%
+        We perform the first derivative.
+    }
+    &= g f^{def}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \Big[
+        k_3^\kappa \Xi_{\rho\lambda}^{cd} A_{\kappa}^{e} A_{\lambda}^{f}
+        + k^\kappa A_{\lambda}^{d} \Xi_{\rho\kappa}^{ce} A_{\lambda}^{f}
+        + k^\kappa A_{\lambda}^{d} A_{\kappa}^{e} \Xi_{\rho\lambda}^{cf}
+    \Big]
+    \intertext{%
+        We simplify the Lorentz structure a bit.
+    }
+    &= g f^{def}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \frac{\deltaup}{\deltaup A^b_\nu}
+    \Big[
+        k_3^\kappa \Xi^{cd} A_{\rho}^{f} A_{\kappa}^{e}
+        + k^\kappa \Xi_{\rho\kappa}^{ce} A_{\lambda}^{d} A_{\lambda}^{f}
+        + k^\kappa \Xi^{cf} A_{\rho}^{d} A_{\kappa}^{e}
+    \Big]
+    \intertext{%
+        Then we apply the second derivative.
+    }
+    &= g f^{def}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \Big[
+        k_3^\kappa \Xi^{cd} \Xi_{\nu\rho}^{bf} A_{\kappa}^{e}
+        + k_3^\kappa \Xi^{cd} A_{\rho}^{f} \Xi_{\nu\kappa}^{be}
+        + k_2^\kappa \Xi_{\rho\kappa}^{ce} \Xi_{\nu\lambda}^{bd} A_{\lambda}^{f}
+        + k_2^\kappa \Xi_{\rho\kappa}^{ce} A_{\lambda}^{d} \Xi_{\nu\lambda}^{bf}
+        \\&\qquad
+        + k^\kappa \Xi^{cf} \Xi_{\nu\rho}^{bd} A_{\kappa}^{e}
+        + k^\kappa \Xi^{cf} A_{\rho}^{d} \Xi_{\nu\kappa}^{be}
+    \Big]
+    \intertext{%
+        Again we can simplify a bit by applying the metric tensors in the $\Xi$
+        symbol.
+    }
+    &= g f^{def}
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \Big[
+        k_3^\kappa \Xi^{cd} \Xi_{\nu\rho}^{bf} A_{\kappa}^{e}
+        + k_3^\kappa \Xi^{cd} A_{\rho}^{f} \Xi_{\nu\kappa}^{be}
+        + k_2^\kappa \Xi_{\rho\kappa}^{ce} \Xi^{bd} A_{\nu}^{f}
+        + k_2^\kappa \Xi_{\rho\kappa}^{ce} A_{\nu}^{d} \Xi^{bf}
+        \\&\qquad
+        + k^\kappa \Xi^{cf} \Xi_{\nu\rho}^{bd} A_{\kappa}^{e}
+        + k^\kappa \Xi^{cf} A_{\rho}^{d} \Xi_{\nu\kappa}^{be}
+    \Big]
+    \intertext{%
+        Then we apply the last derivative.
+    }
+    &= g f^{def}
+    \Big[
+        k_3^\kappa \Xi^{cd} \Xi_{\nu\rho}^{bf} \Xi_{\mu\kappa}^{ae}
+        + k_3^\kappa \Xi^{cd} \Xi_{\mu\rho}^{af} \Xi_{\nu\kappa}^{be}
+        + k_2^\kappa \Xi_{\rho\kappa}^{ce} \Xi^{bd} \Xi_{\mu\nu}^{af}
+        + k_2^\kappa \Xi_{\rho\kappa}^{ce} \Xi_{\mu\nu}^{ad} \Xi^{bf}
+        \\&\qquad
+        + k_1^\kappa \Xi^{cf} \Xi_{\nu\rho}^{bd} \Xi_{\mu\kappa}^{ae}
+        + k_1^\kappa \Xi^{cf} \Xi_{\mu\rho}^{ad} \Xi_{\nu\kappa}^{be}
+    \Big]
+    \intertext{%
+        Now we simplify the Lorentz structure.
+    }
+    &= g f^{def}
+    \Big[
+        k_3^\mu \Xi^{cd} \Xi_{\nu\rho}^{bf} \Xi^{ae}
+        + k_3^\nu \Xi^{cd} \Xi_{\mu\rho}^{af} \Xi^{be}
+        + k_2^\rho \Xi^{ce} \Xi^{bd} \Xi_{\mu\nu}^{af}
+        + k_2^\rho \Xi^{ce} \Xi_{\mu\nu}^{ad} \Xi^{bf}
+        \\&\qquad
+        + k_1^\mu \Xi^{cf} \Xi_{\nu\rho}^{bd} \Xi^{ae}
+        + k_1^\nu \Xi^{cf} \Xi_{\mu\rho}^{ad} \Xi^{be}
+    \Big]
+    \intertext{%
+        The color-adjoint indices can be simplified. The terms contain a
+        permutation of $(abc)$ which is either even or odd. Those are: $(cba)$
+        odd, $(cab)$ even, $(cba)$ odd, $(cab)$ even, $(cba)$ odd, $(cab)$
+        even. Therefore we can just flip the signs and let all the $\Xi$ with
+        color-adjoint indices go away.
+    }
+    &= g f^{def}
+    \Big[
+        k_3^\nu g_{\mu\rho}
+        + k_1^\nu g_{\mu\rho}
+        - k_2^\rho g_{\mu\nu}
+        + k_2^\rho g_{\mu\nu}
+        - k_3^\mu g_{\nu\rho}
+        - k_1^\mu g_{\nu\rho}
+    \Big]
+\end{align*}
+This is somewhat close to the desired result but wrong.
+
 \paragraph{Four-gluon-vertex}
 
 The quartic gluon interaction vertex is shown in Figure~\ref{fig:four}. The
@@ -186,15 +346,9 @@ rename the indices in that expression. Then we have
 \]
 Although the indices $i$ and $j$ look like color-fundamental indices they are
 supposed to be color-adjoint indices. I'm sorry, there are just not enough
-letters from \enquote a to \enquote i in the alphabet \Winkey. The Feynman
-rule for the vertex is derived using functional derivatives with respect to the
-fields. The number of indices is a notational hurdle in itself made worse by
-upper and lower indices. The metric tensor becomes a Kronecker-symbol when the
-indices are mixed. It can be done rigorously with upper and lower indices, but
-that is not important here. Therefore we will just move all the Lorentz indices
-down and color-adjoint indices up. Indices occurring twice are still summed
-over by introduction of the appropriate metric tensor. This will make it a bit
-harder to read at the expense of rigor. So our vertex $V^{bcde}$ is
+letters from \enquote a to \enquote i in the alphabet \Winkey.
+
+So our vertex $V^{bcde}$ is
 \begin{align*}
     V^{bcde}
     &= - \frac\iup4 g^2 f^{fgh} f^{fij}
