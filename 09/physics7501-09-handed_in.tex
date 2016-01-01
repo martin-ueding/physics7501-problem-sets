@@ -1,0 +1,111 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{multicol}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+\usepackage{tikzsymbols}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{9}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{20} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{Fixing the non-Abelian gauge (with ghosts)}
+\label{homework:1}
+
+\subsection{Functional determinant and propagator}
+
+\paragraph{Functional determinant}
+
+\paragraph{Propagator}
+
+\subsection{Feynman rules for ghosts}
+
+\subsection{Yang-Mills Lagrangian}
+
+The Yang-Mills Lagrangian coupling to quarks is given by
+\[
+    \mathcal L_\text{YM}
+    = \underbrace{\bar\psi [\iup \slashed\Dif - m] \psi}_\text{coupled fermion}
+    + \underbrace{\trcolorf\del{\hat F_{\mu\nu} \hat F^{\mu\nu}}}_\text{gluons}
+    - \underbrace{\frac{1}{2\xi} \partial^\mu \hat A_\mu}_\text{gauge fixing}
+    + \underbrace{\bar c^a \dalambert c^a}_\text{free ghost}
+    + \underbrace{\bar c^a g f^{abc} \partial^\mu A_\mu^b c^c}_\text{ghost-gluon
+    interaction} \,.
+\]
+This is a rather compact notation where complexity is hidden in the
+gauge-covariant derivative and the gluon field-strength tensor. The trace is
+meant to go over the fundamental indices as the gluon field-strength tensor
+$\tens{\hat F}$ is a shorthand for $\tens F^a \mat t^a$ and the generators
+$\mat t^a$ are given in the fundamental representation.
+
+\subsection{Feynman rules for non-ghosts}
+
+\paragraph{Three-gluon-vertex}
+
+\paragraph{Four-gluon-vertex}
+
+\end{document}
+
+% vim: spell spelllang=en tw=79
