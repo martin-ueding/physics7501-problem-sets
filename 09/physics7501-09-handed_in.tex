@@ -273,7 +273,6 @@ harder to read at the expense of rigor. So our vertex $V^{bcde}$ is
     &= - \iup g^2 f^{fdh} f^{fij}
     \frac{\deltaup}{\deltaup A^a_\mu}
     \frac{\deltaup}{\deltaup A^b_\nu}
-    \frac{\deltaup}{\deltaup A^c_\rho}
     \Big[
         \Xi_{\rho\lambda}^{ch} A_{\lambda}^{j} A_{\sigma}^{i} 
         + A_{\lambda}^{h} \Xi_{\rho\lambda}^{cj} A_{\sigma}^{i} 
@@ -285,7 +284,6 @@ harder to read at the expense of rigor. So our vertex $V^{bcde}$ is
     &= - \iup g^2 f^{fdh} f^{fij}
     \frac{\deltaup}{\deltaup A^a_\mu}
     \frac{\deltaup}{\deltaup A^b_\nu}
-    \frac{\deltaup}{\deltaup A^c_\rho}
     \Big[
         \Xi^{ch} A_{\rho}^{j} A_{\sigma}^{i} 
         + \Xi^{cj} A_{\rho}^{h} A_{\sigma}^{i} 
@@ -299,13 +297,98 @@ harder to read at the expense of rigor. So our vertex $V^{bcde}$ is
     &= - \iup g^2
     \frac{\deltaup}{\deltaup A^a_\mu}
     \frac{\deltaup}{\deltaup A^b_\nu}
-    \frac{\deltaup}{\deltaup A^c_\rho}
     \Big[
         f^{fdc} f^{fij} A_{\rho}^{j} A_{\sigma}^{i} 
         + f^{fdh} f^{fic} A_{\rho}^{h} A_{\sigma}^{i} 
         + f^{fdh} f^{fcj} g_{\rho\sigma} A_{\lambda}^{h} A_{\lambda}^{j}
+    \Big]
+    \intertext{%
+        Clearing of smoke means that more smoke has to be created. The next
+        derivative gives us just two terms per summand.
+    }
+    &= - \iup g^2
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \Big[
+        f^{fdc} f^{fij} \Xi_{\nu\rho}^{bj} A_{\sigma}^{i} 
+        + f^{fdc} f^{fij} A_{\rho}^{j} \Xi_{\nu\sigma}^{bi} 
+        + f^{fdh} f^{fic} \Xi_{\nu\rho}^{bh} A_{\sigma}^{i} 
+        + f^{fdh} f^{fic} A_{\rho}^{h} \Xi_{\nu\sigma}^{bi} 
+        \\&\qquad
+        + f^{fdh} f^{fcj} g_{\rho\sigma} \Xi_{\nu\lambda}^{bh} A_{\lambda}^{j}
+        + f^{fdh} f^{fcj} g_{\rho\sigma} A_{\lambda}^{h} \Xi_{\nu\lambda}^{bj}
+    \Big]
+    \intertext{%
+        Simplifying is easier here. We rename the indices in the structure
+        constants and introduce metric tensors.
+    }
+    &= - \iup g^2
+    \frac{\deltaup}{\deltaup A^a_\mu}
+    \Big[
+        f^{fdc} f^{fib} g_{\nu\rho} A_{\sigma}^{i} 
+        + f^{fdc} f^{fbj} g_{\nu\sigma} A_{\rho}^{j}
+        + f^{fdb} f^{fic} g_{\nu\rho} A_{\sigma}^{i} 
+        + f^{fdh} f^{fbc} g_{\nu\sigma} A_{\rho}^{h}
+        \\&\qquad
+        + f^{fdb} f^{fcj} g_{\rho\sigma} g_{\nu\lambda} A_{\lambda}^{j}
+        + f^{fdh} f^{fcb} g_{\rho\sigma} g_{\nu\lambda} A_{\lambda}^{h}
+    \Big]
+    \intertext{%
+        The last derivative will just replace every $A$ with $\Xi$.
+    }
+    &= - \iup g^2
+    \Big[
+        f^{fdc} f^{fib} g_{\nu\rho} \Xi_{\mu\sigma}^{ai} 
+        + f^{fdc} f^{fbj} g_{\nu\sigma} \Xi_{\mu\rho}^{aj}
+        + f^{fdb} f^{fic} g_{\nu\rho} \Xi_{\mu\sigma}^{ai} 
+        + f^{fdh} f^{fbc} g_{\nu\sigma} \Xi_{\mu\rho}^{ah}
+        \\&\qquad
+        + f^{fdb} f^{fcj} g_{\rho\sigma} g_{\nu\lambda} \Xi_{\mu\lambda}^{aj}
+        + f^{fdh} f^{fcb} g_{\rho\sigma} g_{\nu\lambda} \Xi_{\mu\lambda}^{ah}
+    \Big]
+    \intertext{%
+        Then we simplify again.
+    }
+    &= - \iup g^2
+    \Big[
+        f^{fdc} f^{fab}  g_{\mu\sigma} g_{\nu\rho}
+        + f^{fdc} f^{fba} g_{\mu\rho} g_{\nu\sigma}
+        + f^{fdb} f^{fac} g_{\mu\sigma}  g_{\nu\rho}
+        + f^{fda} f^{fbc} g_{\mu\rho} g_{\nu\sigma}
+        \\&\qquad
+        + f^{fdb} f^{fca} g_{\mu\nu} g_{\rho\sigma}
+        + f^{fda} f^{fcb} g_{\mu\nu} g_{\rho\sigma}
+    \Big]
+    \intertext{%
+        We sort the indices in the structure constants as far as possible and
+        introduce some minus signs doing so.
+    }
+    &= - \iup g^2
+    \Big[
+        f^{fab} f^{fcd} g_{\mu\rho} g_{\nu\sigma}
+        - f^{fab} f^{fcd} g_{\mu\sigma} g_{\nu\rho}
+        + f^{fac} f^{fbd} g_{\mu\nu} g_{\rho\sigma}
+        - f^{fac} f^{fbd} g_{\mu\sigma}  g_{\nu\rho}
+        \\&\qquad
+        + f^{fad} f^{fbc} g_{\mu\nu} g_{\rho\sigma}
+        - f^{fad} f^{fbc} g_{\mu\rho} g_{\nu\sigma}
+    \Big]
+    \intertext{%
+        We can then factor out the common terms and have the final result
+    }
+    &= - \iup g^2
+    \Big[
+        f^{fab} f^{fcd} [g_{\mu\rho} g_{\nu\sigma}
+        - g_{\mu\sigma} g_{\nu\rho}]
+        + f^{fac} f^{fbd} [g_{\mu\nu} g_{\rho\sigma}
+        - g_{\mu\sigma}  g_{\nu\rho}]
+        \\&\qquad
+        + f^{fad} f^{fbc} [g_{\mu\nu} g_{\rho\sigma}
+        - g_{\mu\rho} g_{\nu\sigma}]
     \Big] \,.
 \end{align*}
+This matches the result given by \textcite[Figure~16.1]{Peskin/QFT/1995} so
+although the handling of the Lorentz indices was a little rough along the way
+the result is correct.
 
 \end{document}
 
