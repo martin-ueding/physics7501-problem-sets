@@ -11,6 +11,7 @@
 \usepackage{subcaption}
 \usepackage{cancel}
 \usepackage{tikzsymbols}
+\usepackage{placeins}
 
 \newcommand\timeorder{\mathscr T}
 \newcommand\normorder{\mathscr N}
@@ -191,7 +192,59 @@ where we can flip the minus sign to give the usual form of
     \frac{k^\mu k^\nu}{k^2}} \,.
 \]
 
+\FloatBarrier
 \subsection{Feynman rules for ghosts}
+
+Just looking at the Lagrangian density in the given path integral one read off
+the vertex to some extend. The partial derivative has to be converted into a
+momentum. For some reason that is the momentum of the outgoing ghost.
+\Textcite[514]{Peskin/QFT/1995} write:
+
+\begin{quote}
+    \enquote{%
+        In the interaction term of (16.32), the derivative stands to the left
+        of the gauge field; this implies that this derivative is evaluated with
+        the momentum coming out of the vertex along the ghost line.%
+    }
+\end{quote}
+
+\begin{table}
+    \begin{question}
+        Why does the partial derivative become the momentum of $\bar c$?
+    \end{question}
+\end{table}
+
+If one assumes this, then the vertex is easy. The term interaction term in the
+Lagrangian is just
+\[
+    - \bar c^a f^{abc} \partial^\mu A^b_\mu c^c \,.
+\]
+Now replace the partial derivative with the momentum of $\bar c$ and obtain
+\[
+    - \iup k^\mu \bar c^a f^{abc} A^b_\mu c^c \,.
+\]
+Taking the functional derivative with respect to all the terms we have
+\[
+    - \iup k^\mu f^{abc} \,.
+\]
+Another $\iup$ comes in for the vertex from some $\iup$ in the path integral.
+So all in all we have
+\[
+    k^\mu f^{abc}
+\]
+for the vertex. This is not correct, \textcite[Figure~16.5]{Peskin/QFT/1995}
+gives the same rule with a minus sign. Therefore we made a sign mistake by
+ignoring the anticommuting property of the Grassmann field $c$.
+
+\begin{table}
+    \begin{question}
+        Where does the imaginary unit come from that we have to add to every
+        vertex? I remember it being from the path integral but I am not sure
+        which $\iup$ it was exactly.
+    \end{question}
+\end{table}
+
+\FloatBarrier
 
 \subsection{Yang-Mills Lagrangian}
 
