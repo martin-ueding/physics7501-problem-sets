@@ -195,8 +195,34 @@ where we can flip the minus sign to give the usual form of
 \FloatBarrier
 \subsection{Feynman rules for ghosts}
 
+In the equation~(3) given on the problem set the ghost fields do not explicitly
+contain color-adjoint indices. The expression should be
+\[
+    \bar c^a \sbr{\frac1g \dalambert \delta^{ac} + f^{abc} \partial_\mu
+    A_\mu^b} c^c \,.
+\]
+The $c^c$ looks rather weird as both $c$s are not members of the same field.
+The normal one is a Grassmann field and the superscript is a natural number, a
+color-adjoint index.
+
+\paragraph{Naïve extraction}
+
+The propagator seems easy. The quadratic part in the ghost field is just a
+massless Klein-Gordon equation which also preserves color-adjoint. In the
+momentum space this is
+\[
+    \frac 1g \bar c^a \four k^2 \delta^{ab} c^b \,.
+\]
+The kinetic operator is just $\four k^2 \delta^{ab} /g$ and therefore the
+inverse is
+\[
+    \frac 1g \frac{\iup \delta^{ab}}{\four k^2} \,.
+\]
+The imaginary unit comes from the definition of the inverse as used in the
+previous problem.
+
 Just looking at the Lagrangian density in the given path integral one read off
-the vertex to some extend. The partial derivative has to be converted into a
+the vertex to some extent. The partial derivative has to be converted into a
 momentum. For some reason that is the momentum of the outgoing ghost.
 \Textcite[514]{Peskin/QFT/1995} write:
 
@@ -234,7 +260,9 @@ So all in all we have
 \]
 for the vertex. This is not correct, \textcite[Figure~16.5]{Peskin/QFT/1995}
 gives the same rule with a minus sign. Therefore we made a sign mistake by
-ignoring the anticommuting property of the Grassmann field $c$.
+ignoring the anticommuting property of the Grassmann field~$c$. The factor $g$
+that is missing here seems to be absorbed or extracted from the ghost field.
+Therefore it does not directly appear in the vertex expression.
 
 \begin{table}
     \begin{question}
@@ -243,6 +271,8 @@ ignoring the anticommuting property of the Grassmann field $c$.
         which $\iup$ it was exactly.
     \end{question}
 \end{table}
+
+\paragraph{Generating functional}
 
 \FloatBarrier
 
