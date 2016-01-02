@@ -78,7 +78,118 @@
 
 \paragraph{Functional determinant}
 
+In the functional determinant there is the term
+\[
+    \frac{\deltaup G([\hat A^\alpha]^a)}{\deltaup \alpha} \,.
+\]
+We have to evaluate this expression.
+
+$G$ is the gauge fixing function where the condition simply is $G(\hat A) \equiv 0$.
+The condition used is the Lorenz gauge $G(\hat A) = \partial^\mu \hat A_\mu$ also
+used by \textcite[512]{Peskin/QFT/1995}. The transformed $\hat A^\alpha$ is
+given by
+\[
+    [\hat A^\alpha]^a_\mu t^a = \exp(\iup \alpha^a t^a) \sbr{A_\mu^b t^b +
+    \frac \iup g \partial_\mu} \exp(\iup \alpha^c t^c) \,.
+\]
+The infinitesimal form, which is more useful here, is given by
+\[
+    [\hat A^\alpha]^a_\mu t^a = \sbr{A_\mu^a + \frac 1g \partial_\mu \alpha^a +
+    f^{abc} A^b_\mu \alpha^c} t^a + \mathrm O(\alpha^2) \,.
+\]
+We can now take the partial derivative of this and obtain the gauge functional
+\[
+    G(\hat A^\alpha) = \partial^\mu \hat A_\mu + \frac 1g \dalambert \hat
+    \alpha
+    +
+    f^{abc} \partial^\mu A^b_\mu \alpha^c t^a + \mathrm O(\alpha^2) \,.
+\]
+A functional derivative with respect to $\alpha^c$ gives us
+\[
+    \frac{\deltaup G([\hat A^\alpha]^a)}{\deltaup \alpha}
+    = \frac 1g \dalambert \delta^{ac} + f^{abc} \partial^\mu A_\mu^b \,.
+\]
+That is the expression to derive.
+
 \paragraph{Propagator}
+
+For the propagator of the gluons we have to expand the gauge kinetic term. This
+is
+\begin{align*}
+    \mathcal L_\text{gauge-kinetic}
+    &= - \frac14 F_{\mu\nu}^a F^{\mu\nu}_a - \frac{1}{2\xi} \sbr{\partial^\mu
+    A_\mu^a}^2 \,.
+    \intertext{%
+        Now we will have to expand this term. The gauge field strength tensor
+        expanded gives us
+    }
+    &= - \frac14 \sbr{\partial_\mu A_\nu^a - \partial_\nu A_\mu^a + g f^{abc}
+    A_\mu^b A_\nu^c}^2
+    - \frac{1}{2\xi} \sbr{\partial^\mu A_\mu^a}^2 \,.
+    \intertext{%
+        The partial derivatives are not that handy, therefore we convert them
+        to $\iup k_\mu$ and regard the expression being in momentum space. Then
+        we have
+    }
+    &= - \frac14 \sbr{\iup k_\mu A_\nu^a - \iup k_\nu A_\mu^a + g f^{abc}
+    A_\mu^b A_\nu^c}^2
+    - \frac{1}{2\xi} \sbr{\iup k^\mu A_\mu^a}^2 \,.
+    \intertext{%
+        The square in the first expression will give nine terms, some of them
+        are redundant directly or after renaming the internal indices. We then
+        have
+    }
+    &= - \frac14 \sbr{-2 k^2 A_\nu^a A^\nu_a + 2 k^\mu k_\nu A_\mu^a A_\nu^a +
+    2 \iup g f^{abc} \sbr{k^\mu A^\nu_a - k^\nu A_\mu^a} A_\mu^b A_\nu^c + g^2
+    f^{abc} f^{ade} A_\mu^b A_\nu^c A^\mu_d A^\nu_e}
+    \\&\qquad
+    - \frac{1}{2\xi} \sbr{\iup k^\mu A_\mu^a}^2 \,.
+\end{align*}
+
+This is the part I am not sure about. There are a lot of terms in this
+expression. They contain two, three or four terms of $A$. Can I now just say
+that the propagator is the quadratic term in $A$ and only look at that?
+Otherwise the propagator will not turn out to be similar to the photon
+propagator. When only the quadratic terms in $A$ are taken into account, no
+terms with structure constants remain. The whole non-abelian part of the theory
+is not apparent in the quadratic term which looks exactly like the photon part.
+Therefore one can conclude from here that gluons propagate like photons. Gluon
+propagation does not change the color-adj., so one needs an additional
+$\delta^{ab}$ factor.
+
+The kinetic operator can then be written suggestively as
+\[
+    A_\mu^a \mathcal K^{\mu\nu}_{ab} A_\nu^b := \frac 12 A_\mu^a \sbr{k^2
+    g^{\mu\nu} - \sbr{1 - \frac 1\xi} k^\mu k^\nu} \delta^{ab} A_\nu^b \,.
+\]
+A properly defined inverse of this $\mathcal K$ is the propagator. The defining
+equation is
+\[
+    \mathcal K_{\mu\nu}^{ab}
+    \tilde D^{\nu\rho}_{bc} = \iup \delta^\rho_\mu \delta^{ac} \,.
+\]
+One then goes by Lorentz symmetry and finds that the only terms that may
+contribute to $\tilde D$ are $g^{\nu\rho}$ and $k^\nu k^\rho$ as well as the
+scalar $k^2$. Setting up an ansatz
+\[
+    \tilde D^{\nu\rho}_{bc} = \sbr{a g^{\nu\rho} + b k^\nu k^\rho} \delta_{bc}
+\]
+and plugging that into the equation will give us
+\[
+    a = \frac{\iup}{k^2}
+    \eqnsep
+    b = \frac{\iup}{k^3} [\xi - 1] \,.
+\]
+From this we obtain the propagator
+\[
+    \tilde D^{\mu\nu} = \frac{\iup}{k^2} \sbr{g^{\mu\nu} + [1 - \xi]
+    \frac{k^\mu k^\nu}{k^2}} \,,
+\]
+where we can flip the minus sign to give the usual form of
+\[
+    \tilde D^{\mu\nu} = \frac{\iup}{k^2} \sbr{g^{\mu\nu} - [\xi - 1]
+    \frac{k^\mu k^\nu}{k^2}} \,.
+\]
 
 \subsection{Feynman rules for ghosts}
 
