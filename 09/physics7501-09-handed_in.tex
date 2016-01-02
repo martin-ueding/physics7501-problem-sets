@@ -195,7 +195,7 @@ where we can flip the minus sign to give the usual form of
 \FloatBarrier
 \subsection{Feynman rules for ghosts}
 
-In the equation~(3) given on the problem set the ghost fields do not explicitly
+In the Equation~(3) given on the problem set the ghost fields do not explicitly
 contain color-adjoint indices. The expression should be
 \[
     \bar c^a \sbr{\frac1g \dalambert \delta^{ac} + f^{abc} \partial_\mu
@@ -219,7 +219,9 @@ inverse is
     \frac 1g \frac{\iup \delta^{ab}}{\four k^2} \,.
 \]
 The imaginary unit comes from the definition of the inverse as used in the
-previous problem.
+previous problem. The inverse coupling constant is a bit strange. It should
+probably be absorbed somewhere such that the propagators does not include the
+coupling.
 
 Just looking at the Lagrangian density in the given path integral one read off
 the vertex to some extent. The partial derivative has to be converted into a
@@ -234,11 +236,9 @@ momentum. For some reason that is the momentum of the outgoing ghost.
     }
 \end{quote}
 
-\begin{table}
     \begin{question}
         Why does the partial derivative become the momentum of $\bar c$?
     \end{question}
-\end{table}
 
 If one assumes this, then the vertex is easy. The term interaction term in the
 Lagrangian is just
@@ -264,17 +264,51 @@ ignoring the anticommuting property of the Grassmann field~$c$. The factor $g$
 that is missing here seems to be absorbed or extracted from the ghost field.
 Therefore it does not directly appear in the vertex expression.
 
-\begin{table}
     \begin{question}
         Where does the imaginary unit come from that we have to add to every
         vertex? I remember it being from the path integral but I am not sure
         which $\iup$ it was exactly.
     \end{question}
-\end{table}
 
 \paragraph{Generating functional}
 
-\FloatBarrier
+The generating functional should be
+\[
+    Z(\bar\eta, \eta) =
+    \int \mathcal D \bar\psi \, \mathcal D \psi
+    \exp\del{
+        \iup \int \dif^4 x \sbr{
+            \bar c^a \sbr{
+                \dalambert \delta^{ac} + g f^{abc} \partial^\mu A_\mu^b  
+            } c^c
+            + \bar\eta c
+            + \bar c \eta
+        }
+    } \,.
+\]
+We have multiplied by $g$ such that the equations match the ones of the book.
+This is just a redefinition of the ghost field by a factor $\sqrt g$ which
+should be fine.
+
+By completing the square in $c$ in the exponential we should be able to extract
+a term which does not depend on $\eta$ and $\bar \eta$ and a term which only
+depends on $\eta$ and $\bar\eta$. We did this on sheet~6 for the Dirac field.
+There however we had a free field theory which seems to be the requirement for
+the completion of the square \parencite[290]{Peskin/QFT/1995}. Therefore we
+cannot complete the square here.
+
+The generating functional seems to allow for generation of correlation
+functions. When we want to obtain a vertex we need to obtain a correlation
+function like
+\(
+    \bracket{\bar c(\four k_1) \, A^a_\mu(\four k_2) \, c(\four k_3)}
+\)
+and then strip all the correlators. The remainder should be the vertex. In
+order to do this we would need an additional source term $\four J$ in the
+generating functional to be able to pull out gluon fields $\four A$.
+
+In the correct gluon--ghost vertex there is also a structure constant. So
+somehow we have to get that as well.
 
 \subsection{Yang-Mills Lagrangian}
 
@@ -344,6 +378,24 @@ The expanded Lagrangian can be written as
 
 One can see in the \enquote{ghost--gluon} term that the ghosts decouple in an
 abelian theory ($f^{abc} \equiv 0$) and also when the Lorentz gauge is chosen.
+
+\begin{question}
+    In an abelian theory, the ghosts decouple and do not need to be taken into
+    account. The ghosts of QCD would be vacuum bubbles in QED. In all physical
+    observables those would just cancel out. Therefore we do not have to take
+    them into account.
+
+    If those states do exist but not couple to any of the matter with forces we
+    know they would still have energy and therefore mass. Using general
+    relativity this would change gravity.
+
+    Is it possible to just invent new fields which are decoupled from the
+    electric, strong and weak force such that no QFT is changed but one has
+    some leverage to explain dark matter or energy with that? I mean it is
+    probably not \emph{that} easy, otherwise somebody would have done so
+    already. It is more a question about the general possibility of adding
+    decoupled fields.
+\end{question}
 
 \subsection{Feynman rules for non-ghosts}
 
