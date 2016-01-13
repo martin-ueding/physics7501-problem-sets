@@ -1,0 +1,166 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{multicol}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+\usepackage{tikzsymbols}
+\usepackage{placeins}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{10}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{25} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{Renormalization of $\phi^3$-theory in six dimensions}
+\label{homework:1}
+
+\subsection{Dimensionality}
+
+\paragraph{Four dimensions}
+
+The action is dimensionless as it is fed into the path integral. There in the
+exponential it must not have any unit. As the Lagrangian density is integrated
+over the whole four dimensional space-time and space has negative energy
+dimension, it must have energy dimension of four.
+
+\paragraph{Six dimensions}
+
+In our case here we are in \emph{six} dimensions. Therefore the Lagrangian
+density must have mass dimension of six. We denote the mass/energy dimension
+with the function $D$. We now need $D(\mathcal L) = d$ where $d = 6$ as the
+integration over $\dif^6 x$ because $D(\int \dif^6 x) = -6$.
+
+Looking at the bilinear mass term and taking $D(m) = 1$ for granted, we must
+have $D(\phi) = 2$. From that we conclude $D(c) = 4$ and $D(g) = 0$. This is
+all combined in Table~\ref{tab:mass_dimensions}.
+
+\paragraph{Real dimension}
+
+Now we will go into $d = 6 - 2 \epsilon$ dimensions. The integration measure is
+now of $-d$ mass dimensions and the Lagrangian density has to be of mass
+dimension $d$. Starting again with the mass term we see that
+\[
+    D(m^2 \phi^2) = D(m^2) + D(\phi^2) = 2 + 2 D(\phi) \overset != d \,.
+\]
+From there we must have $D(\phi) = 2 - \epsilon$. With that we can look at $c$.
+We have
+\[
+    D(c \phi) = D(c) + D(\phi) = D(c) + 2 - \epsilon \overset != d \,.
+\]
+We conclude that $D(c) = 4 - \epsilon$. Finally we can look at $g$. Here it is
+\[
+    D(g \phi^3) = D(g) + 3 D(\phi) = D(g) + 6 - 3 \epsilon \overset != d \,.
+\]
+Solving for $D(g)$ gives us $D(g) = \epsilon$. We now have to introduce the
+$\mu$ to absorb the mass dimension of $g$ and make $g$ a dimensionless constant
+again. We assume $D(\mu) = 1$ as $\mu$ has been used as a regulating photon
+mass before. We need $D(\mu^x g) = \epsilon$ such that $D(g)$ can stay zero.
+This brings us to
+\[
+    D(\mu^x g) = x D(\mu) + D(g) = x + 0 \overset != \epsilon
+\]
+and we conclude that $x = \epsilon$.
+
+All the mass dimensions for both cases are collected in
+Table~\ref{tab:mass_dimensions} for easy review.
+
+\begin{table}
+    \centering
+    \begin{tabular}{lSc}
+        \toprule
+        Term & {$D$ for $d = 6$} & {$D$ for $d = 6 - 2\epsilon$} \\
+        \midrule
+        $\int \dif^d x$ & -6 & $-6 + 2 \epsilon$ \\
+        $\mathcal L$ & 6 & $6 - 2 \epsilon$ \\
+        $\partial$ & 1 & 1 \\
+        \midrule
+        $m$ & 1 & 1 \\
+        $\phi$ & 2 & $2 - \epsilon$ \\
+        $c$ & 4 & $4 - \epsilon$ \\
+        \midrule
+        $g$ & 0 & 0 \\
+        $\mu$ & 1 & 1 \\
+        $\mu^x$ & 0 & $\epsilon$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Mass dimensions}
+    \label{tab:mass_dimensions}
+\end{table}
+
+\begin{question}
+    In general relativity one writes $\partial$ for the normal partial
+    derivative and $\nabla$ for the covariant derivative (or connection as it
+    is called in mathematics). In gauge theory one also starts with $\partial$
+    but calls the covariant derivative $\Dif$. Why is that? To me the $\Dif$
+    looks like a more general form of $\dif$, the exterior derivative that acts
+    on differential forms. In some way we have $\dif f \simeq \vec\partial f$.
+
+    Is there a reason at all, is it just convention or is it to distinguish the
+    gauge covariant connection from field theory from the Levi-Civita
+    connection of general relativity?
+\end{question}
+
+\end{document}
+
+% vim: spell spelllang=en tw=79
