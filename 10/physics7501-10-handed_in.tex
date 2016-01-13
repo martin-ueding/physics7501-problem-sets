@@ -75,6 +75,8 @@
 \section{Renormalization of $\phi^3$-theory in six dimensions}
 \label{homework:1}
 
+\newcommand\mdim M
+
 \subsection{Dimensionality}
 
 \paragraph{Four dimensions}
@@ -88,12 +90,12 @@ dimension, it must have energy dimension of four.
 
 In our case here we are in \emph{six} dimensions. Therefore the Lagrangian
 density must have mass dimension of six. We denote the mass/energy dimension
-with the function $D$. We now need $D(\mathcal L) = d$ where $d = 6$ as the
-integration over $\dif^6 x$ because $D(\int \dif^6 x) = -6$.
+with the function $\mdim$. We now need $\mdim(\mathcal L) = d$ where $d = 6$ as
+the integration over $\dif^6 x$ because $\mdim(\int \dif^6 x) = -6$.
 
-Looking at the bilinear mass term and taking $D(m) = 1$ for granted, we must
-have $D(\phi) = 2$. From that we conclude $D(c) = 4$ and $D(g) = 0$. This is
-all combined in Table~\ref{tab:mass_dimensions}.
+Looking at the bilinear mass term and taking $\mdim(m) = 1$ for granted, we
+must have $\mdim(\phi) = 2$. From that we conclude $\mdim(c) = 4$ and $\mdim(g)
+= 0$. This is all combined in Table~\ref{tab:mass_dimensions}.
 
 \paragraph{Real dimension}
 
@@ -101,24 +103,25 @@ Now we will go into $d = 6 - 2 \epsilon$ dimensions. The integration measure is
 now of $-d$ mass dimensions and the Lagrangian density has to be of mass
 dimension $d$. Starting again with the mass term we see that
 \[
-    D(m^2 \phi^2) = D(m^2) + D(\phi^2) = 2 + 2 D(\phi) \overset != d \,.
+    \mdim(m^2 \phi^2) = \mdim(m^2) + \mdim(\phi^2) = 2 + 2 \mdim(\phi) \overset != d \,.
 \]
-From there we must have $D(\phi) = 2 - \epsilon$. With that we can look at $c$.
-We have
+From there we must have $\mdim(\phi) = 2 - \epsilon$. With that we can look at
+$c$. We have
 \[
-    D(c \phi) = D(c) + D(\phi) = D(c) + 2 - \epsilon \overset != d \,.
+    \mdim(c \phi) = \mdim(c) + \mdim(\phi) = \mdim(c) + 2 - \epsilon \overset != d \,.
 \]
-We conclude that $D(c) = 4 - \epsilon$. Finally we can look at $g$. Here it is
+We conclude that $\mdim(c) = 4 - \epsilon$. Finally we can look at $g$. Here it
+is
 \[
-    D(g \phi^3) = D(g) + 3 D(\phi) = D(g) + 6 - 3 \epsilon \overset != d \,.
+    \mdim(g \phi^3) = \mdim(g) + 3 \mdim(\phi) = \mdim(g) + 6 - 3 \epsilon \overset != d \,.
 \]
-Solving for $D(g)$ gives us $D(g) = \epsilon$. We now have to introduce the
-$\mu$ to absorb the mass dimension of $g$ and make $g$ a dimensionless constant
-again. We assume $D(\mu) = 1$ as $\mu$ has been used as a regulating photon
-mass before. We need $D(\mu^x g) = \epsilon$ such that $D(g)$ can stay zero.
-This brings us to
+Solving for $\mdim(g)$ gives us $\mdim(g) = \epsilon$. We now have to introduce
+the $\mu$ to absorb the mass dimension of $g$ and make $g$ a dimensionless
+constant again. We assume $\mdim(\mu) = 1$ as $\mu$ has been used as a
+regulating photon mass before. We need $\mdim(\mu^x g) = \epsilon$ such that
+$\mdim(g)$ can stay zero. This brings us to
 \[
-    D(\mu^x g) = x D(\mu) + D(g) = x + 0 \overset != \epsilon
+    \mdim(\mu^x g) = x \mdim(\mu) + \mdim(g) = x + 0 \overset != \epsilon
 \]
 and we conclude that $x = \epsilon$.
 
@@ -129,7 +132,7 @@ Table~\ref{tab:mass_dimensions} for easy review.
     \centering
     \begin{tabular}{lSc}
         \toprule
-        Term & {$D$ for $d = 6$} & {$D$ for $d = 6 - 2\epsilon$} \\
+        Term & {$\mdim$ for $d = 6$} & {$\mdim$ for $d = 6 - 2\epsilon$} \\
         \midrule
         $\int \dif^d x$ & -6 & $-6 + 2 \epsilon$ \\
         $\mathcal L$ & 6 & $6 - 2 \epsilon$ \\
