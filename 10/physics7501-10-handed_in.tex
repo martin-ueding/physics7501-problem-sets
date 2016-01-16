@@ -356,7 +356,7 @@ in Table~\ref{tab:divergence}.
         \toprule
         Figure & {$N_\text e$} & {$D$} & {$S$} \\
         \midrule
-        \ref{fig:loop/0} & 0 & 2  & 1 \\
+        \ref{fig:loop/0} & 0 & 4  & 1 \\
         \ref{fig:loop/1} & 1 & 4  & 2 \\
         \ref{fig:loop/2} & 2 & 2  & 4 \\
         \ref{fig:loop/3} & 3 & 0  & 6 \\
@@ -395,6 +395,26 @@ probably lead to the wrong result. We have no contractions in this diagram so
 the symmetry factor is probably just one.
 
 \subsection{Taylor expansion}
+
+\paragraph{No legs}
+
+Without any legs, we have no external momentum. Therefore we just have
+\[
+    \iup \mathcal M
+    = \iup \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{p^2 - m^2} \,.
+\]
+This is divergent by $D = d - 2$, which seems to be quartic for $\epsilon = 0$.
+
+\paragraph{One leg}
+
+One external leg still does not give us any additional momentum in the loop.
+Only the loop momentum can go around in the loop, no momentum can be
+transported into the $g$-tadpole. Therefore we just have
+\[
+    \iup \mathcal M
+    = - \mu^x g \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{\sbr{p^2 - m^2}^2}
+\]
+which has a divergence of $D = d - 4$ which is quadratic.
 
 \paragraph{Two legs}
 
@@ -457,7 +477,7 @@ bracket is included in this as well. We obtain
     \bigg[
         \underbrace{\frac{1}{p^2 - m^2}}_{D = d -4}
         - \underbrace{\frac{\four p \cdot \four k}{\sbr{p^2 - m^2}^2}}_{D = d - 5}
-        + \underbrace{\sbr{\frac{4p^2}{\sbr{p^2 - m^2}^3}- \frac{2}{\sbr{p^2 -
+        + \underbrace{\sbr{\frac{4p^2}{\sbr{p^2 - m^2}^3}- \frac{1}{\sbr{p^2 -
         m^2}^2}}}_{D = d - 6} k^2
         + \mathrm O(k^4)
     \bigg] \,.
@@ -467,8 +487,55 @@ $\four p$ drop out due to the symmetric integration bounds. This means that we
 only have dependence on $k^2$, the Lorentz-invariant magnitude, as before. The
 first term is badly divergent for $d = 6$. The last two terms are just
 logarithmically divergent. All higher terms (omitted in the above expression)
-are convergent in the $p$-integration. In total there seem to be two
+are convergent in the $p$-integration. There seem to be two
 divergent terms here, one quadratic and one logarithmic term.
+
+Together with the two divergent terms from the previous two diagrams, we
+already have four divergent terms now.
+
+\paragraph{Three legs}
+
+The diagram with three external legs still has only one loop momentum but now
+two external momenta that enter the loop:
+
+\hspace{\mathindent}\includegraphics{loop-3p}
+
+The amplitude is just like in the case with two external legs, there is just an
+additional propagator and vertex in the amplitude. It is
+\[
+    \iup \mathcal M
+    = (\mu^x g)^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{1}{p^2 - m^2}
+    \frac{1}{[p + k_1]^2 - m^2}
+    \frac{1}{[p + k_1 + k_2]^2 - m^2} \,.
+\]
+Luckily we already have a divergence of $D = d - 6$ in the first term without
+any expansion. This means that the only diverging term is the one we already
+have. We can still expand in $\four k_1$ and $\four k_2$ and obtain the
+following result:
+\[
+    \iup \mathcal M
+    = (\mu^x g)^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{1}{p^2 - m^2}
+    \sbr{
+        \frac{1}{p^2 - m^2}
+        \frac{1}{p^2 - m^2}
+        + \mathrm O\sbr{k_1^2 + k_2^2}
+    } \,.
+\]
+The terms linear in $\four k_1$ and $\four k_2$ drop out since those terms are
+also odd in $\four p$. Due to the symmetric integration bounds this will drop
+out.
+
+This is our fifth divergent term. We are still missing one term. Perhaps the
+term odd in $\four p$ of the diagram with two legs is to be included in the
+counting to six?
+
+In order to get down to four we need to drop one or two terms depending on the
+counting. Which one shall it be? The formula for the dimensional regularization
+on the problem set does not include the $p^2$ dependency in the numerator at
+all. This means that this term is not included or that we have to find that
+formula ourselves?
 
 \subsection{Dimensional regularization}
 

@@ -1,0 +1,13 @@
+\feynmandiagram[spring electrical layout,
+    horizontal=a to c,
+    small,
+]
+{
+    a[particle=a] --[momentum'=$\four k_1$] c1[dot];
+    b[particle=b] --[momentum'=$\four k_2$] c2[dot];
+    c[particle=c] --[momentum'=$\four k_3$] c3[dot];
+
+    c1 --[out=240, in=180, momentum'=$\four p + \four k_1$] c2;
+    c2 --[out=360, in=300, momentum'=$\four p + \four k_1 + \four k_2$] c3;
+    c3 --[out=480, in=420, momentum'=$\four p$] c1;
+};

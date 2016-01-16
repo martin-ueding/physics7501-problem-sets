@@ -7,7 +7,7 @@
     b[particle=b] -- c2[dot];
     c[particle=c] -- c3[dot];
 
-    c1 -- c2;
-    c2 -- c3;
-    c3 -- c1;
+    c1 --[out=240, in=180] c2;
+    c2 --[out=360, in=300] c3;
+    c3 --[out=480, in=420] c1;
 };
