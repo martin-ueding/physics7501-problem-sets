@@ -1,0 +1,12 @@
+\feynmandiagram[%
+    horizontal=v to c,
+    small,
+]
+{
+    a[particle=a] -- v[dot];
+    b[particle=b] -- v;
+    v -- l1[dot];
+    l1 --[half left] l2[dot];
+    l1 --[half right] l2;
+    l2 -- c[particle=c];
+};

@@ -1,0 +1,16 @@
+\feynmandiagram[horizontal=a to b, inline=(a.center)]
+{
+    a -- b
+};
+\quad to \quad
+\feynmandiagram[spring electrical layout,
+    horizontal=a to b,
+    inline=(a.center),
+]
+{
+    a -- c1[dot];
+    c2[dot] -- b;
+
+    c1 --[half left] c2;
+    c1 --[half right] c2;
+};

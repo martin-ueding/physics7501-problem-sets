@@ -1,4 +1,6 @@
-# Copyright © 2015 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2015-2016 Martin Ueding <dev@martin-ueding.de>
+
+.PRECIOUS: %.tex %.pdf
 
 document_tex := $(wildcard physics*.tex)
 document_pdf := $(document_tex:%.tex=%.pdf)
@@ -19,8 +21,7 @@ $(document_pdf): $(figures_pdf)
 $(figures_pdf): build
 
 build:
-	mkdir build
-	mkdir build/page
+	mkdir -p build/page
 
 build/page/%.tex: Figures/%.tex
 	../build-system/tikzpicture_wrap.py $< $@
@@ -40,5 +41,3 @@ clean:
 	$(RM) *.svg
 	$(RM) *.pdf
 	$(RM) -r build
-
-.PRECIOUS: %.tex %.pdf

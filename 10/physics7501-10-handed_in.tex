@@ -7,6 +7,7 @@
 \usepackage{multicol}
 \usepackage{simplewick}
 \usepackage{multicol}
+\usepackage{adjustbox}
 \usepackage{slashed}
 \usepackage{subcaption}
 \usepackage{cancel}
@@ -151,6 +152,80 @@ Table~\ref{tab:mass_dimensions} for easy review.
     \label{tab:mass_dimensions}
 \end{table}
 
+\subsection{Feynman rules and superficial divergence}
+
+\paragraph{Feynman rules}
+
+There are two interactions in the Lagrangian. Those are
+\begin{align*}
+    - \frac{\mu^x g}{3!} \phi^3
+    &\leadsto &
+    \vcenter{\hbox{\includegraphics{triple}}}
+    &= \iup \mu^x g \,,
+    \\
+    - c\phi
+    &\leadsto &
+    \vcenter{\hbox{\includegraphics{tadpole}}}
+    &= \iup c \,.
+    \\
+\end{align*}
+We mark the vertices with a dot in order to distinguish the tadpole diagram
+from the simple propagator.
+
+\paragraph{Degree of divergence}
+
+Each propagator should give a mass dimension of $-2$ as there is a $q^2$ in the
+denominator. At each loop we have to integrate over $d$ momenta and therefore
+add $d$ mass dimensions there. Each $g$-vertex gives us $\mdim(g) = \epsilon$
+and each $c$-vertex gives us $\mdim(c) = 4 - \epsilon$. Combining all this we
+can give the mass dimension of a diagram. This directly is the superficial
+degree of divergence,
+\[
+    D = - 2 N_\text P + d N_\text L + \epsilon N_g + [4 - \epsilon] N_c \,.
+\]
+
+This expression is not that helpful yet as we are supposed to express this
+degree of divergence in terms of the number of propagators and vertices only.
+Hence we need some expression to get rid of the number of loops.
+
+
+\begin{table}
+    \newcommand\tdiagram[1]{\adjustbox{valign=c}{\includegraphics[scale=0.78]{#1}}}
+    \centering
+    \begin{tabular}{cc*5{m{1em}}}
+        \toprule
+        Nickname
+        & Diagram
+        & {$N_\text e$}
+        & {$N_\text L$}
+        & {$N_\text P$}
+        & {$N_g$}
+        & {$N_c$} \\
+        \midrule
+        triple tadpole & \tdiagram{antennas} & 3 & 0 & 6 & 4 & 3 \\ \midrule[0.02em]
+        one loop & \tdiagram{1-loop} & 2 & 1 & 2 & 2 & 0 \\ \midrule[0.02em]
+        two loops & \tdiagram{2-loop} & 2 & 2 & 5 & 4 & 0 \\ \midrule[0.02em]
+        double loop & \tdiagram{loop-creation2} & 2 & 2 & 5 & 4 & 0 \\ \midrule[0.02em]
+        fork and loop & \tdiagram{fork-loop} & 3 & 1 & 3 & 3 & 0 \\ \midrule[0.02em]
+        tree & \tdiagram{tree} & 4 & 0 & 1 & 2 & 0 \\ \midrule[0.02em]
+        two antennas &\tdiagram{two-antenna} & 2 & 0 & 3 & 2 & 2 \\ \midrule[0.02em]
+        three antennas & \tdiagram{three-antenna} & 2 & 0 & 5 & 3 & 3 \\ \midrule[0.02em]
+        propagator & \tdiagram{propagator} & 2 & 0 & 1 & 0 & 0 \\
+        \bottomrule
+    \end{tabular}
+    \caption{%
+        Diagrams with their respective number of external lines $N_\text e$,
+        loops $N_\text L$, propagators $N_\text P$, $g$-vertices $N_g$ and
+        $c$-vertices $N_c$. External legs are labelled with a particle to
+        clearly distinguish them from the $c$-vertices.
+    }
+    \label{tab:diagrams}
+\end{table}
+
+
+\begin{appendix}
+    \section{Questions} 
+
 \begin{question}
     In general relativity one writes $\partial$ for the normal partial
     derivative and $\nabla$ for the covariant derivative (or connection as it
@@ -163,6 +238,8 @@ Table~\ref{tab:mass_dimensions} for easy review.
     gauge covariant connection from field theory from the Levi-Civita
     connection of general relativity?
 \end{question}
+
+\end{appendix}
 
 \end{document}
 
