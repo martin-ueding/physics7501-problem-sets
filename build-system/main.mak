@@ -1,6 +1,6 @@
 # Copyright © 2015-2016 Martin Ueding <dev@martin-ueding.de>
 
-.PRECIOUS: %.tex %.pdf
+.PRECIOUS: %.tex %.pdf build/page/%.pdf
 
 document_tex := $(wildcard physics*.tex)
 document_pdf := $(document_tex:%.tex=%.pdf)
@@ -28,6 +28,7 @@ build/page/%.tex: Figures/%.tex
 
 build/%.pdf: build/page/%.pdf
 	pdfcrop $< $@
+	touch $@
 
 %.pdf: %.tex
 	cd $$(dirname $@) && lualatex --halt-on-error $$(basename $<)

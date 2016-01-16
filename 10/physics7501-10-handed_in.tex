@@ -187,9 +187,59 @@ degree of divergence,
 This expression is not that helpful yet as we are supposed to express this
 degree of divergence in terms of the number of propagators and vertices only.
 Hence we need some expression to get rid of the number of loops.
+Table~\ref{tab:diagrams} shows a couple of diagrams with their respective
+number of external lines $N_\text e$, loops $N_\text L$, propagators $N_\text
+P$, $g$-vertices $N_g$ and $c$-vertices $N_c$. We make the ansatz
+\[
+    a
+    + \tilde N_\text e N_\text e
+    + \tilde N_\text L N_\text L
+    + \tilde N_\text P N_\text P
+    + \tilde N_g N_g
+    + \tilde N_c N_c
+    = 0
+\]
+where the $\tilde N$ are the coefficients in this equation. They are to be
+determined. The numbers in the table provide a system of equations. Including
+all diagrams makes it solvable with a one-dimensional solution space. We choose
+a normalization and therefore obtain the equation
+\[
+    2
+    - N_\text e
+    -2 N_\text L
+    + N_g
+    - N_c
+    = 0 \,.
+\]
+This relation contains the number of loops, so we can express that number in
+terms of the other quantities. Interestingly the number of propagators does not
+appear in the relation. There is a problem that the system of equations only
+has a one-dimensional solution space as we only extract one equation.
+
+Using the one relation we can eliminate $N_\text L$ from the superficial degree
+of divergence. This gets us to
+\begin{align*}
+    D
+    &= - 2 N_\text P + \frac d2 \sbr{
+        2 - N_\text e + N_g - N_c
+    } + \epsilon N_g + [4 - \epsilon] N_c \,.
+    \intertext{%
+        We can simplify further by inserting $d = 6 - 2 \epsilon$.
+    }
+    &= - 2 N_\text P + [3 - \epsilon] \sbr{
+        2 - N_\text e + N_g - N_c
+    } + \epsilon N_g + [4 - \epsilon] N_c \,.
+    \intertext{%
+        And then factor out to get
+    }
+    &= 6 - 2 \epsilon - 2 N_\text P
+    - [3 - \epsilon] N_\text e
+    + 3 N_g
+    + 1 N_c \,.
+\end{align*}
 
 
-\begin{table}
+\begin{table}[tbp]
     \newcommand\tdiagram[1]{\adjustbox{valign=c}{\includegraphics[scale=0.78]{#1}}}
     \centering
     \begin{tabular}{cc*5{m{1em}}}
@@ -216,12 +266,215 @@ Hence we need some expression to get rid of the number of loops.
     \caption{%
         Diagrams with their respective number of external lines $N_\text e$,
         loops $N_\text L$, propagators $N_\text P$, $g$-vertices $N_g$ and
-        $c$-vertices $N_c$. External legs are labelled with a particle to
-        clearly distinguish them from the $c$-vertices.
+        $c$-vertices $N_c$. External legs are labelled to clearly distinguish
+        them from the $c$-tadpoles.
     }
     \label{tab:diagrams}
 \end{table}
 
+\subsection{Superficially divergent diagrams}
+
+In this part of the problem we are asked to draw all diagrams with are
+one-particle-irreducible and only consist of one loop \emph{and} are
+superficially divergent.
+
+All diagrams containing a $c$-vertex are reducible. One can always cut off the
+$c$-tadpole (\includegraphics{tadpole}) as the $c$-tadpole is a valid diagram
+in itself. It is a particle disappearing into the vacuum which is quite a
+strange thing.
+
+In condensed matter theory such a diagram is the scattering with an impurity.
+Due to momentum conservation no momentum can be exchanged and it only
+contributes in $\four q = 0$. Applying a Fourier transform this gives the
+monopole moment and therefore is the averaged impurity density. As far as I can
+recall we took the tadpole as an irreducible diagram in order to obtain a
+self-energy correction due to exactly this impurity scattering.
+
+Figure~\ref{fig:loop} contains a couple of different irreducible diagrams with
+exactly one loop. There is not so much one can do without the $c$-tadpoles.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-0}
+        \caption{%
+            No legs
+        }
+        \label{fig:loop/0}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-1}
+        \caption{%
+            One leg
+        }
+        \label{fig:loop/1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-2}
+        \caption{%
+            Two legs
+        }
+        \label{fig:loop/2}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-3}
+        \caption{%
+            Three legs
+        }
+        \label{fig:loop/3}
+    \end{subfigure}
+    \hspace{2em}
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-4}
+        \caption{%
+            Four legs
+        }
+        \label{fig:loop/4}
+    \end{subfigure}
+    \caption{%
+        1-PI diagrams with only one loop.
+    }
+    \label{fig:loop}
+\end{figure}
+
+We can then look at the superficial degree of divergence using either form of
+the formula derived above. One has to be a bit careful as both diagrams with no
+and one external leg consist of one propagator only. Our results are summarized
+in Table~\ref{tab:divergence}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{lSSS}
+        \toprule
+        Figure & {$N_\text e$} & {$D$} & {$S$} \\
+        \midrule
+        \ref{fig:loop/0} & 0 & 2  & 1 \\
+        \ref{fig:loop/1} & 1 & 4  & 2 \\
+        \ref{fig:loop/2} & 2 & 2  & 4 \\
+        \ref{fig:loop/3} & 3 & 0  & 6 \\
+        \ref{fig:loop/4} & 4 & -2 & 8 \\
+        \bottomrule
+    \end{tabular}
+    \caption{%
+        Superficial divergences of the diagrams shown in Figure~\ref{fig:loop}.
+        The symmetry factor is also included.
+    }
+    \label{tab:divergence}
+\end{table}
+
+In the table we can see that only the first four diagrams are superficially
+divergent. The more external lines we add, the less divergent (superficially)
+the diagram becomes. At some point the diagrams are superficially convergent.
+
+The diagram in Figure~\ref{fig:loop/0} without any external legs is a vacuum
+bubble and will be cancled in any obersabled by the expansion of the
+denominator. Therefore this diagram exists but it is canceled. We are not sure
+whether this is to be taken acount. If it is not to be included, we are lacking
+one superficially divergent diagram.
+
+The next step is the symmetry factor for all the diagrams. Their symmetry
+groups are the dihedral groups as they have the same symmetry as a regular
+polygon. Each of these groups looks like this:
+\[
+    D_n = \bigcup_{i = 0}^{n-1} \set{c^i, bc^i}
+    = \set{1, c, c^2, \ldots, c^{n-1}, b, bc, bc^2, \ldots, bc^{n-1}} \,,
+\]
+where $1$ is the identity, $c$ is the rotation around $2\piup/n$ and $b$ is the
+reflection along some arbitrary but fixed axis. In each case the group has
+cardinality $2n$. The symmetry group for the vacuum diagram seems to be
+$\SO(2)$ from the diagram (if it hadn't been drawn like an ellipse). This will
+probably lead to the wrong result. We have no contractions in this diagram so
+the symmetry factor is probably just one.
+
+\subsection{Taylor expansion}
+
+\paragraph{Two legs}
+
+The diagram with two legs has one loop momentum. Momentum can be transfered
+through the loop. We choose the following convention for the momenta:
+
+\hspace{\mathindent}\includegraphics{loop-2p}
+
+We can write down the amplitude for this diagram:
+\[
+    \iup \mathcal M
+    = (\mu^x g)^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{1}{p^2 - m^2}
+    \frac{1}{[p + k]^2 - m^2}
+\]
+Now we can expand this around $\four k = 0$ in the next step.
+
+Just to savor this moment: We have an integral which is logarithmically
+divergent (for $\epsilon = 0$). A divergence already means that we are on the
+very edge of validity for this theory. And to cure this divergence we now
+expand the integrand into an infinite power series. Then we exchange the
+summation and integration in order to get a series of integrals. This exchange
+of limits should be shown carefully. That the integral diverges in the first
+place should be a big fat hint that the exchange will be highly dubious. To
+make it even worse, we claim that the integral does not really diverge for
+large enough $\epsilon \in \R$.
+
+At the next opportunity I will tell some mathematicians about this escalation
+of things and see how they cringe. However, I assume that this can be treated
+rigorously (just like dimensional regularization in polar coordinates) and is
+not as bad as it really sounds.
+
+To make the expansion more visible, we define the $k$-dependent term to be
+$f(k)$. Then we can make the following tableau:
+\begin{align*}
+    f(k) &= \frac{1}{[p + k]^2 - m^2}
+    &
+    f(0) &= \frac{1}{p^2 - m^2}
+    \\
+    f'(k) &= - \frac{2 [p + k]}{\sbr{[p + k]^2 - m^2}^2}
+    &
+    f'(0) &= - \frac{2 p}{\sbr{p^2 - m^2}^2}
+    \\
+    f''(k) &=
+    \frac{8[p + k]^2}{\sbr{[p + k]^2 - m^2}^3}
+    - \frac{2}{\sbr{[p + k]^2 - m^2}^2}
+    &
+    f''(0) &=
+    \frac{8p^2}{\sbr{p^2 - m^2}^3}
+    - \frac{2}{\sbr{p^2 - m^2}^2}
+\end{align*}
+
+From this we can assemble the power series expansion. We have included the
+degree of divergence~$D$ for each term. The first fraction outside of the
+bracket is included in this as well. We obtain
+\[
+    \iup \mathcal M
+    = (\mu^x g)^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{1}{p^2 - m^2}
+    \bigg[
+        \underbrace{\frac{1}{p^2 - m^2}}_{D = d -4}
+        - \underbrace{\frac{\four p \cdot \four k}{\sbr{p^2 - m^2}^2}}_{D = d - 5}
+        + \underbrace{\sbr{\frac{4p^2}{\sbr{p^2 - m^2}^3}- \frac{2}{\sbr{p^2 -
+        m^2}^2}}}_{D = d - 6} k^2
+        + \mathrm O(k^4)
+    \bigg] \,.
+\]
+It is apparent that in each term the power of $p$ decreases. The terms odd in
+$\four p$ drop out due to the symmetric integration bounds. This means that we
+only have dependence on $k^2$, the Lorentz-invariant magnitude, as before. The
+first term is badly divergent for $d = 6$. The last two terms are just
+logarithmically divergent. All higher terms (omitted in the above expression)
+are convergent in the $p$-integration. In total there seem to be two
+divergent terms here, one quadratic and one logarithmic term.
+
+\subsection{Dimensional regularization}
+
+\subsection{Counterterms}
+
+\subsection{Linear term}
 
 \begin{appendix}
     \section{Questions} 

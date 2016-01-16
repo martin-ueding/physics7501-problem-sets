@@ -1,0 +1,14 @@
+\feynmandiagram[spring electrical layout,
+    small,
+]
+{
+    a[particle=a] -- c1[dot];
+    b[particle=b] -- c2[dot];
+    c[particle=c] -- c3[dot];
+    d[particle=d] -- c4[dot];
+
+    c1 -- c2;
+    c2 -- c3;
+    c3 -- c4;
+    c4 -- c1;
+};

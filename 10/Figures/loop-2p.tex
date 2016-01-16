@@ -1,0 +1,12 @@
+\feynmandiagram[spring electrical layout,
+    horizontal=a to b,
+    inline=(a.center),
+    small,
+]
+{
+    a[particle=a] --[momentum=$\four k$] c1[dot];
+    c2[dot] --[momentum=$\four k$] b[particle=b];
+
+    c1 --[half left, momentum=$\four k + \four p$] c2;
+    c2 --[half left, momentum=$\four p$] c1;
+};
