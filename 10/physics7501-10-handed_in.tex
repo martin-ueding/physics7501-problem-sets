@@ -161,12 +161,12 @@ There are two interactions in the Lagrangian. Those are
     - \frac{\mu^x g}{3!} \phi^3
     &\leadsto &
     \vcenter{\hbox{\includegraphics{triple}}}
-    &= \iup \mu^x g \,,
+    &= - \iup \mu^x g \,,
     \\
     - c\phi
     &\leadsto &
     \vcenter{\hbox{\includegraphics{tadpole}}}
-    &= \iup c \,.
+    &= - \iup c \,.
     \\
 \end{align*}
 We mark the vertices with a dot in order to distinguish the tadpole diagram
@@ -412,7 +412,7 @@ Only the loop momentum can go around in the loop, no momentum can be
 transported into the $g$-tadpole. Therefore we just have
 \[
     \iup \mathcal M
-    = - \mu^x g \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{\sbr{p^2 - m^2}^2}
+    = - \iup^2 \mu^x g \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{\sbr{p^2 - m^2}^2}
 \]
 which has a divergence of $D = d - 4$ which is quadratic.
 
@@ -426,7 +426,7 @@ through the loop. We choose the following convention for the momenta:
 We can write down the amplitude for this diagram:
 \[
     \iup \mathcal M
-    = (\mu^x g)^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    = [-\iup \mu^x g]^2 \iup^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \frac{1}{[p + k]^2 - m^2}
 \]
@@ -472,7 +472,7 @@ degree of divergence~$D$ for each term. The first fraction outside of the
 bracket is included in this as well. We obtain
 \[
     \iup \mathcal M
-    = (\mu^x g)^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    = - [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \bigg[
         \underbrace{\frac{1}{p^2 - m^2}}_{D = d -4}
@@ -504,7 +504,7 @@ The amplitude is just like in the case with two external legs, there is just an
 additional propagator and vertex in the amplitude. It is
 \[
     \iup \mathcal M
-    = (\mu^x g)^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    = [-\iup \mu^x g]^3 \iup^3 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \frac{1}{[p + k_1]^2 - m^2}
     \frac{1}{[p + k_1 + k_2]^2 - m^2} \,.
@@ -515,7 +515,7 @@ have. We can still expand in $\four k_1$ and $\four k_2$ and obtain the
 following result:
 \[
     \iup \mathcal M
-    = (\mu^x g)^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    = [\mu^x g]^3 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \sbr{
         \frac{1}{p^2 - m^2}
