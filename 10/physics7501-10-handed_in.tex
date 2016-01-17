@@ -602,6 +602,7 @@ formula given in Equation~(3) on the problem set. This gives us a residue of
 
 \paragraph{Two legs}
 
+The diagram with two legs gives the following after dimensional regularization:
 \begin{align*}
     \iup \mathcal M_2(\four k)
     &=
@@ -610,19 +611,62 @@ formula given in Equation~(3) on the problem set. This gives us a residue of
         m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
         - m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
     }
-    + [\mu^x g]^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    + [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{4p^2}{\sbr{p^2 - m^2}^4} k^2
-    + \mathrm O(k^4) \,,
+    \\&\qquad
+    + \mathrm O(k^4) \,.
+    \intertext{%
+        We expand the bracket first as this will make it a bit simpler. We have
+    }
+    &=
+    -  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    +  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
+    \\&\qquad
+    + [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{4p^2}{\sbr{p^2 - m^2}^4} k^2
+    + \mathrm O(k^4) \,.
+    \intertext{%
+        The second summand also appears (with a different power of
+        $\mu^\epsilon g$) in the matrix element for the diagram with three
+        legs. We therefore just skip to the result here and save the details
+        for the next matrix element. That way it will not be that cluttered
+        here and you can still look through the details. The second summand now
+        has the form
+    }
+    &=
+    -  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    + \frac{g^2}{2^7 \piup^3} k^2
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^2}{m^2 \piup^2}} - \gamma}
+    \\&\qquad
+    + [\mu^x g]^2 k^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{4p^2}{\sbr{p^2 - m^2}^4}
+    + \mathrm O(k^4) \,.
+    \intertext{%
+        The last two terms now depend on $k^2$ whereas the first one does not.
+    }
 \end{align*}
 
 \paragraph{Three legs}
 
-
+For the diagram with three legs we can use dimensional regularization directly.
 \begin{align*}
     \iup \mathcal M_3(\four k_1, \four k_2)
-    &= \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    &= \frac{[\mu^x g]^3 \piup^{d/2}}{[2 \piup]^d}
     m^{d-6} \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)}
-    + \mathrm O\del{k_1^2 + k_2^2} \,.
+    + \mathrm O\del{k_1^2 + k_2^2} \\
+    &= \frac{g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3}{m^2 \piup^2}}^\epsilon
+    \Gammaup(\epsilon)
+    + \mathrm O\del{k_1^2 + k_2^2} \\
+    &= \frac{g^3}{2^7 \piup^3}
+    \sbr{1 + \ln\del{\frac{4 \mu^3}{m^2 \piup^2}} \epsilon + \mathrm O(\epsilon^2)}
+    \sbr{\frac 1\epsilon - \gamma + \mathrm O(\epsilon)}
+    + \mathrm O\del{k_1^2 + k_2^2} \\
+    &= \frac{g^3}{2^7 \piup^3}
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3}{m^2 \piup^2}} - \gamma}
+    + \mathrm O\del{\epsilon + k_1^2 + k_2^2}
 \end{align*}
 
 
@@ -800,13 +844,62 @@ chasing somebody in a bad horror movie.}.
 The tree level diagram just gives $- \iup g$ ($- \iup \mu^\epsilon g$ in
 real dimension) as can be seen from the new Feynman rules in
 Table~\ref{tab:counterterms}. This is exactly the term that we want to give at
-zero momentum. Therefore the counterterm is exactly those three loop diagrams
-taken together. Luckily we have already computed those and even regularized
-them. So we simply have
+zero momentum. Therefore the counterterm is exactly the negative of those three
+loop diagrams taken together. Luckily we have already computed those and even
+regularized them. So we simply have
 \begin{align*}
     \delta_g
-    &= 3 \iup \mathcal M_3 \,.
+    &= - 3 \iup \mathcal M_3 \,.
+    \intertext{%
+        Previously we have derived this matrix element and therefore already
+        have the counterterm,
+    }
+    \delta_g
+    &= - \frac{3 g^3}{2^7 \piup^3}
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3}{m^2 \piup^2}} - \gamma} \,.
 \end{align*}
+
+
+\paragraph{Computation of $\delta_m$ and $\delta_Z$}
+
+The calculation of the mass and of the field strength renormalization goes by
+the self-energy. We can do both at the same time. The basic idea of the
+self-energy was that the pole of the propagator is shifted by a geometric
+series of 1-PI blobs in the propagator. We therefore need to look at the 1-PI
+blob that we put into that series and see what $p^2$ dependence that has. This
+1-PI blob has a value of $- \iup M^2(p^2)$ in the notation of
+\textcite[328]{Peskin/QFT/1995}. In the geometric series that will go into the
+denominator to give the modified propagator as
+\[
+    \frac\iup{p^2 - m^2 - M^2(p^2)} \,.
+\]
+
+Our renormalization condition from the propagator demands that the pole of the
+propagator is at $p^2 = m^2$, the physical mass. Therefore at $p^2 = m^2$ we
+must have $M^2(0) = 0$. Also for the residue of unity we must have
+\[
+    \od{}{p^2} M^2(p^2)\big|_{p^2 = m^2} = 0 \,.
+\]
+
+Next we need to compute $M^2$ to the desired ordered which is the one loop
+order. The bare propagator is not to be included as it is not irreducible in
+the appropriate sense. Therefore we start with the single loop. Our expansion
+therefore is:
+\[
+    \vcenter{\hbox{\includegraphics{self-energy-blob}}}
+    =
+    \vcenter{\hbox{\includegraphics{self-energy-loop}}}
+    +
+    \vcenter{\hbox{\includegraphics{self-energy-counter}}}
+\]
+
+The loop with two external legs has been calculated and expanded in external
+momentum already. This means we have
+\[
+    - \iup M^2(k^2) = \iup \mathcal M_2 + \iup k^2 \delta_Z - \iup \delta_m \,.
+\]
+Here we can see already that only the term which contains the $k^2$ can
+contribute to the field strength renormalization counterterm $\delta_Z$.
 
 \subsection{Purpose of linear term}
 
