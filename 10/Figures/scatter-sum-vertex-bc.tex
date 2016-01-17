@@ -1,0 +1,17 @@
+
+
+    \begin{tikzpicture}
+        \begin{feynman}
+        \diagram[%
+            vertical=a to b,
+            inline=(v.east),
+        ]
+        {
+            a -- ia -- v[dot];
+            b -- ib[dot] -- v;
+            c -- ic[dot] -- v;
+
+        };
+        \draw (ib) to (ic);
+        \end{feynman}
+    \end{tikzpicture}

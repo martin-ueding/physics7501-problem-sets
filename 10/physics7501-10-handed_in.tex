@@ -636,14 +636,16 @@ So far the Lagrangian has been
 \]
 We have not explicitly written the subscript zero yet as this was not done in
 Equation~(1) on the problem set either. Now we will have to write them as we
-introduce the renormalized parameters. The four parameters of this theory are:
+introduce the renormalized parameters. The four parameters of this theory are
 
 \begin{enumerate}
-    \item Field renormalization $Z$,
+    \item Field strength renormalization $Z$,
     \item Mass $m$,
     \item Coupling constant $g$,
     \item Coupling constant $c$.
 \end{enumerate}
+
+\paragraph{Renormalized Lagrangian}
 
 \newcommand\phir{\phi_\text r}
 
@@ -656,9 +658,8 @@ assumes the form
     - \frac{Z^{3/2} g_0}{3!} \phir^3 \,.
 \]
 We want the \enquote{normal} Lagrangian back in order to obtain the Feynman
-parameters that we are used to. We do this by splitting the constants into the
-usual physical term and a counterterm. We do this using the following
-definitions:
+rules that we are used to. We do this by splitting the constants into the usual
+physical term and a counterterm. We do this using the following definitions:
 \[
     \delta_Z := Z - 1
     \eqnsep
@@ -682,8 +683,9 @@ The Lagrangian with those counterterms then is
 We see that we have recovered the Lagrangian we had before with a redefinition
 of the fields. Also there are a lot of new terms in the Lagrangian. Those can
 be interpreted as additional couplings and therefore new Feynman rules. The
-derivation of those Feynman rules from the Lagrangian is as usual. We have
-listed all of them in Table~\ref{tab:counterterms}.
+derivation of those Feynman rules from the Lagrangian is as usual. The terms
+that look like a massive propagator are to be taken like an interaction. We
+have listed all terms and counterterms in Table~\ref{tab:counterterms}.
 
 \begin{table}[tbp]
     \newcommand\tdiagram[1]{\adjustbox{valign=c}{\includegraphics[scale=1]{#1}}}
@@ -707,15 +709,20 @@ listed all of them in Table~\ref{tab:counterterms}.
         & $\displaystyle - \iup g$
         \\ \midrule[0.02em]
         %
-        $\displaystyle\frac12 \delta_Z [\partial \phir]^2$
-        & \tdiagram{counter-dz} & \\ \midrule[0.02em]
+        $\displaystyle\frac12 \delta_Z [\partial \phir]^2 - \frac{\delta_m}2\phir^2$
+        & \tdiagram{counter-dz}
+        & $\displaystyle \iup p^2 \delta_Z - \iup \delta_m$
+        \\ \midrule[0.02em]
+        %
         $\displaystyle-\delta_c \phir$
-        & \tdiagram{counter-dc} & \\ \midrule[0.02em]
-        $\displaystyle-\frac{\delta_m}2\phir^2$
-        & \tdiagram{counter-dm} & \\ \midrule[0.02em]
+        & \tdiagram{counter-dc}
+        & $\displaystyle - \iup \delta_c$
+        \\ \midrule[0.02em]
+        %
         $\displaystyle-\frac{\delta_g}{3!} \phir^3$
-        & \tdiagram{counter-dg} & \\
-        \bottomrule
+        & \tdiagram{counter-dg}
+        & $\displaystyle - \iup \delta_g$
+        \\ \bottomrule
     \end{tabular}
     \caption{%
         New Feynman rules with counterterms.
@@ -723,7 +730,85 @@ listed all of them in Table~\ref{tab:counterterms}.
     \label{tab:counterterms}
 \end{table}
 
-\subsection{Linear term}
+\paragraph{Renormalization conditions}
+
+Now that we have the new Feynman rules in terms of the counterterms, we actually
+need to compute those counterterms to the one-loop order of our theory here. In
+order to do so, we need some renormalization conditions.
+
+For the $\phi^4$ theory \textcite[325]{Peskin/QFT/1995} argue that the normal
+propagator should have a pole at the physical mass $m$. This means that the
+propagator with corrections to all orders should have the form of
+\[
+    \vcenter{\hbox{\includegraphics{propagator-blob}}} =
+    \frac{\iup}{p^2 - m^2} + \text{(terms regular at $p^2 = m^2$)} \,.
+\]
+In our case here we only look up to first loop-order in perturbation theory and
+therefore can compute that blob explicitly.
+
+For the term $\delta_g$ we need some way to relate the all-order scattering
+amplitude to the physical case. For the $\phi^4$ theory this seems to be
+possible to look at the scattering amplitude at zero momentum. In our case this
+should work as well. We only have a triple vertex here, so our condition would
+be
+\[
+    \vcenter{\hbox{\includegraphics{scatter-blob}}} =
+    - \iup g \,, \qquad \text{at $s = 4m^2$, $t = u = 0$.}
+\]
+
+The $\delta_c$ needs to be defined in a similar way as well. However, there
+cannot be any momentum transfer into that $c$-tadpole. The diagram for the
+$g$-vertex is to be taken as an amputated diagram. There is only one incoming
+leg for the $c$-vertex, therefore there is no \enquote{blob}-version of the
+$c$-vertex and we end up with
+\[
+    \vcenter{\hbox{\includegraphics{tadpole}}} =
+    - \iup c \,.
+\]
+This constraint is directly fulfilled if we set $\delta_c = 0$. This might be
+too simple, though.
+
+\paragraph{Computation of $\delta_g$}
+
+In the computation of $\delta_g$ we need to include all diagrams up to a single
+loop and the counterterm. In the $\phi^4$ theory there is the tree level
+diagram and the $s$-, $t$- and $u$-channel diagrams. Here we only have a triple
+interaction vertex and therefore have three different vertex corrections. A
+glance at the QED section by \textcite[§10.3]{Peskin/QFT/1995} shows that a
+condition with the vertex correction is indeed the right way to renormalize
+such a vertex. Up to one loop we therefore have the following expansion:
+\[
+    \vcenter{\hbox{\includegraphics{scatter-sum-blob}}}
+    =
+    \vcenter{\hbox{\includegraphics{scatter-sum-tree}}}
+    +
+    \vcenter{\hbox{\includegraphics{scatter-sum-vertex-ab}}}
+    +
+    \vcenter{\hbox{\includegraphics{scatter-sum-vertex-ac}}}
+    +
+    \vcenter{\hbox{\includegraphics{scatter-sum-vertex-bc}}}
+    +
+    \vcenter{\hbox{\includegraphics{scatter-sum-counter}}}
+\]
+The middle three terms with the loops are topologically equivalent to the case
+with three legs just with the roles of the momenta shifted subtly. In the case
+of vanishing external momentum all those diagrams should be exactly the same.
+This result has been computed already and is the leading term in the Taylor
+expansion of the three-legged loop diagram\footnote{That could be a monster
+chasing somebody in a bad horror movie.}.
+
+The tree level diagram just gives $- \iup g$ ($- \iup \mu^\epsilon g$ in
+real dimension) as can be seen from the new Feynman rules in
+Table~\ref{tab:counterterms}. This is exactly the term that we want to give at
+zero momentum. Therefore the counterterm is exactly those three loop diagrams
+taken together. Luckily we have already computed those and even regularized
+them. So we simply have
+\begin{align*}
+    \delta_g
+    &= 3 \iup \mathcal M_3 \,.
+\end{align*}
+
+\subsection{Purpose of linear term}
 
 \begin{appendix}
     \section{Questions} 
