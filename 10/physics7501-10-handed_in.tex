@@ -572,32 +572,37 @@ formula ourselves?
 Applying Equation~(2) from the problem set allows us to regularize the four
 terms. The term containing $p^2$ in the numerator has to be done separately.
 
+Equation~(2) also seems to be missing an imaginary unit with respect to the
+dimensional regularization factors given by \textcite[A.4]{Peskin/QFT/1995}. We
+chose to include the imaginary unit from the book to make it consistent with
+the $p^2$ formula taken from the it.
+
 \paragraph{One leg}
 
 We obtain for the term from the $g$-tadpole diagram
 \begin{align*}
     \iup \mathcal M_1
-    &= \frac{\mu^x g \piup^{d/2}}{[2 \piup]^d} m^{d-4}
+    &= \frac{\iup \mu^x g \piup^{d/2}}{[2 \piup]^d} m^{d-4}
     \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
     \,.
     \intertext{%
         We insert $d$ explicitly.
     }
-    &= \frac{\mu^x g}{ \piup^{3 - \epsilon} 2^{6 - 2 \epsilon}}
+    &= \frac{\iup \mu^x g}{ \piup^{3 - \epsilon} 2^{6 - 2 \epsilon}}
     m^{2 - 2 \epsilon}
     \frac{\Gammaup\del{-1 + \epsilon}}{\Gammaup(2)}
     \\
     \intertext{%
         And we expand the $\Gamma$-function for small $\epsilon$.
     }
-    &= \frac{\mu^\epsilon g m^{2 - 2 \epsilon}}{\piup^{3 - \epsilon} 2^{6 - 2 \epsilon}}
+    &= \frac{\iup \mu^\epsilon g m^{2 - 2 \epsilon}}{\piup^{3 - \epsilon} 2^{6 - 2 \epsilon}}
     \sbr{- \frac1\epsilon + \gamma - 1 + \mathrm O(\epsilon)}
 \end{align*}
 
 In order to determine the residue at $\epsilon = 0$ we can use the residue
 formula given in Equation~(3) on the problem set. This gives us a residue of
 \[
-    - \frac{g m^{2}}{\piup^{3} 2^{6}} \,.
+    - \frac{\iup g m^{2}}{\piup^{3} 2^{6}} \,.
 \]
 
 \paragraph{Two legs}
@@ -606,7 +611,7 @@ The diagram with two legs gives the following after dimensional regularization:
 \begin{align*}
     \iup \mathcal M_2(\four k)
     &=
-    -  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    -  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
     \sbr{
         m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
         - m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
@@ -619,9 +624,9 @@ The diagram with two legs gives the following after dimensional regularization:
         We expand the bracket first as this will make it a bit simpler. We have
     }
     &=
-    -  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    -  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
     m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
-    +  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    +  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
     m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
     \\&\qquad
     + [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
@@ -636,9 +641,9 @@ The diagram with two legs gives the following after dimensional regularization:
         here and you can still look through the details.
     }
     &=
-    \frac{g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
+    \frac{\iup g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
     \piup}{m}} - \gamma + 1}
-    + \frac{g^2}{2^7 \piup^3} k^2
+    + \frac{\iup g^2}{2^7 \piup^3} k^2
     \sbr{\frac 1\epsilon + 2 \ln\del{\frac{2 \mu \piup}{m}} - \gamma}
     \\&\qquad
     + [\mu^x g]^2 k^2 \int \frac{\dif^d p}{[2 \piup]^d}
@@ -653,9 +658,9 @@ The diagram with two legs gives the following after dimensional regularization:
         regularization we end up with
     }
     &=
-    \frac{g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
+    \frac{\iup g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
     \piup}{m}} - \gamma + 1}
-    + \frac{g^2 k^2}{2^7 \piup^3}
+    + \frac{\iup g^2 k^2}{2^7 \piup^3}
     \sbr{\frac 1\epsilon + 2 \ln\del{\frac{2 \mu \piup}{m}} - \gamma}
     \\&\qquad
     + \frac{\iup g^2 k^2}{2^7 \piup^3} \sbr{\frac 1\epsilon \cbr{1 - \frac 13
@@ -663,25 +668,25 @@ The diagram with two legs gives the following after dimensional regularization:
     \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
     + \mathrm O(k^4) \,.
 \end{align*}
-That is not very pretty. As the second part is purely real and third is purely
-imaginary, one cannot cancel anything between those terms.
+That is not very pretty. 
+% TODO Cancel stuff
 
 \paragraph{Three legs}
 
 For the diagram with three legs we can use dimensional regularization directly.
 \begin{align*}
     \iup \mathcal M_3(\four k_1, \four k_2)
-    &= \frac{[\mu^x g]^3 \piup^{d/2}}{[2 \piup]^d}
+    &= \frac{\iup [\mu^x g]^3 \piup^{d/2}}{[2 \piup]^d}
     m^{d-6} \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)}
     + \mathrm O\del{k_1^2 + k_2^2} \\
-    &= \frac{g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3 \piup^2}{m^2}}^\epsilon
+    &= \frac{\iup g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3 \piup^2}{m^2}}^\epsilon
     \Gammaup(\epsilon)
     + \mathrm O\del{k_1^2 + k_2^2} \\
-    &= \frac{g^3}{2^7 \piup^3}
+    &= \frac{\iup g^3}{2^7 \piup^3}
     \sbr{1 + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} \epsilon + \mathrm O(\epsilon^2)}
     \sbr{\frac 1\epsilon - \gamma + \mathrm O(\epsilon)}
     + \mathrm O\del{k_1^2 + k_2^2} \\
-    &= \frac{g^3}{2^7 \piup^3}
+    &= \frac{\iup g^3}{2^7 \piup^3}
     \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} - \gamma}
     + \mathrm O\del{\epsilon + k_1^2 + k_2^2}
 \end{align*}
@@ -867,7 +872,7 @@ regularized them. So we simply have
         have the counterterm,
     }
     \delta_g
-    &= - \frac{3 g^3}{2^7 \piup^3}
+    &= - \frac{3 \iup g^3}{2^7 \piup^3}
     \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} - \gamma} \,.
 \end{align*}
 
