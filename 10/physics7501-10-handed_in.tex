@@ -628,26 +628,43 @@ The diagram with two legs gives the following after dimensional regularization:
     \frac{4p^2}{\sbr{p^2 - m^2}^4} k^2
     + \mathrm O(k^4) \,.
     \intertext{%
+        We will expand the first and second term for small $\epsilon$ directly.
         The second summand also appears (with a different power of
         $\mu^\epsilon g$) in the matrix element for the diagram with three
         legs. We therefore just skip to the result here and save the details
         for the next matrix element. That way it will not be that cluttered
-        here and you can still look through the details. The second summand now
-        has the form
+        here and you can still look through the details.
     }
     &=
-    -  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
-    m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    \frac{g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
+    \piup}{m}} - \gamma + 1}
     + \frac{g^2}{2^7 \piup^3} k^2
-    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^2}{m^2 \piup^2}} - \gamma}
+    \sbr{\frac 1\epsilon + 2 \ln\del{\frac{2 \mu \piup}{m}} - \gamma}
     \\&\qquad
     + [\mu^x g]^2 k^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{4p^2}{\sbr{p^2 - m^2}^4}
     + \mathrm O(k^4) \,.
     \intertext{%
         The last two terms now depend on $k^2$ whereas the first one does not.
+        In the last term we have the additional complication of a factor $p^2$
+        in the integral. This is not covered by the formula given on the
+        problem set. Either this term does not contribute or just something we
+        have to look up. With a typical calculation for dimensional
+        regularization we end up with
     }
+    &=
+    \frac{g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
+    \piup}{m}} - \gamma + 1}
+    + \frac{g^2 k^2}{2^7 \piup^3}
+    \sbr{\frac 1\epsilon + 2 \ln\del{\frac{2 \mu \piup}{m}} - \gamma}
+    \\&\qquad
+    + \frac{\iup g^2 k^2}{2^7 \piup^3} \sbr{\frac 1\epsilon \cbr{1 - \frac 13
+        \ln\del{\frac{4 \mu^2 \piup}{m^2}}} - \gamma - \frac13 + [1 + \gamma]
+    \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
+    + \mathrm O(k^4) \,.
 \end{align*}
+That is not very pretty. As the second part is purely real and third is purely
+imaginary, one cannot cancel anything between those terms.
 
 \paragraph{Three legs}
 
@@ -657,15 +674,15 @@ For the diagram with three legs we can use dimensional regularization directly.
     &= \frac{[\mu^x g]^3 \piup^{d/2}}{[2 \piup]^d}
     m^{d-6} \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)}
     + \mathrm O\del{k_1^2 + k_2^2} \\
-    &= \frac{g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3}{m^2 \piup^2}}^\epsilon
+    &= \frac{g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3 \piup^2}{m^2}}^\epsilon
     \Gammaup(\epsilon)
     + \mathrm O\del{k_1^2 + k_2^2} \\
     &= \frac{g^3}{2^7 \piup^3}
-    \sbr{1 + \ln\del{\frac{4 \mu^3}{m^2 \piup^2}} \epsilon + \mathrm O(\epsilon^2)}
+    \sbr{1 + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} \epsilon + \mathrm O(\epsilon^2)}
     \sbr{\frac 1\epsilon - \gamma + \mathrm O(\epsilon)}
     + \mathrm O\del{k_1^2 + k_2^2} \\
     &= \frac{g^3}{2^7 \piup^3}
-    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3}{m^2 \piup^2}} - \gamma}
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} - \gamma}
     + \mathrm O\del{\epsilon + k_1^2 + k_2^2}
 \end{align*}
 
@@ -823,16 +840,11 @@ condition with the vertex correction is indeed the right way to renormalize
 such a vertex. Up to one loop we therefore have the following expansion:
 \[
     \vcenter{\hbox{\includegraphics{scatter-sum-blob}}}
-    =
-    \vcenter{\hbox{\includegraphics{scatter-sum-tree}}}
-    +
-    \vcenter{\hbox{\includegraphics{scatter-sum-vertex-ab}}}
-    +
-    \vcenter{\hbox{\includegraphics{scatter-sum-vertex-ac}}}
-    +
-    \vcenter{\hbox{\includegraphics{scatter-sum-vertex-bc}}}
-    +
-    \vcenter{\hbox{\includegraphics{scatter-sum-counter}}}
+    = \vcenter{\hbox{\includegraphics{scatter-sum-tree}}}
+    + \vcenter{\hbox{\includegraphics{scatter-sum-vertex-ab}}}
+    + \vcenter{\hbox{\includegraphics{scatter-sum-vertex-ac}}}
+    + \vcenter{\hbox{\includegraphics{scatter-sum-vertex-bc}}}
+    + \vcenter{\hbox{\includegraphics{scatter-sum-counter}}}
 \]
 The middle three terms with the loops are topologically equivalent to the case
 with three legs just with the roles of the momenta shifted subtly. In the case
@@ -856,7 +868,7 @@ regularized them. So we simply have
     }
     \delta_g
     &= - \frac{3 g^3}{2^7 \piup^3}
-    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3}{m^2 \piup^2}} - \gamma} \,.
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} - \gamma} \,.
 \end{align*}
 
 
