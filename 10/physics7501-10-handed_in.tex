@@ -169,8 +169,8 @@ There are two interactions in the Lagrangian. Those are
     &= - \iup c \,.
     \\
 \end{align*}
-We mark the vertices with a dot in order to distinguish the tadpole diagram
-from the simple propagator.
+We mark the $g$-vertices with a dot and the $c$-vertices with a square in order
+to distinguish the tadpole diagram from the simple propagator.
 
 \paragraph{Degree of divergence}
 
@@ -375,10 +375,10 @@ divergent. The more external lines we add, the less divergent (superficially)
 the diagram becomes. At some point the diagrams are superficially convergent.
 
 The diagram in Figure~\ref{fig:loop/0} without any external legs is a vacuum
-bubble and will be cancled in any obersabled by the expansion of the
+bubble and will be canceled in any observable by the expansion of the
 denominator. Therefore this diagram exists but it is canceled. We are not sure
-whether this is to be taken acount. If it is not to be included, we are lacking
-one superficially divergent diagram.
+whether this is to be taken account. If it is not to be included, we are
+lacking one superficially divergent diagram.
 
 The next step is the symmetry factor for all the diagrams. Their symmetry
 groups are the dihedral groups as they have the same symmetry as a regular
@@ -404,6 +404,9 @@ Without any legs, we have no external momentum. Therefore we just have
     = \iup \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{p^2 - m^2} \,.
 \]
 This is divergent by $D = d - 2$, which seems to be quartic for $\epsilon = 0$.
+
+This term cannot be observed, it is just a shift in the vacuum energy and
+therefore is not of interest to the renormalization procedure.
 
 \paragraph{One leg}
 
@@ -532,14 +535,193 @@ term odd in $\four p$ of the diagram with two legs is to be included in the
 counting to six?
 
 In order to get down to four we need to drop one or two terms depending on the
-counting. Which one shall it be? The formula for the dimensional regularization
+counting. Which one shall it be? The diagram with zero legs should not be
+included, really. When we exclude the diagram for physical reasons and drop the
+term linear in $\four p$ in the diagram with two legs, we are actually down to
+four terms.
+
+Those terms are:
+\begin{align*}
+    \iup \mathcal M_1
+    &= \mu^x g \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{\sbr{p^2 - m^2}^2} \,,
+    \\
+    \iup \mathcal M_2(\four k)
+    &=
+    - [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
+    \sbr{
+        \frac{1}{\sbr{p^2 - m^2}^2}
+        + \sbr{\frac{4p^2}{\sbr{p^2 - m^2}^4}- \frac{1}{\sbr{p^2 -
+        m^2}^3}} k^2
+    }
+        + \mathrm O(k^4) \,,
+    \\
+    \iup \mathcal M_3(\four k_1, \four k_2)
+    &= [\mu^x g]^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{1}{\sbr{p^2 - m^2}^3}
+    + \mathrm O\del{k_1^2 + k_2^2} \,.
+\end{align*}
+
+
+\subsection{Dimensional regularization}
+
+The formula for the dimensional regularization
 on the problem set does not include the $p^2$ dependency in the numerator at
 all. This means that this term is not included or that we have to find that
 formula ourselves?
 
-\subsection{Dimensional regularization}
+Applying Equation~(2) from the problem set allows us to regularize the four
+terms. The term containing $p^2$ in the numerator has to be done separately.
+
+\paragraph{One leg}
+
+We obtain for the term from the $g$-tadpole diagram
+\begin{align*}
+    \iup \mathcal M_1
+    &= \frac{\mu^x g \piup^{d/2}}{[2 \piup]^d} m^{d-4}
+    \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+    \,.
+    \intertext{%
+        We insert $d$ explicitly.
+    }
+    &= \frac{\mu^x g}{ \piup^{3 - \epsilon} 2^{6 - 2 \epsilon}}
+    m^{2 - 2 \epsilon}
+    \frac{\Gammaup\del{-1 + \epsilon}}{\Gammaup(2)}
+    \\
+    \intertext{%
+        And we expand the $\Gamma$-function for small $\epsilon$.
+    }
+    &= \frac{\mu^\epsilon g m^{2 - 2 \epsilon}}{\piup^{3 - \epsilon} 2^{6 - 2 \epsilon}}
+    \sbr{- \frac1\epsilon + \gamma - 1 + \mathrm O(\epsilon)}
+\end{align*}
+
+In order to determine the residue at $\epsilon = 0$ we can use the residue
+formula given in Equation~(3) on the problem set. This gives us a residue of
+\[
+    - \frac{g m^{2}}{\piup^{3} 2^{6}} \,.
+\]
+
+\paragraph{Two legs}
+
+\begin{align*}
+    \iup \mathcal M_2(\four k)
+    &=
+    -  \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    \sbr{
+        m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
+        - m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
+    }
+    + [\mu^x g]^3 \int \frac{\dif^d p}{[2 \piup]^d}
+    \frac{4p^2}{\sbr{p^2 - m^2}^4} k^2
+    + \mathrm O(k^4) \,,
+\end{align*}
+
+\paragraph{Three legs}
+
+
+\begin{align*}
+    \iup \mathcal M_3(\four k_1, \four k_2)
+    &= \frac{[\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    m^{d-6} \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)}
+    + \mathrm O\del{k_1^2 + k_2^2} \,.
+\end{align*}
+
 
 \subsection{Counterterms}
+
+So far the Lagrangian has been
+\[
+    \mathcal L
+    = \frac12 [\partial \phi]^2 - c_0 \phi - \frac{m_0^2}2\phi^2 -
+    \frac{g_0}{3!} \phi^3 \,.
+\]
+We have not explicitly written the subscript zero yet as this was not done in
+Equation~(1) on the problem set either. Now we will have to write them as we
+introduce the renormalized parameters. The four parameters of this theory are:
+
+\begin{enumerate}
+    \item Field renormalization $Z$,
+    \item Mass $m$,
+    \item Coupling constant $g$,
+    \item Coupling constant $c$.
+\end{enumerate}
+
+\newcommand\phir{\phi_\text r}
+
+First we introduce the field strength renormalization factor $Z$ and have $\phi
+= \sqrt Z \phir$ where $\phi$ is the renormalized field. The Lagrangian then
+assumes the form
+\[
+    \mathcal L
+    = \frac12 Z [\partial \phir]^2 - c_0 \sqrt Z \phir - \frac{Z m_0^2}2\phir^2
+    - \frac{Z^{3/2} g_0}{3!} \phir^3 \,.
+\]
+We want the \enquote{normal} Lagrangian back in order to obtain the Feynman
+parameters that we are used to. We do this by splitting the constants into the
+usual physical term and a counterterm. We do this using the following
+definitions:
+\[
+    \delta_Z := Z - 1
+    \eqnsep
+    \delta_m := Z m_0^2 - m^2
+    \eqnsep
+    \delta_c = \sqrt Z c_0 - c
+    \eqnsep
+    \delta_g = Z^{3/2} g_0 - g
+    \,.
+\]
+The Lagrangian with those counterterms then is
+\[
+    \begin{split}
+    \mathcal L
+    &= \frac12 [\partial \phir]^2 - c \phir - \frac{m^2}2\phir^2
+    - \frac{g}{3!} \phir^3 \\
+    &\quad+ \frac12 \delta_Z [\partial \phir]^2 - \delta_c \phir - \frac{\delta_m}2\phir^2
+    - \frac{\delta_g}{3!} \phir^3 \,.
+    \end{split}
+\]
+We see that we have recovered the Lagrangian we had before with a redefinition
+of the fields. Also there are a lot of new terms in the Lagrangian. Those can
+be interpreted as additional couplings and therefore new Feynman rules. The
+derivation of those Feynman rules from the Lagrangian is as usual. We have
+listed all of them in Table~\ref{tab:counterterms}.
+
+\begin{table}[tbp]
+    \newcommand\tdiagram[1]{\adjustbox{valign=c}{\includegraphics[scale=1]{#1}}}
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        Term & Diagram & Value of Diagram \\
+        \midrule
+        $\displaystyle \frac12 [\partial \phir]^2 - \frac{m^2}2\phir^2$
+        & \tdiagram{counter-z}
+        & $\displaystyle \frac{\iup}{p^2 - m^2 + \iup\epsilon}$
+        \\ \midrule[0.02em]
+        %
+        $\displaystyle - c \phir$
+        & \tdiagram{counter-c}
+        & $\displaystyle - \iup c$
+        \\ \midrule[0.02em]
+        %
+        $\displaystyle -\frac{g}{3!} \phir^3$
+        & \tdiagram{counter-g}
+        & $\displaystyle - \iup g$
+        \\ \midrule[0.02em]
+        %
+        $\displaystyle\frac12 \delta_Z [\partial \phir]^2$
+        & \tdiagram{counter-dz} & \\ \midrule[0.02em]
+        $\displaystyle-\delta_c \phir$
+        & \tdiagram{counter-dc} & \\ \midrule[0.02em]
+        $\displaystyle-\frac{\delta_m}2\phir^2$
+        & \tdiagram{counter-dm} & \\ \midrule[0.02em]
+        $\displaystyle-\frac{\delta_g}{3!} \phir^3$
+        & \tdiagram{counter-dg} & \\
+        \bottomrule
+    \end{tabular}
+    \caption{%
+        New Feynman rules with counterterms.
+    }
+    \label{tab:counterterms}
+\end{table}
 
 \subsection{Linear term}
 

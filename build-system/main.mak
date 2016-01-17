@@ -27,8 +27,9 @@ build/page/%.tex: Figures/%.tex
 	../build-system/tikzpicture_wrap.py $< $@
 
 build/%.pdf: build/page/%.pdf
-	pdfcrop $< $@
-	touch $@
+	if [ $< -nt $@ ]; then \
+	    pdfcrop $< $@; \
+	    fi
 
 %.pdf: %.tex
 	cd $$(dirname $@) && lualatex --halt-on-error $$(basename $<)
