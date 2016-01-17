@@ -5,7 +5,7 @@
 ]
 {
     a[particle=a] -- c1[dot];
-    c1 -- top[dot] -- c2[dot] -- bottom[dot] -- c1;
+    c1 --[out=90, in=180] top[dot] --[out=0, in=90] c2[dot] --[out=270, in=0] bottom[dot] --[out=180, in=270] c1;
     c2 -- b[particle=b];
 
     top -- bottom;

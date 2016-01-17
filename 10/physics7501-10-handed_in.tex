@@ -400,7 +400,7 @@ the symmetry factor is probably just one.
 
 Without any legs, we have no external momentum. Therefore we just have
 \[
-    \iup \mathcal M
+    \iup \mathcal M_0
     = \iup \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{p^2 - m^2} \,.
 \]
 This is divergent by $D = d - 2$, which seems to be quartic for $\epsilon = 0$.
@@ -414,7 +414,7 @@ One external leg still does not give us any additional momentum in the loop.
 Only the loop momentum can go around in the loop, no momentum can be
 transported into the $g$-tadpole. Therefore we just have
 \[
-    \iup \mathcal M
+    \iup \mathcal M_1
     = - \iup^2 \mu^x g \int \frac{\dif^d p}{[2 \piup]^d} \frac{1}{\sbr{p^2 - m^2}^2}
 \]
 which has a divergence of $D = d - 4$ which is quadratic.
@@ -428,7 +428,7 @@ through the loop. We choose the following convention for the momenta:
 
 We can write down the amplitude for this diagram:
 \[
-    \iup \mathcal M
+    \iup \mathcal M_2
     = [-\iup \mu^x g]^2 \iup^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \frac{1}{[p + k]^2 - m^2}
@@ -474,7 +474,7 @@ From this we can assemble the power series expansion. We have included the
 degree of divergence~$D$ for each term. The first fraction outside of the
 bracket is included in this as well. We obtain
 \[
-    \iup \mathcal M
+    \iup \mathcal M_2
     = - [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \bigg[
@@ -506,7 +506,7 @@ two external momenta that enter the loop:
 The amplitude is just like in the case with two external legs, there is just an
 additional propagator and vertex in the amplitude. It is
 \[
-    \iup \mathcal M
+    \iup \mathcal M_3
     = [-\iup \mu^x g]^3 \iup^3 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \frac{1}{[p + k_1]^2 - m^2}
@@ -517,7 +517,7 @@ any expansion. This means that the only diverging term is the one we already
 have. We can still expand in $\four k_1$ and $\four k_2$ and obtain the
 following result:
 \[
-    \iup \mathcal M
+    \iup \mathcal M_3
     = [\mu^x g]^3 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{1}{p^2 - m^2}
     \sbr{
@@ -575,7 +575,11 @@ terms. The term containing $p^2$ in the numerator has to be done separately.
 Equation~(2) also seems to be missing an imaginary unit with respect to the
 dimensional regularization factors given by \textcite[A.4]{Peskin/QFT/1995}. We
 chose to include the imaginary unit from the book to make it consistent with
-the $p^2$ formula taken from the it.
+the $p^2$ formula taken from the it. Also the book has a minus sign depending
+on the power of the numerator. This is also not included in Equation~(2) on the
+problem set. For the case given on the problem set this should be $(-1)^r$ and
+for the case with the extra $p^2$ that should be $(-1)^{r - 1}$. We will need
+that later on to cancel some terms in the diagram with two legs.
 
 \paragraph{One leg}
 
@@ -614,7 +618,7 @@ The diagram with two legs gives the following after dimensional regularization:
     -  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
     \sbr{
         m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
-        - m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
+        + m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
     }
     + [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{4p^2}{\sbr{p^2 - m^2}^4} k^2
@@ -626,8 +630,8 @@ The diagram with two legs gives the following after dimensional regularization:
     &=
     -  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
     m^{d-4} \frac{\Gammaup\del{2 - \frac d2}}{\Gammaup(2)}
-    +  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
-    m^{d-6}  \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
+    -  \frac{\iup [\mu^x g]^2 \piup^{d/2}}{[2 \piup]^d}
+    m^{d-6} \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)} k^2
     \\&\qquad
     + [\mu^x g]^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{4p^2}{\sbr{p^2 - m^2}^4} k^2
@@ -641,10 +645,11 @@ The diagram with two legs gives the following after dimensional regularization:
         here and you can still look through the details.
     }
     &=
-    \frac{\iup g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
-    \piup}{m}} - \gamma + 1}
-    + \frac{\iup g^2}{2^7 \piup^3} k^2
-    \sbr{\frac 1\epsilon + 2 \ln\del{\frac{2 \mu \piup}{m}} - \gamma}
+    \frac{\iup g^2 m^2}{2^6 \piup^3} \sbr{\frac1\epsilon + \ln\del{\frac{4
+                \mu^2
+    \piup}{m^2}} - \gamma + 1}
+    - \frac{\iup g^2}{2^7 \piup^3} k^2
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^2 \piup}{m^2}} - \gamma}
     \\&\qquad
     + [\mu^x g]^2 k^2 \int \frac{\dif^d p}{[2 \piup]^d}
     \frac{4p^2}{\sbr{p^2 - m^2}^4}
@@ -658,18 +663,31 @@ The diagram with two legs gives the following after dimensional regularization:
         regularization we end up with
     }
     &=
-    \frac{\iup g^2}{2^6 \piup^3 m^2} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
+    \frac{\iup g^2 m^2}{2^6 \piup^3} \sbr{\frac1\epsilon + 2 \ln\del{\frac{2 \mu
     \piup}{m}} - \gamma + 1}
-    + \frac{\iup g^2 k^2}{2^7 \piup^3}
-    \sbr{\frac 1\epsilon + 2 \ln\del{\frac{2 \mu \piup}{m}} - \gamma}
+    - \frac{\iup g^2 k^2}{2^7 \piup^3}
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^2 \piup}{m^2}} - \gamma}
     \\&\qquad
-    + \frac{\iup g^2 k^2}{2^7 \piup^3} \sbr{\frac 1\epsilon \cbr{1 - \frac 13
-        \ln\del{\frac{4 \mu^2 \piup}{m^2}}} - \gamma - \frac13 + [1 + \gamma]
+    + \frac{\iup g^2 k^2}{2^7 \piup^3} \sbr{\frac 1\epsilon - \gamma - \frac13 + [1 + \gamma]
+    \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
+    + \mathrm O(k^4) \,.
+    \intertext{%
+        That is not very pretty. After fixing up all the phases using only the
+        dimensional integration formulas of the book we can actually combine
+        the second and third term. During that process a couple terms cancel
+        out.
+    }
+    &=
+    \frac{\iup g^2 m^2}{2^6 \piup^3} \sbr{\frac1\epsilon + \ln\del{\frac{4
+                \mu^2
+    \piup}{m^2}} - \gamma + 1}
+    - \frac{\iup g^2 k^2}{2^7 \piup^3}
+    \sbr{
+         - \frac13 + \gamma
     \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
     + \mathrm O(k^4) \,.
 \end{align*}
-That is not very pretty. 
-% TODO Cancel stuff
+Now that is a result one actually decently work with.
 
 \paragraph{Three legs}
 
@@ -679,15 +697,15 @@ For the diagram with three legs we can use dimensional regularization directly.
     &= \frac{\iup [\mu^x g]^3 \piup^{d/2}}{[2 \piup]^d}
     m^{d-6} \frac{\Gammaup\del{3 - \frac d2}}{\Gammaup(3)}
     + \mathrm O\del{k_1^2 + k_2^2} \\
-    &= \frac{\iup g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3 \piup^2}{m^2}}^\epsilon
+    &= \frac{\iup g^3}{2^7 \piup^3} \sbr{\frac{4 \mu^3 \piup}{m^2}}^\epsilon
     \Gammaup(\epsilon)
     + \mathrm O\del{k_1^2 + k_2^2} \\
     &= \frac{\iup g^3}{2^7 \piup^3}
-    \sbr{1 + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} \epsilon + \mathrm O(\epsilon^2)}
+    \sbr{1 + \ln\del{\frac{4 \mu^3 \piup}{m^2}} \epsilon + \mathrm O(\epsilon^2)}
     \sbr{\frac 1\epsilon - \gamma + \mathrm O(\epsilon)}
     + \mathrm O\del{k_1^2 + k_2^2} \\
     &= \frac{\iup g^3}{2^7 \piup^3}
-    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} - \gamma}
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup}{m^2}} - \gamma}
     + \mathrm O\del{\epsilon + k_1^2 + k_2^2}
 \end{align*}
 
@@ -873,9 +891,8 @@ regularized them. So we simply have
     }
     \delta_g
     &= - \frac{3 \iup g^3}{2^7 \piup^3}
-    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup^2}{m^2}} - \gamma} \,.
+    \sbr{\frac 1\epsilon + \ln\del{\frac{4 \mu^3 \piup}{m^2}} - \gamma} \,.
 \end{align*}
-
 
 \paragraph{Computation of $\delta_m$ and $\delta_Z$}
 
@@ -916,10 +933,109 @@ momentum already. This means we have
     - \iup M^2(k^2) = \iup \mathcal M_2 + \iup k^2 \delta_Z - \iup \delta_m \,.
 \]
 Here we can see already that only the term which contains the $k^2$ can
-contribute to the field strength renormalization counterterm $\delta_Z$.
+contribute to the field strength renormalization counterterm $\delta_Z$. First
+we write out the term fully. It is
+\[
+    - \iup M^2(k^2) =
+    \frac{\iup g^2 m^2}{2^6 \piup^3}
+    \sbr{\frac1\epsilon + \ln\del{\frac{4 \mu^2 \piup}{m^2}} - \gamma + 1}
+    - \frac{\iup g^2 k^2}{2^7 \piup^3}
+    \sbr{- \frac13 + \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
+    + \iup k^2 \delta_Z - \iup \delta_m \,.
+\]
+We differentiate with respect to $k^2$ and set this to zero. This then gives us
+\[
+    \delta_Z = 
+    - \frac{g^2}{2^7 \piup^3}
+    \sbr{- \frac13 + \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}} \,.
+\]
+It is a bit surprising that this does not depend on $\epsilon$ at all. In the
+$\phi^4$ theory one actually obtains $\delta_Z = 0$ in the first loop order.
+
+We go back to the equation, set $k^2 = m^2$. This gives us
+\begin{align*}
+    \delta_m
+    &= \frac{g^2 m^2}{2^6 \piup^3}
+    \sbr{\frac1\epsilon + \ln\del{\frac{4 \mu^2 \piup}{m^2}} - \gamma + 1}
+    - \frac{g^2 m^2}{2^7 \piup^3}
+    \sbr{- \frac13 + \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
+    + m^2 \delta_Z \,.
+    \intertext{%
+        Then we insert the freshly derived $\delta_Z$. We set the expression to
+        zero and obtain $\delta_m$ from that. The result is
+    }
+    &= \frac{g^2 m^2}{2^6 \piup^3}
+    \sbr{\frac1\epsilon + \ln\del{\frac{4 \mu^2 \piup}{m^2}} - \gamma + 1}
+    - \frac{g^2 m^2}{2^7 \piup^3}
+    \sbr{- \frac13 + \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}}
+    - \frac{g^2 m^2}{2^7 \piup^3}
+    \sbr{- \frac13 + \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}} \,.
+    \intertext{%
+        We can extract the common factor in the front and obtain the shorter
+        expression
+    }
+    &= \frac{g^2 m^2}{2^7 \piup^3}
+    \sbr{
+        \frac2\epsilon
+        + 2 \ln\del{\frac{4 \mu^2 \piup}{m^2}}
+        - 2\gamma
+        + 2
+        + \frac13
+        - \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}
+        + \frac13
+        - \gamma \ln\del{\frac{4 \mu^2 \piup}{m^2}}
+    } \,.
+    \intertext{%
+        Grouping terms gives
+    }
+    &= \frac{g^2 m^2}{2^7 \piup^3}
+    \sbr{
+        \frac2\epsilon
+        + \frac83
+        + 2 [1 - \gamma] \ln\del{\frac{4 \mu^2 \piup}{m^2}}
+        - 2 \gamma
+    } \,.
+    \intertext{%
+        As a last step we cancel out the factor of two and obtain
+    }
+    &= \frac{g^2 m^2}{2^6 \piup^3}
+    \sbr{
+        \frac1\epsilon
+        + \frac43
+        + [1 - \gamma] \ln\del{\frac{4 \mu^2 \piup}{m^2}}
+        - \gamma
+    } \,.
+\end{align*}
 
 \subsection{Purpose of linear term}
 
+The linear term did not contribute anything to the analysis presented here.
+Therefore one could have omitted it. On the other hand this term is like a
+constant background current that should at least give an energy shift.
+
+In Condensed Matter we were able to scatter from the same impurity (that
+background current) twice and actually transfer some momentum along the
+interaction lines to form a loop. This looked like this:
+
+\hspace{\mathindent}\includegraphics{double-impurity}
+
+This probably leverages on the background lattice being able to absorb momentum
+and give it back at some other point. In our case we would need something like
+this to get an interesting loop contribution from the $c$-vertices:
+
+\hspace{\mathindent}\includegraphics{double-impurity2}
+
+We do not have this interaction between the $c$-vertices, so there it not much
+we can do.
+
+A posting on Physics Stack Exchange
+\footnote{\url{http://physics.stackexchange.com/q/103328/5705}} suggests that
+this term does have an effect when there is some degeneracy in the ground
+state.
+
+
+
+\needspace{10ex}
 \begin{appendix}
     \section{Questions} 
 
