@@ -18,7 +18,7 @@ test:
 
 $(document_pdf): $(figures_pdf)
 
-$(figures_pdf): build
+$(figures_pdf): | build
 
 build:
 	mkdir -p build/page
@@ -27,9 +27,7 @@ build/page/%.tex: Figures/%.tex
 	../build-system/tikzpicture_wrap.py $< $@
 
 build/%.pdf: build/page/%.pdf
-	if [ $< -nt $@ ]; then \
-	    pdfcrop $< $@; \
-	    fi
+	pdfcrop $< $@
 
 %.pdf: %.tex
 	cd $$(dirname $@) && lualatex --halt-on-error $$(basename $<)

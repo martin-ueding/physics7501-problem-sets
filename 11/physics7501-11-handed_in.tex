@@ -1,0 +1,119 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{multicol}
+\usepackage{adjustbox}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+\usepackage{tikzsymbols}
+\usepackage{placeins}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{11}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{20} \\
+        \midrule
+        Total & & \arabic{totalpoints}
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{Renormalization of Yukawa theory in six dimensions}
+\label{homework:1}
+
+\newcommand\mdim M
+
+\subsection{Feynman rules}
+
+The Feynman rules are
+\begin{align*}
+    \vcenter{\hbox{\includegraphics{scalar-propagator}}}
+    &= \frac{\iup}{\four p^2 - m^2}
+    \\
+    \vcenter{\hbox{\includegraphics{dirac-propagator}}}
+    &= \frac{\iup \fourslash p}{\four p^2 - M^2}
+    \\
+    \vcenter{\hbox{\includegraphics{vertex}}}
+    &= g \mat\gamma^5 \,.
+\end{align*}
+
+The mass dimension $\mdim$ of $g$ is zero, it is a dimensionless coupling
+constant. The rules for the superficial degree of divergence are the same as in
+QED as the boson propagator has the same mass dimension. Every scalar
+propagator gives $\mdim = 2$, each fermion propagator gives $\mdim = 3$. Each
+vertex gives $\mdim = -4$ due to the momentum conserving $\delta$-distribution.
+The empty diagram starts with $\mdim = 4$ as as we do not want to count the
+$\delta$-distribution that conserves the total momentum. Therefore we have
+\[
+    D = 4 + 3 P_\psi + 2 P_\phi - 4 V \,.
+\]
+This is not helpful as we want to express this in the external legs. A little
+trying makes it clear that adding fermion loops inside of the diagram does not
+change $D$ at all. Therefore it is only depended on the external legs, just as
+with QED\@. We looked at a couple diagrams and made the Ansatz
+\[
+    D = a + b E_\psi + c E_\phi
+\]
+and solved the linear system of equations. We obtain
+\[
+    D = 4 - \frac32 E_\psi - E_\phi \,.
+\]
+
+\end{document}
+
+% vim: spell spelllang=en tw=79
