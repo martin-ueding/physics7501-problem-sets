@@ -57,11 +57,13 @@
 
 \begin{center}
     \begin{tabular}{rrr}
+        \toprule
         Problem & Achieved points & Possible points \\
         \midrule
         \nameref{homework:1} & & \punkte{20} \\
         \midrule
-        Total & & \arabic{totalpoints}
+        Total & & \arabic{totalpoints} \\
+        \bottomrule
     \end{tabular}
 \end{center}
 
@@ -73,7 +75,7 @@
     \end{small}
 \end{center}
 
-\section{Renormalization of Yukawa theory in six dimensions}
+\section{Renormalization of Yukawa theory}
 \label{homework:1}
 
 \newcommand\mdim M
@@ -113,6 +115,388 @@ and solved the linear system of equations. We obtain
 \[
     D = 4 - \frac32 E_\psi - E_\phi \,.
 \]
+
+\begin{question}
+    Is that the recommended way to get these sort of relations for the
+    superficial degree of divergence? In the tutorial it seemed so easy for you
+    to construct it. I always have a hard time figuring out the relations
+    between the number of propagators, vertices and external legs, especially
+    if different types of vertices are involved.
+\end{question}
+
+\subsection{Superficially divergent amplitudes}
+
+\paragraph{List of divergent amplitudes}
+
+It is not possible to have a diagram with an odd number of fermionic legs. If
+we have more then two fermionic legs, the diagram will converge. If a diagram
+has more than four scalar legs, it will converge as well. Therefore we are left
+with the following selection of possible divergent diagrams shown in
+Table~\ref{tab:divergent}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{S|SS}
+        \toprule
+        {$E_\phi$ \textbackslash $E_\psi$} & 0 & 2 \\
+        \midrule
+        0 & 4 & 1 \\
+        1 & 3 & 0 \\
+        2 & 2 & -1 \\
+        3 & 1 & -2 \\
+        4 & 0 & -3 \\
+        \bottomrule
+    \end{tabular}
+    \caption{%
+        Superficially divergent diagram configurations.
+        The first row has the number of external fermion lines. The first
+        column has the number of external scalar lines.
+    }
+    \label{tab:divergent}
+\end{table}
+
+Only two diagrams with two fermionic legs are divergent and a lot of diagrams
+with no fermionic legs are divergent. All those diagrams are depicted in
+Figure~\ref{fig:divergent}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-0}
+        \caption{%
+        }
+        \label{fig:/1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-1}
+        \caption{%
+        }
+        \label{fig:/1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-2}
+        \caption{%
+        }
+        \label{fig:/1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-3}
+        \caption{%
+        }
+        \label{fig:/1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{loop-4}
+        \caption{%
+        }
+        \label{fig:loop-4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{dirac-propagator}
+        \caption{%
+        }
+        \label{fig:/1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.3\linewidth}
+        \centering
+        \includegraphics{vertex}
+        \caption{%
+        }
+        \label{fig:/1}
+    \end{subfigure}
+    \caption{%
+        Superficially divergent diagrams
+    }
+    \label{fig:divergent}
+\end{figure}
+
+Higher order corrections to all these diagrams would have the same superficial
+degree of divergence. We hope that only the lowest order is asked here.
+
+\paragraph{Expansion in external momenta}
+
+Let the external momenta be of order $k$ and the internal loop momentum be $p$.
+Then we can expand all the loop diagrams in $k$. Actually we would have
+multiple external momenta $k_i$ but we can probably just let $k$ be the largest
+one (in some particular reference frame perhaps) and expand in it. Only the
+dimensional argument is important here. The diagram with zero or one external
+leg is independent of the external momentum. Therefore that will diverge with
+the one term there is.
+
+The diagram with two legs will have one four dimensional integral in $p$ and
+two powers of $p + k$ in the denominator. Therefore it still diverges with $D =
+2$. Each differentiation with $k$ will lower the divergence in $p$ by one.
+Therefore we need to include the $D = 2, 1, 0$ terms which means we have to
+include $k^2$ terms.
+
+In the diagram with three legs we already have three powers of $p + k$ in the
+denominator, here we only need $k^1$ terms in order to have $D = 1, 0$ terms.
+
+The diagram with four legs is only divergent with $D = 0$ already. There we do
+not need to expand, we can just let the external momenta go to zero.
+
+The propagator and the vertex do not have any integration really, so they are
+fine although the superficial degree of divergence says otherwise. When adding
+loop corrections, this might change.
+
+\paragraph{Symmetry factors}
+
+In all cases the symmetry factor $S$ is just one as we are not allowed to
+switch the external legs. Otherwise the diagram with two legs would have $S =
+2$.
+
+\paragraph{Diverging $\phi^4$ amplitude}
+
+The $\phi^4$ amplitude is shown in Figure~\ref{fig:loop-4} and has $D = 0$.
+\begin{align*}
+    \iup \mathcal M_4
+    &=
+    \int \frac{\dif^4 p}{[2 \piup]^4} \frac{\trdirac\del{
+        \iup \fourslash p \mat\gamma^5
+        \iup \fourslash p \mat\gamma^5
+        \iup \fourslash p \mat\gamma^5
+        \iup \fourslash p \mat\gamma^5
+    }
+}{[\four p^2 - m^2]^4}
+\\
+\intertext{%
+    We can move all the $\mat\gamma^5$ to one spot. We need an even number of
+    anticommutations and therefore do not have an overall sign change. The
+    fifth Dirac matrix is its own inverse and therefore they all just cancel
+    out. The imaginary units also cancel out. We are therefore left with:
+}
+&=
+    \int \frac{\dif^4 p}{[2 \piup]^4} \frac{\trdirac\del{
+        \fourslash p
+        \fourslash p
+        \fourslash p 
+        \fourslash p 
+    }
+}{[\four p^2 - m^2]^4}
+\intertext{%
+    This is just a very fancy scalar product as we can just use $\fourslash p
+    \fourslash p = \four p^2$ twice.
+}
+&= \int \frac{\dif^4 p}{[2 \piup]^4} \frac{\four p^4}{[\four p^2 - m^2]^4}
+\end{align*}
+This has eight powers of $\four p$ in the numerator as well as in the
+denominator. We could use dimensional regularization here to compute the
+amplitude.
+
+\subsection{Counterterms}
+
+\newcommand\phir{\phi_\text r}
+\newcommand\psir{\psi_\text r}
+
+The previous Lagrangian has been
+\[
+    \mathcal L
+    = \frac 12 (\partial_\mu \phi)^2 - \frac12 m_0^2 \phi^2 - \bar\psi(\iup
+    \slashed\partial - M_0) \psi - \iup g \bar\psi \gamma^5 \psi \phi \,.
+\]
+Now we add the quartic scalar interaction and have
+\[
+    \mathcal L
+    = \frac 12 (\partial_\mu \phi)^2 - \frac12 m_0^2 \phi^2 -
+    \frac{\lambda}{4!} \phi^4 - \bar\psi(\iup
+    \slashed\partial - M_0) \psi - \iup g \bar\psi \gamma^5 \psi \phi \,.
+\]
+
+We define the renormalized fields with
+\[
+    \phi = \sqrt{Z_\phi} \phir
+    \eqnsep
+    \psi = \sqrt{Z_\psi} \psir
+\]
+and insert that into the Lagrangian. We obtain
+\[
+    \mathcal L
+    = \frac 12 Z_\phi (\partial_\mu \phir)^2
+    - \frac12 Z_\phi m_0^2 \phir^2
+    - Z_\phi^2 \frac{\lambda_0}{4!} \phir^4
+    - Z_\psi \bar\psir(\iup \slashed\partial - M_0) \psir
+    - \iup g Z_\psi \sqrt{Z_\phi} \bar\psir \gamma^5 \psir \phir \,.
+\]
+
+From here we introduce the following counterterms:
+\begin{gather*}
+    \delta_\phi = Z_\phi - 1
+    \eqnsep
+    \delta_\psi = Z_\psi - 1
+    \eqnsep
+    \delta_m = Z_\phi m_0^2 - m^2
+    \eqnsep
+    \delta_M = Z_\psi M_0^2 - M^2
+    \,, \\
+    \delta_g = Z_\psi \sqrt{Z_\phi} g_0 - g
+    \eqnsep
+    \delta_\lambda = Z_\phi^2 \lambda_0 - \lambda \,.
+\end{gather*}
+This allows us to write the Lagrangian as
+\begin{align*}
+    \mathcal L
+    &= \frac 12 (\partial_\mu \phir)^2
+    - \frac12 m^2 \phir^2
+    - \frac{\lambda}{4!} \phir^4
+    - \bar\psir(\iup \slashed\partial - M) \psir
+    - \iup g \bar\psir \gamma^5 \psir \phir
+    \\
+    &\quad
+    + \frac 12 \delta_\phi (\partial_\mu \phir)^2
+    - \frac12 \delta_m \phir^2
+    - \frac{\delta_\lambda}{4!} \phir^4
+    - \iup \delta_\psi \bar\psir \slashed\partial \psir
+    + \delta_M \bar\psir \psir
+    - \iup \delta_g \bar\psir \gamma^5 \psir \phir \,.
+\end{align*}
+
+The Feynman rules for the four counterterms are
+\begin{align*}
+    \vcenter{\hbox{\includegraphics{counter-phi}}}
+    &= \iup \sbr{p^2 \delta_\phi - \delta_m} \,,
+    &
+    \vcenter{\hbox{\includegraphics{counter-psi}}}
+    &= \iup \sbr{\fourslash p \delta_\psi - \delta_M} \,, \\ \\
+    \vcenter{\hbox{\includegraphics{counter-quartic}}}
+    &= - \iup \delta_\lambda \,,
+    &
+    \vcenter{\hbox{\includegraphics{counter-vertex}}}
+    &= \delta_g \gamma^5 \,.
+\end{align*}
+
+\subsection{Regularization}
+
+\paragraph{Regularization conditions}
+
+First we need some regularization conditions. As we are working in the minimal
+subtraction scheme, we must only subtract the poles. This means that the sum of
+loop diagrams and the counterterm are supposed to be regular.
+
+As usual, we require the propagators to have a pole at the physical mass and
+only regular terms otherwise. This means for the fermion that
+\begin{multline*}
+    \vcenter{\hbox{\includegraphics{dirac-propagator}}}
+    +
+    \vcenter{\hbox{\includegraphics{fermion-self}}}
+    +
+    \vcenter{\hbox{\includegraphics{counter-psi}}}
+    \\
+    =
+    \frac{\iup \fourslash p}{p^2 - M^2}
+    + \text{(terms regular at $d = 4$)} \,.
+\end{multline*}
+Also the scalar propagator shall have the pole at the physical mass:
+\begin{multline*}
+    \vcenter{\hbox{\includegraphics{scalar-propagator}}}
+    +
+    \vcenter{\hbox{\includegraphics{loop-2}}}
+    +
+    \vcenter{\hbox{\includegraphics{tadpole-propagator}}}
+    +
+    \vcenter{\hbox{\includegraphics{counter-phi}}}
+    \\
+    =
+    \frac{\iup}{p^2 - m^2}
+    + \text{(terms regular at $d = 4$)} \,.
+\end{multline*}
+For the vertex we have
+\[
+    \vcenter{\hbox{\includegraphics{vertex}}}
+    +
+    \vcenter{\hbox{\includegraphics{vertex-loop}}}
+    +
+    \vcenter{\hbox{\includegraphics{counter-vertex}}}
+    = \text{(terms regular at $d = 4$)} \,.
+\]
+And finally the quartic interaction is renormalized by
+\begin{multline*}
+    \vcenter{\hbox{\includegraphics{quartic}}}
+    +
+    \vcenter{\hbox{\includegraphics{loop-4}}}
+    +
+    \vcenter{\hbox{\includegraphics{s-channel}}}
+    + \text{($t$-channel)}
+    + \text{($u$-channel)}
+    \\
+    + \vcenter{\hbox{\includegraphics{counter-quartic}}}
+    = \text{(terms regular at $d = 4$)} \,.
+\end{multline*}
+
+\paragraph{Regularization of the fermionic propagator}
+
+We start with the computation of the fermion self-energy
+\begin{align*}
+    \iup \mathcal M_\text{FSE}
+    &= \vcenter{\hbox{\includegraphics{fermion-self}}} \,. \\
+    \intertext{%
+        Using the Feynman rules we obtain
+    }
+    &= g^2 \bar u(p) \int \frac{\dif^4 k}{[2 \piup]^4} \frac{\iup}{k^2 - m^2}
+    \gamma^5 \frac{\iup [\fourslash p - \fourslash k]}{[p-k]^2 - M^2} \gamma^5
+    u(p) \,.
+    \intertext{%
+        We can just move the second $\gamma^5$ into the middle and obtain a
+        sign switch while anticommuting it with $\fourslash p$. The two
+        imaginary units cancel the negative sign. The square of $\gamma^5$ is
+        the unit matrix. Therefore this simplifies to
+    }
+    &= g^2 \bar u(p) \int \frac{\dif^4 k}{[2 \piup]^4} \frac{1}{k^2 - m^2}
+    \frac{\fourslash p - \fourslash k}{[p-k]^2 - M^2} u(p) \,.
+    \intertext{%
+        This integral diverges linearly. We can either expand in the external
+        momentum $\four p$ or complete the square in the denominator. We choose
+        to do the Feynman parameter route here. After all the magic we have
+    }
+    &= g^2 \bar u(p) \int \frac{\dif^4 k}{[2 \piup]^4}
+    \int_0^i \dif x \, \dif y \delta(x + y - 1)
+    \frac{x\fourslash p - \fourslash l}{\sbr{l^2 - \sbr{- xyp^2 + xm^2 +
+    yM^2}}^2 + \iup \epsilon} u(p) \,.
+    \intertext{%
+        We can directly see that the integral with $\fourslash l$ will drop out
+        due to symmetry. For the remainder we can perform dimensional
+        regularization and have
+    }
+    &= g^2
+    \int_0^i \dif x \, \dif y \delta(x + y - 1)
+    x\fourslash p \frac{\iup}{[4 \piup]2} \Gammaup\del{2 - \frac d2} \sbr{\frac
+    1 \Delta}^{2-2/d} \,.
+    \intertext{%
+        We are only interested in the residue at $\epsilon \to 0$ so we just
+        end up with
+    }
+    &= g^2 \fourslash p \frac{\iup}{[4 \piup]^2} \frac2\epsilon
+    + \text{(terms regular at $d = 4$)} \,.
+\end{align*}
+
+In the renormalised perturbation theory we already have the pole of the
+propagator at the physical mass. That was the whole point. So we just need to
+set the counterterm to the negative of the pole and we are done:
+\[
+    \vcenter{\hbox{\includegraphics{counter-psi}}}
+    = \iup \sbr{\fourslash p \delta_\psi - \delta_M}
+    = - g^2 \fourslash p \frac{\iup}{[4 \piup]^2} \frac2\epsilon \,.
+\]
+Our pole only contains the $\fourslash p$ term, therefore we have
+\[
+    \delta_\psi = - g^2 \frac{1}{[4 \piup]^2} \frac2\epsilon
+    \eqnsep
+    \delta_M = 0 \,.
+\]
+Somewhere along we way we have dropped the spinors. Using those, we could have
+converted the $\fourslash p$ into an $M$ and gotten $\delta_\psi = 0$ and
+$\delta_M \neq 0$. This is fishy and something must be wrong!
 
 \end{document}
 
