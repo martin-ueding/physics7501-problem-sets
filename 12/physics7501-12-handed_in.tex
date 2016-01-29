@@ -1,0 +1,204 @@
+\documentclass[11pt, english, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend]{../header}
+\usepackage{../my-boxes}
+
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{simplewick}
+\usepackage{multicol}
+\usepackage{adjustbox}
+\usepackage{slashed}
+\usepackage{subcaption}
+\usepackage{cancel}
+\usepackage{tikzsymbols}
+\usepackage{placeins}
+
+\newcommand\timeorder{\mathscr T}
+\newcommand\normorder{\mathscr N}
+\newcommand\eye{\mat 1_4}
+\newcommand\fourslash[1]{\slashed{\four{#1}}}
+\newcommand\T{\mathrm T}
+
+\hypersetup{
+    pdftitle=
+}
+
+\graphicspath{{build/}}
+
+\newcounter{totalpoints}
+\newcommand\punkte[1]{#1\addtocounter{totalpoints}{#1}}
+
+\newcounter{problemset}
+\setcounter{problemset}{12}
+
+\subject{physics7501 -- Advanced Quantum Field Theory}
+\ihead{physics7501 -- Problem Set \arabic{problemset}}
+
+\title{Problem Set \arabic{problemset}}
+
+\newcommand\thegroup{Tutor: Thorsten Schimannek}
+
+\publishers{\thegroup}
+\ofoot{\thegroup}
+
+\author{
+    Martin Ueding \\ \small{\href{mailto:mu@martin-ueding.de}{mu@martin-ueding.de}}
+}
+\ifoot{Martin Ueding}
+
+\ohead{\rightmark}
+
+\begin{document}
+
+\maketitle
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{tabular}{rrr}
+        \toprule
+        Problem & Achieved points & Possible points \\
+        \midrule
+        \nameref{homework:1} & & \punkte{12} \\
+        \midrule
+        Total & & \arabic{totalpoints} \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{center}
+    \begin{small}
+        This document consists of \pageref{LastPage} pages.
+    \end{small}
+\end{center}
+
+\section{Chiral anomalies à la Fujikava}
+\label{homework:1}
+
+\subsection{Invariance}
+
+Giving names makes them less scary\footnote{Just as they called the hedge
+\enquote{Hugo} in the German version of \enquote{Over the Hedge} to make it
+less scary.}, so we introduce
+\[
+    C := \exp\del{\iup \frac\alpha2 \mat\gamma^5}
+\]
+to be the chiral transformation. Since $\mat\gamma^5$ is hermitian, we adjoint
+transformation is just
+\[
+    C^\dagger = \exp\del{- \iup \frac\alpha2 \mat\gamma^5} \,.
+\]
+The sandwich between $\mat\gamma^0$ of the chiral transformation converts it
+into its hermitian conjugate. We start with just expanding $C$ and have
+\begin{align*}
+    \mat\gamma^0 C \mat\gamma^0
+    &= \mat\gamma^0 \exp\del{\iup \frac\alpha2 \mat\gamma^5} \mat\gamma^0 \,.
+    \intertext{%
+        Then we expand the exponential as a series and have
+    }
+    &= \mat\gamma^0
+    \sum_{n = 0}^\infty
+    \frac{1}{n!} \sbr{\iup \frac\alpha2 \mat\gamma^5}^n
+    \mat\gamma^0 \,.
+    \intertext{%
+        With $\mat\gamma^0 \mat\gamma^0 = \mat 1_4$ we can wrap every single
+        $\mat\gamma^5$ into $\mat\gamma^0$.
+    }
+    &=
+    \sum_{n = 0}^\infty
+    \frac{1}{n!} \sbr{\iup \frac\alpha2 \mat\gamma^0 \mat\gamma^5 \mat\gamma^0}^n
+    \,.
+    \intertext{%
+        Either using the anticommutation or the explicit $\mat\gamma^5 = \iup
+        \mat\gamma^0 \mat\gamma^1 \mat\gamma^2 \mat\gamma^3$ one can show that
+        this flips the sign.
+    }
+    &= \sum_{n = 0}^\infty
+    \frac{1}{n!} \sbr{- \iup \frac\alpha2 \mat\gamma^5}^n
+    \intertext{%
+        This then gives us
+    }
+    &= C^\dagger \,.
+\end{align*}
+
+The quark term in the Lagrangian then transforms as
+\begin{align*}
+    \iup \bar q \slashed \Dif q
+    &= \iup q^\dagger \mat\gamma^0 \slashed \Dif q \\
+    &\to \iup q^\dagger C^\dagger \mat\gamma^0 \slashed \Dif C q \,.
+    \intertext{%
+        We insert pairs of $\mat\gamma^0$ and add some suggestive spacing. We
+        have
+    }
+    &= \iup q^\dagger \mat\gamma^0 \; \mat\gamma^0 C^\dagger \mat\gamma^0 \;
+    \slashed \Dif C q \,.
+    \intertext{%
+        Then we can get back the \enquote{bar} and also remove the dagger on
+        the $C$ to give
+    }
+    &= \iup \bar q C \slashed \Dif C q \,.
+    \intertext{%
+        The derivative does not act on the transformation as it is a global
+        transformation. The \enquote{slashed} Dirac matrices however
+        anticommute with the ones in the exponential. Therefore the sign in the
+        exponential flips again and we have
+    }
+    &= \iup \bar q \slashed \Dif C^\dagger C q \,.
+    \intertext{%
+        And then we can cancel the two chiral transformation to yield a unit
+        matrix and we are back to the original Lagrangian, 
+    }
+    &= \iup \bar q \slashed \Dif q \,.
+\end{align*}
+Therefore the chiral transformation is a global symmetry of the Lagrangian. The
+gluon field is not affected by this transformation acting on the Dirac
+structure only as the gluons only have Lorentz and gauge group structure.
+
+\subsection{Local symmetry}
+
+The chiral transformation is now promoted to a local symmetry. This means that
+it does not commute with the partial derivative any more. From the previous
+part we know that the transformed Lagrangian has the form 
+$\bar q C \slashed D C q$ which we can then expand as
+\begin{align*}
+    \bar q C \slashed D C q
+    &= \bar q C \slashed \partial C q + \iup g \bar q C \slashed A C q \,.
+    \intertext{%
+        In the first term, we need to apply the product rule. The $C$ will be
+        hermitian conjugated when we move it through the Dirac matrix from the
+        \enquote{slashed} notation. In the second we can just commute $C$ and
+        $\vec A$ to give $C C^\dagger$ and get that back to the untransformed
+        way. As that term was included before, we drop that. We we are left
+        with
+    }
+    &\simeq \bar q C (\slashed \partial C) q
+    + \bar q C C^\dagger \slashed \partial q \,.
+    \intertext{%
+        In the first term we actually need to compute the derivative. The
+        second term does not feature an explicit transformation any more, so we
+        can just drop that as well. We have
+    }
+    &\simeq \frac \iup 2 \bar q C \mat\gamma^\mu \alpha_{,\mu}(\four x) \mat\gamma_5 C q \,,
+    \intertext{%
+        where we can now anticommute the $C$ across the $\mat\gamma^\mu$ and
+        obtain $C^\dagger$. That will cancel the other $C$. Then we pull out
+        the $\alpha$ and we have
+    }
+    &= \frac \iup 2 \alpha_{,\mu}(\four x) \bar q \mat\gamma^\mu \mat\gamma_5 q \,.
+    \intertext{%
+        Using $j_5^\mu := \bar q \mat\gamma^\mu \mat\gamma_5 q$ we can write this
+        as
+    }
+    &= \frac \iup 2 \alpha_{,\mu}(\four x) j_5^\mu \,.
+\end{align*}
+The difference in the Lagrangian is almost Equation~(3) from the problem set.
+We got a factor $\iup/2$ more. The desired result contains three indices $\mu$
+which does not seem right. This here is probably not far off from the actual
+result.
+
+\end{document}
+
+% vim: spell spelllang=en tw=79

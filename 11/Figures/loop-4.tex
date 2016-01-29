@@ -1,0 +1,16 @@
+\feynmandiagram[%
+    spring electrical layout,
+    small,
+    vertical=a to b,
+]
+{
+    a --[scalar] c1[dot];
+    b --[scalar] c2[dot];
+    c --[scalar] c3[dot];
+    d --[scalar] c4[dot];
+
+    c1 --[fermion, out=225, in=135] c2;
+    c2 --[fermion, out=315, in=225] c3;
+    c3 --[fermion, out=45, in=-45] c4;
+    c4 --[fermion, out=135, in=45] c1;
+};
