@@ -75,7 +75,7 @@
     \end{small}
 \end{center}
 
-\section{Chiral anomalies à la Fujikava}
+\section{Chiral anomalies à la Fujikawa}
 \label{homework:1}
 
 \subsection{Invariance}
@@ -164,8 +164,8 @@ it does not commute with the partial derivative any more. From the previous
 part we know that the transformed Lagrangian has the form 
 $\bar q C \slashed D C q$ which we can then expand as
 \begin{align*}
-    \bar q C \slashed D C q
-    &= \bar q C \slashed \partial C q + \iup g \bar q C \slashed A C q \,.
+    \iup \bar q C \slashed D C q
+    &= \iup \bar q C \slashed \partial C q + \iup g \bar q C \slashed A C q \,.
     \intertext{%
         In the first term, we need to apply the product rule. The $C$ will be
         hermitian conjugated when we move it through the Dirac matrix from the
@@ -174,30 +174,74 @@ $\bar q C \slashed D C q$ which we can then expand as
         way. As that term was included before, we drop that. We we are left
         with
     }
-    &\simeq \bar q C (\slashed \partial C) q
-    + \bar q C C^\dagger \slashed \partial q \,.
+    &\simeq \iup \bar q C (\slashed \partial C) q
+    + \iup \bar q C C^\dagger \slashed \partial q \,.
     \intertext{%
         In the first term we actually need to compute the derivative. The
         second term does not feature an explicit transformation any more, so we
         can just drop that as well. We have
     }
-    &\simeq \frac \iup 2 \bar q C \mat\gamma^\mu \alpha_{,\mu}(\four x) \mat\gamma_5 C q \,,
+    &\simeq - \frac 12 \bar q C \mat\gamma^\mu \alpha_{,\mu}(\four x) \mat\gamma_5 C q \,,
     \intertext{%
         where we can now anticommute the $C$ across the $\mat\gamma^\mu$ and
         obtain $C^\dagger$. That will cancel the other $C$. Then we pull out
         the $\alpha$ and we have
     }
-    &= \frac \iup 2 \alpha_{,\mu}(\four x) \bar q \mat\gamma^\mu \mat\gamma_5 q \,.
+    &= - \frac 12 \alpha_{,\mu}(\four x) \bar q \mat\gamma^\mu \mat\gamma_5 q \,.
     \intertext{%
         Using $j_5^\mu := \bar q \mat\gamma^\mu \mat\gamma_5 q$ we can write this
         as
     }
-    &= \frac \iup 2 \alpha_{,\mu}(\four x) j_5^\mu \,.
+    &= - \frac 12 \alpha_{,\mu}(\four x) j_5^\mu \,.
+    \intertext{%
+        The difference in the Lagrangian is almost Equation~(3) from the
+        problem set. We got a factor $-1/2$ more. The desired result contains
+        three indices $\mu$ which does not seem right. This here is probably
+        not far off from the actual result. One could use partial integration,
+        assume compact support and transfer the partial derivative into the
+        current. Then we have
+    }
+    &= \frac 12 \alpha(\four x) j_5^\mu{}_{,\mu} \,,
 \end{align*}
-The difference in the Lagrangian is almost Equation~(3) from the problem set.
-We got a factor $\iup/2$ more. The desired result contains three indices $\mu$
-which does not seem right. This here is probably not far off from the actual
-result.
+which is still different from the desired result by a factor of two.
+
+\subsection{Variance of measure}
+
+$\mathcal D$ is some sort of differential operator and $\alpha(x)$ now depends
+on the position. That way a substitution would give rise to mixed terms.
+
+\subsection{Grassmann coefficients}
+
+We have a transformation $q \to q' = U q$ which then leads to $a_n \to a'_n$ as
+the basis functions $\phi_n$ do not change. This means
+\begin{align*}
+    q' &= U q \,, \\
+    \sum_n a'_n \phi_n(\four x) &= \sum_n a_n U \phi_n(\four x) \,.
+    \intertext{%
+        We expand $U$ up to first order and obtain
+    }
+    \sum_n a'_n \phi_n(\four x) &= \sum_n a_n \sbr{\eye + \frac\iup2
+    \alpha(\four x) \mat\gamma^5 + \mathrm O(\alpha^2)} \phi_n(\four x) \,.
+    \intertext{%
+        This does not help that much on its own, we want the coefficients.
+        Therefore we could either use the fallacy of thinking that the equality
+        of sums implies the equality of summands or use the proper projection
+        relation. For obvious reasons we chose the latter and project onto
+        $\hat\phi_m$. As an intermediate result we have
+    }
+    \sum_n a'_n \int \dif^4 x \, \hat\phi_m(\four x) \phi_n(\four x)
+    &= \sum_n a_n \int \dif^4 x \, \hat\phi_m(\four x) \sbr{\eye + \frac\iup2
+    \alpha(\four x) \mat\gamma^5 + \mathrm O(\alpha^2)} \phi_n(\four x) \,,
+    \intertext{%
+        which we simplify with the orthogonality relation. Then we have
+    }
+    a'_m
+    &= \sum_n a_n \sbr{\delta_{nm} + \frac\iup2
+    \int \dif^4 x \, \hat\phi_m(\four x) \alpha(\four x) \mat\gamma^5 \phi_n(\four x) + \mathrm O(\alpha^2)} \,.
+\end{align*}
+In the problem set there is a tensor $C_{mn}$ mentioned. Here it looks like
+this tensor would be just one for all $m$ and $n$. There is also the underbrace
+which seems to be the term that we got.
 
 \end{document}
 
