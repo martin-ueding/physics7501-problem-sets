@@ -1,0 +1,9 @@
+\feynmandiagram[%
+    vertical'=d to u,
+]
+{
+    u [particle=u] --[fermion] v1 --[fermion] d [particle=d];
+    e [particle=$\mathrm e^-$] --[fermion] v2 --[fermion] nu [particle=$\nuup_\mathrm e$];
+
+    v1 --[photon, momentum'=, edge label=$\mathrm W^+$] v2;
+};
